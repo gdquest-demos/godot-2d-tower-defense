@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Actors/SelectableArea2D/SelectableArea2D.gd" type="Script" id=1]
+
+[node name="SelectableArea2D" type="Area2D"]
+script = ExtResource( 1 )

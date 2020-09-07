@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Interface/SelectionRect/SelectionRect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/TestLevel.tscn" type="PackedScene" id=2]
+
+[node name="Game" type="Node"]
+
+[node name="World" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Level" parent="World" instance=ExtResource( 2 )]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Interface" type="Control" parent="HUD"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectionBox" parent="HUD/Interface" instance=ExtResource( 1 )]
