@@ -17,13 +17,10 @@ func _input_event(viewport: Object, event: InputEvent, shape_idx: int) -> void:
 
 
 func set_selected(select: bool) -> void:
-	if select:
-		_make_exclusive()
-		add_to_group("selected")
-	else:
-		remove_from_group("selected")
 	selected = select
 	emit_signal("selection_toggled", selected)
+	if select:
+		_make_exclusive()
 
 
 func _make_exclusive() -> void:

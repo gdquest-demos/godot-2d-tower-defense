@@ -3,4 +3,6 @@
 [ext_resource path="res://Actors/SelectableArea2D/SelectableArea2D.gd" type="Script" id=1]
 
 [node name="SelectableArea2D" type="Area2D"]
+monitoring = false
+collision_mask = 0
 script = ExtResource( 1 )
