@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grid-cell.svg-dd7cc5ffb7f9e1bec32fcdccf307a4c7.stex"
+path="res://.import/enemies-blob-sprite.svg-5f3cf225cce0e4f56a781c8f979f5fbf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/grid-cell.svg"
-dest_files=[ "res://.import/grid-cell.svg-dd7cc5ffb7f9e1bec32fcdccf307a4c7.stex" ]
+source_file="res://Actors/Enemies/enemies-blob-sprite.svg"
+dest_files=[ "res://.import/enemies-blob-sprite.svg-5f3cf225cce0e4f56a781c8f979f5fbf.stex" ]
 
 [params]
 

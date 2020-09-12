@@ -8,7 +8,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="grid-cell.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    id="svg8"
    version="1.1"
    viewBox="0 0 64 64"
@@ -20,7 +20,7 @@
      inkscape:window-maximized="1"
      inkscape:window-y="30"
      inkscape:window-x="0"
-     inkscape:window-height="1011"
+     inkscape:window-height="1022"
      inkscape:window-width="1920"
      units="px"
      showgrid="false"
@@ -60,6 +60,6 @@
        height="64"
        width="64"
        id="rect847"
-       style="fill:none;stroke:#473b78;stroke-width:4;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
+       style="fill:none;stroke:#4b5bab;stroke-width:4;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1" />
   </g>
 </svg>

@@ -7,9 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
-[node name="BasicTower" type="Node2D" groups=[
-"selectable",
-]]
+[node name="BasicTower" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
