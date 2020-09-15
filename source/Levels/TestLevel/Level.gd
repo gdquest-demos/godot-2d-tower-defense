@@ -49,7 +49,7 @@ func add_new_tower(tower_scene: PackedScene) -> void:
 
 func _start_enemies_movement() -> void:
 	for enemy in _enemies_container.get_children():
-		enemy.movement_path = _astar_grid.get_best_path(enemy.global_position)
+		enemy.movement_path = _astar_grid.get_walkable_path(enemy.global_position)
 		enemy.move()
 
 

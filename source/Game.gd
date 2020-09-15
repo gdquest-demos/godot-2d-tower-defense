@@ -27,4 +27,3 @@ func _on_StartWaveButton_pressed() -> void:
 
 func _on_Level_wave_finished() -> void:
 	_toggle_interface()
-	_level.start()

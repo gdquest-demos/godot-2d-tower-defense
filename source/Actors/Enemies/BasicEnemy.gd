@@ -6,7 +6,7 @@ signal movement_finished
 export var speed := 64.0 setget set_speed
 export var idle_duration := 0.5
 
-# Set of global_position that the BasicEnemy moves towards
+# Set of `global_positions` the BasicEnemy moves towards
 var movement_path: PoolVector2Array = []
 
 onready var _tween := $MovementTween
