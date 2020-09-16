@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "BasicEnemy",
+"language": "GDScript",
+"path": "res://Actors/Enemies/BasicEnemy.gd"
+}, {
 "base": "Area2D",
 "class": "SelectableArea2D",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://Interface/SelectionArea2D/SelectionArea2D.gd"
 } ]
 _global_script_class_icons={
+"BasicEnemy": "",
 "SelectableArea2D": "",
 "SelectionArea2D": ""
 }

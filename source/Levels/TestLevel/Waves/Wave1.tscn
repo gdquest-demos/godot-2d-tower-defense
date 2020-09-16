@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Actors/Enemies/BasicEnemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Wave/Wave.tscn" type="PackedScene" id=3]
+
+[node name="Wave" instance=ExtResource( 3 )]
+
+[node name="BasicEnemy" parent="." index="0" instance=ExtResource( 2 )]
+speed = 500.0
+idle_duration = 0.1
+
+[node name="BasicEnemy2" parent="." index="1" instance=ExtResource( 2 )]
+speed = 500.0
+idle_duration = 0.1
+
+[node name="BasicEnemy3" parent="." index="2" instance=ExtResource( 2 )]
+speed = 500.0
+idle_duration = 0.1
+
+[node name="BasicEnemy4" parent="." index="3" instance=ExtResource( 2 )]
+speed = 500.0
+idle_duration = 0.1
+
+[node name="BasicEnemy5" parent="." index="4" instance=ExtResource( 2 )]
+speed = 500.0
+idle_duration = 0.1

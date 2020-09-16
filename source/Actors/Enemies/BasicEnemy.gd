@@ -1,12 +1,13 @@
+class_name BasicEnemy
 extends Node2D
 
 signal movement_started
 signal movement_finished
+signal moved
 
 export var speed := 64.0 setget set_speed
 export var idle_duration := 0.5
 
-# Set of `global_positions` the BasicEnemy moves towards
 var movement_path: PoolVector2Array = []
 
 onready var _tween := $MovementTween
@@ -14,12 +15,14 @@ onready var _timer := $IdleTimer
 
 func move() -> void:
 	emit_signal("movement_started")
+	
 	for point in movement_path:
 		_tween_to_next_point(point)
 		yield(_tween, "tween_completed")
 		_timer.start(idle_duration)
 		yield(_timer, "timeout")
 		movement_path.remove(0)
+		emit_signal("moved")
 	emit_signal("movement_finished")
 
 

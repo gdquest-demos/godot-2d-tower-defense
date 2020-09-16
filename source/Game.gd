@@ -17,7 +17,7 @@ func _toggle_interface() -> void:
 
 
 func _on_TowerPurchaseButton_tower_purchased(tower_scene: PackedScene) -> void:
-	_level.add_new_tower(tower_scene)
+	_level.place_new_tower(tower_scene)
 
 
 func _on_StartWaveButton_pressed() -> void:
