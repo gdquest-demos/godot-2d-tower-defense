@@ -38,6 +38,11 @@ _global_script_classes=[ {
 "class": "SelectionArea2D",
 "language": "GDScript",
 "path": "res://Interface/SelectionArea2D/SelectionArea2D.gd"
+}, {
+"base": "Node2D",
+"class": "Wave",
+"language": "GDScript",
+"path": "res://Levels/Wave/Wave.gd"
 } ]
 _global_script_class_icons={
 "BasicEnemy": "",
@@ -45,7 +50,8 @@ _global_script_class_icons={
 "Hit": "",
 "HurtBox2D": "",
 "SelectableArea2D": "",
-"SelectionArea2D": ""
+"SelectionArea2D": "",
+"Wave": ""
 }
 
 [application]
@@ -53,6 +59,13 @@ _global_script_class_icons={
 config/name="Mini Tower Defense"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep_width"
 
 [input]
 

@@ -5,8 +5,8 @@
 [ext_resource path="res://Objects/HitBox/HitBoxArea2D.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 24.0
-height = 32.0
+radius = 16.0
+height = 47.9999
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource( 1 )

@@ -3,6 +3,8 @@ extends Position2D
 
 var target: Node2D
 
+export var bullet_scene: PackedScene 
+
 onready var _bullet_spawner := $BulletSpawner2D
 onready var _cooldown_timer := $CooldownTimer
 onready var _range_area := $RangeArea2D
@@ -18,6 +20,8 @@ func _shoot() -> void:
 	
 	look_at(target.global_position)
 	_animation_player.play("shoot")
+	
+	_bullet_spawner.spawn_scene = bullet_scene
 	var bullet: Bullet = _bullet_spawner.spawn()
 	bullet.fly_to(target.global_position)
 

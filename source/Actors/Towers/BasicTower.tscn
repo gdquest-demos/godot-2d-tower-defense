@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Actors/Towers/player-blue-square.svg" type="Texture" id=1]
 [ext_resource path="res://Actors/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Actors/Towers/BasicTower.gd" type="Script" id=3]
 [ext_resource path="res://Objects/Weapons/Weapon2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Bullets/BasicTowerBullet.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -39,4 +40,5 @@ shape = SubResource( 1 )
 
 [node name="Weapon2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -32 )
+bullet_scene = ExtResource( 5 )
 [connection signal="selection_toggled" from="SelectableArea2D" to="." method="_on_SelectableArea2D_selection_toggled"]

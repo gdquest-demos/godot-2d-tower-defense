@@ -22,9 +22,5 @@ func fly_to(target_global_position: Vector2) -> void:
 	look_at(target_global_position)
 
 
-func _on_HitBox2D_area_entered(area: Area2D) -> void:
-	queue_free()
-
-
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	queue_free()

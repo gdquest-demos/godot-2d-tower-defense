@@ -12,6 +12,10 @@ var movement_path: PoolVector2Array = []
 
 onready var _tween := $MovementTween
 onready var _timer := $IdleTimer
+onready var _health := $Health
+onready var _anim := $AnimationPlayer
+onready var _sprite_anim := $Sprite/AnimationPlayer
+
 
 func move() -> void:
 	emit_signal("movement_started")
@@ -24,6 +28,11 @@ func move() -> void:
 		movement_path.remove(0)
 		emit_signal("moved")
 	emit_signal("movement_finished")
+
+
+func die() -> void:
+	_tween.stop_all()
+	_anim.play("die")
 
 
 func set_speed(new_speed: float) -> void:
@@ -46,3 +55,11 @@ func _tween_to_next_point(point: Vector2) -> void:
 		duration
 		)
 	_tween.start()
+
+
+func _on_HurtBoxArea2D_damaged(damage: int) -> void:
+	_health.amount -= damage
+
+
+func _on_Health_depleted() -> void:
+	die()

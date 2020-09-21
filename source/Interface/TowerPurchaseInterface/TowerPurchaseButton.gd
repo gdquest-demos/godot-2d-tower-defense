@@ -10,13 +10,6 @@ onready var _normal_modulate = modulate
 
 var _is_mouse_on := false
 
-func _ready() -> void:
-	set_process(false)
-
-
-func _process(delta: float) -> void:
-	update_modulate()
-
 
 func _pressed() -> void:
 	set_process(pressed)
