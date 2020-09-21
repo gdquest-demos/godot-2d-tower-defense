@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Actors/Enemies/BasicEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Enemies/enemies-blob-sprite.svg" type="Texture" id=2]
 [ext_resource path="res://Objects/HurtBox/HurtBoxArea2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actors/Health/Health.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "die"
 length = 0.25
 step = 0.05
@@ -37,7 +37,45 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "hurt"
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HurtBoxArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MovementTween:playback/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -53,14 +91,19 @@ tracks/0/keys = {
 "values": [ Color( 1.5, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1.5, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1.5, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=4]
 radius = 32.0
 
 [node name="BasicEnemy" type="Node2D"]
+modulate = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
+speed = 256.0
+idle_duration = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/die = SubResource( 3 )
+autoplay = "spawn"
+anims/die = SubResource( 1 )
+anims/spawn = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1.5, 1, 1, 1 )
@@ -68,7 +111,7 @@ position = Vector2( 0, -32 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/hurt = SubResource( 2 )
+anims/hurt = SubResource( 3 )
 
 [node name="MovementTween" type="Tween" parent="."]
 
@@ -78,7 +121,8 @@ anims/hurt = SubResource( 2 )
 team = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
-shape = SubResource( 1 )
+shape = SubResource( 4 )
+disabled = true
 
 [node name="Health" parent="." instance=ExtResource( 4 )]
 [connection signal="damaged" from="HurtBoxArea2D" to="." method="_on_HurtBoxArea2D_damaged"]

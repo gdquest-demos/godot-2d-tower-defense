@@ -5,18 +5,17 @@ signal starting
 signal started
 signal finished
 
-export var enemies_offset := Vector2(0, 64.0)
+export var enemy_time_interval := 0.5
 
 
 func start() -> void:
 	emit_signal("starting")
 	for enemy in get_children():
-		if enemy.get_index() > 0:
-			enemy.position -= enemies_offset
 		enemy.connect("tree_exited", self, "_on_Enemy_tree_exited")
 		enemy.connect("movement_finished", self, "_on_Enemy_movement_finished", [enemy])
 		enemy.move()
 		yield(enemy, "moved")
+		yield(get_tree().create_timer(enemy_time_interval), "timeout")
 	emit_signal("started")
 
 

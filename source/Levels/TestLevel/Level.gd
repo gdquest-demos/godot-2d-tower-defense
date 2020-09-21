@@ -16,6 +16,7 @@ func start():
 	_spawn_next_wave()
 	for enemy in _wave.get_children():
 		var movement_path = _astar_grid.get_walkable_path(enemy.global_position)
+		enemy.position += movement_path[0]
 		_wave.setup_enemy_movement_path(enemy, movement_path)
 	_wave.start()
 

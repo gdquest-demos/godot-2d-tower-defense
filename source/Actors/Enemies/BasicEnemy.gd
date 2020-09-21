@@ -23,10 +23,11 @@ func move() -> void:
 	for point in movement_path:
 		_tween_to_next_point(point)
 		yield(_tween, "tween_completed")
-		_timer.start(idle_duration)
-		yield(_timer, "timeout")
-		movement_path.remove(0)
 		emit_signal("moved")
+		if idle_duration > 0.0:
+			_timer.start(idle_duration)
+			yield(_timer, "timeout")
+		movement_path.remove(0)
 	emit_signal("movement_finished")
 
 
