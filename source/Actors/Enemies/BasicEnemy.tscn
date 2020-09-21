@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Actors/Enemies/BasicEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Enemies/enemies-blob-sprite.svg" type="Texture" id=2]
+[ext_resource path="res://Objects/HurtBox/HurtBoxArea2D.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 32.0
 
 [node name="BasicEnemy" type="Node2D"]
 script = ExtResource( 1 )
@@ -13,3 +17,8 @@ texture = ExtResource( 2 )
 [node name="MovementTween" type="Tween" parent="."]
 
 [node name="IdleTimer" type="Timer" parent="."]
+
+[node name="HurtBoxArea2D" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
+shape = SubResource( 1 )

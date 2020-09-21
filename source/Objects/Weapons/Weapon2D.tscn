@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Objects/Spawners/Spawner2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Bullets/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Weapons/Weapon2D.gd" type="Script" id=3]
+[ext_resource path="res://Objects/Bullets/projectile-player.svg" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 128.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "shoot"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 0.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -16, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Weapon2D" type="Position2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+offset = Vector2( 40, 0 )
+
+[node name="RangeArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea2D"]
+shape = SubResource( 1 )
+
+[node name="BulletSpawner2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 88, 0 )
+spawn_scene = ExtResource( 2 )
+
+[node name="CooldownTimer" type="Timer" parent="."]
+process_mode = 0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/shoot = SubResource( 2 )
+[connection signal="area_entered" from="RangeArea2D" to="." method="_on_RangeArea2D_area_entered"]
+[connection signal="area_exited" from="RangeArea2D" to="." method="_on_RangeArea2D_area_exited"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]

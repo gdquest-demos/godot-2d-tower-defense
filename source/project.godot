@@ -14,6 +14,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Enemies/BasicEnemy.gd"
 }, {
+"base": "Node2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Objects/Bullets/Bullet.gd"
+}, {
+"base": "Resource",
+"class": "Hit",
+"language": "GDScript",
+"path": "res://Objects/HitBox/Hit.gd"
+}, {
+"base": "Area2D",
+"class": "HurtBox2D",
+"language": "GDScript",
+"path": "res://Objects/HurtBox/HurtBoxArea2D.gd"
+}, {
 "base": "Area2D",
 "class": "SelectableArea2D",
 "language": "GDScript",
@@ -26,6 +41,9 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BasicEnemy": "",
+"Bullet": "",
+"Hit": "",
+"HurtBox2D": "",
 "SelectableArea2D": "",
 "SelectionArea2D": ""
 }
@@ -57,6 +75,7 @@ tower_placement={
 [layer_names]
 
 2d_physics/layer_1="selectable"
+2d_physics/layer_2="combat"
 
 [rendering]
 

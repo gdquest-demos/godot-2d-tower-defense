@@ -4,14 +4,31 @@
 [ext_resource path="res://Interface/TowerPurchaseInterface/TowerPurchaseButton.gd" type="Script" id=2]
 
 [node name="TowerPurchaseButton" type="TextureButton"]
-margin_right = 64.0
-margin_bottom = 64.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 64, 64 )
 size_flags_horizontal = 0
-size_flags_vertical = 2
+size_flags_vertical = 0
 action_mode = 0
 texture_normal = ExtResource( 1 )
+expand = true
 stretch_mode = 3
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -36.0
+margin_top = 2.27573
+margin_right = 36.0
+margin_bottom = 18.2757
+hint_tooltip = "$200"
+text = "BasicTower"
 __meta__ = {
 "_edit_use_anchors_": false
 }

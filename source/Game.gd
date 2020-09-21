@@ -1,13 +1,14 @@
 extends Node
 
 
-onready var _tower_purchase_hud := $UserInterface/HUD/TowerPurcahseHBoxContainer
 onready var _level := $World/Level
+onready var _tower_purchase_hud := $UserInterface/HUD/TowerPurcahseInterface
 onready var _start_button := $UserInterface/HUD/StartWaveButton
 
 
 func _ready() -> void:
-	for button in _tower_purchase_hud.get_children():
+	var buttons_container := _tower_purchase_hud.find_node("TowerButtonsContainer")
+	for button in buttons_container.get_children():
 		button.connect("tower_purchased", self, "_on_TowerPurchaseButton_tower_purchased")
 
 
