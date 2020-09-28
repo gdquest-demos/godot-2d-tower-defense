@@ -58,9 +58,12 @@ func _tween_to_next_point(point: Vector2) -> void:
 	_tween.start()
 
 
-func _on_HurtBoxArea2D_damaged(damage: int) -> void:
-	_health.amount -= damage
-
-
 func _on_Health_depleted() -> void:
 	die()
+
+
+func _on_HurtBoxArea2D_hit_landed(hit: Hit) -> void:
+	_health.amount -= hit.damage
+	add_child(hit)
+	for modifier in hit.modifiers:
+		modifier.target = self

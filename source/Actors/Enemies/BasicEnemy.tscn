@@ -125,5 +125,5 @@ shape = SubResource( 4 )
 disabled = true
 
 [node name="Health" parent="." instance=ExtResource( 4 )]
-[connection signal="damaged" from="HurtBoxArea2D" to="." method="_on_HurtBoxArea2D_damaged"]
+[connection signal="hit_landed" from="HurtBoxArea2D" to="." method="_on_HurtBoxArea2D_hit_landed"]
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]

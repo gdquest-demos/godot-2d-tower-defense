@@ -21,4 +21,7 @@ rotation = 1.57079
 shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
+playback_process_mode = 0
+
+[node name="Modifiers" type="Node2D" parent="."]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

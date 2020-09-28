@@ -3,6 +3,7 @@ extends Node2D
 
 export var speed := 500.0
 
+onready var modifiers := $Modifiers
 onready var _tween := $Tween
 onready var _hitbox := $HitBoxArea2D
 

@@ -12,6 +12,7 @@ onready var _animation_player := $AnimationPlayer
 
 
 func _shoot() -> void:
+	_update_target()
 	if not target:
 		return
 	if not _cooldown_timer.is_stopped():
@@ -26,6 +27,13 @@ func _shoot() -> void:
 	bullet.fly_to(target.global_position)
 
 
+func _update_target() -> void:
+	if _range_area.get_overlapping_areas().size() > 0:
+		target = _range_area.get_overlapping_areas()[0]
+	else:
+		_clear_target()
+
+
 func _clear_target() -> void:
 	target = null
 	_cooldown_timer.stop()
@@ -38,11 +46,9 @@ func _on_RangeArea2D_area_entered(area: Area2D) -> void:
 
 
 func _on_RangeArea2D_area_exited(area: Area2D) -> void:
-	yield(get_tree(), "physics_frame")
-	if _range_area.get_overlapping_areas().size() > 0:
-		target = _range_area.get_overlapping_areas()[0]
-	else:
-		_clear_target()
+	if target:
+		target.disconnect("tree_exiting", self, "_clear_target")
+	_update_target()
 
 
 func _on_CooldownTimer_timeout() -> void:
