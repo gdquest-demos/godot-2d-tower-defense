@@ -7,16 +7,11 @@
 enemy_time_interval = 2.0
 
 [node name="BasicEnemy" parent="." index="0" instance=ExtResource( 2 )]
-speed = 64.0
 
 [node name="BasicEnemy2" parent="." index="1" instance=ExtResource( 2 )]
-speed = 64.0
 
 [node name="BasicEnemy3" parent="." index="2" instance=ExtResource( 2 )]
-speed = 64.0
 
 [node name="BasicEnemy4" parent="." index="3" instance=ExtResource( 2 )]
-speed = 64.0
 
 [node name="BasicEnemy5" parent="." index="4" instance=ExtResource( 2 )]
-speed = 64.0

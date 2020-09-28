@@ -4,6 +4,7 @@ extends Node
 onready var _level := $World/Level
 onready var _tower_purchase_hud := $UserInterface/HUD/TowerPurcahseInterface
 onready var _start_button := $UserInterface/HUD/StartWaveButton
+onready var _wave_overlay_animator := $UserInterface/WaveStartOverlay/AnimationPlayer
 
 
 func _ready() -> void:
@@ -23,6 +24,8 @@ func _on_TowerPurchaseButton_tower_purchased(tower_scene: PackedScene) -> void:
 
 func _on_StartWaveButton_pressed() -> void:
 	_toggle_interface()
+	_wave_overlay_animator.play("wave_starting")
+	yield(_wave_overlay_animator, "animation_finished")
 	_level.start()
 
 
