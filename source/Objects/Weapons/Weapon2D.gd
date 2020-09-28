@@ -1,9 +1,12 @@
+class_name Weapon
 extends Position2D
 
 
 var target: Node2D
 
-export var bullet_scene: PackedScene 
+export var bullet_scene: PackedScene
+
+onready var sight_shape: CircleShape2D = $RangeArea2D/CollisionShape2D.shape
 
 onready var _bullet_spawner := $BulletSpawner2D
 onready var _cooldown_timer := $CooldownTimer
