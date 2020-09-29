@@ -8,6 +8,7 @@ var target: BasicEnemy
 onready var _duration_timer := $DurationTimer
 onready var _animation_player := $AnimationPlayer
 
+
 func _ready() -> void:
 	_duration_timer.wait_time = duration
 	_animation_player.play("start")

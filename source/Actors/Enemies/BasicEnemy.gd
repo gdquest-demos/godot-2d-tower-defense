@@ -18,16 +18,22 @@ onready var _sprite_anim := $Sprite/AnimationPlayer
 
 
 func move() -> void:
+	if movement_path.size() == 0:
+		return
+
 	emit_signal("movement_started")
-	
+
 	for point in movement_path:
 		_tween_to_next_point(point)
 		yield(_tween, "tween_completed")
 		emit_signal("moved")
+
 		if idle_duration > 0.0:
 			_timer.start(idle_duration)
 			yield(_timer, "timeout")
+
 		movement_path.remove(0)
+
 	emit_signal("movement_finished")
 
 
@@ -39,7 +45,7 @@ func die() -> void:
 func set_speed(new_speed: float) -> void:
 	speed = new_speed
 	if not is_inside_tree():
-		return
+		yield(self, "ready")
 	_tween.stop(self, "global_position")
 	move()
 
@@ -47,14 +53,8 @@ func set_speed(new_speed: float) -> void:
 func _tween_to_next_point(point: Vector2) -> void:
 	var distance_to_point := global_position.distance_to(point)
 	var duration := distance_to_point / speed
-	
-	_tween.interpolate_property(
-		self,
-		"global_position",
-		global_position,
-		point,
-		duration
-		)
+
+	_tween.interpolate_property(self, "global_position", global_position, point, duration)
 	_tween.start()
 
 

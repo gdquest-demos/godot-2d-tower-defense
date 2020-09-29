@@ -32,7 +32,7 @@ func _on_Wave_finished() -> void:
 func _spawn_next_wave() -> void:
 	if _wave:
 		_wave.queue_free()
-	
+
 	var new_wave := next_wave_scene.instance()
 	_wave = new_wave
 

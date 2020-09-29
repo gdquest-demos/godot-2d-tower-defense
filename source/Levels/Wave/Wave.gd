@@ -23,8 +23,7 @@ func is_wave_finished() -> bool:
 	return get_child_count() < 1
 
 
-func setup_enemy_movement_path(enemy: BasicEnemy,
-		movement_path: PoolVector2Array) -> void:
+func setup_enemy_movement_path(enemy: BasicEnemy, movement_path: PoolVector2Array) -> void:
 	enemy.movement_path = movement_path
 
 

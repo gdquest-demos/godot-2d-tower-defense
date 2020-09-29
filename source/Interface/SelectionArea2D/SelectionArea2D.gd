@@ -52,7 +52,7 @@ func set_rectangle(value: Rect2) -> void:
 	_collision_shape.position = _rectangle.position + _rectangle.size / 2.0
 	_collision_shape.shape.extents = _rectangle.size / 2.0
 	update()
-	
+
 
 func set_is_active(value: bool) -> void:
 	is_active = value
