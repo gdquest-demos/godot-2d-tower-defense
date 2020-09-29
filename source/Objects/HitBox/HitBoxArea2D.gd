@@ -2,13 +2,14 @@ extends Area2D
 
 signal hit_landed
 
-enum Teams {Player, Enemy}
-export(Teams) var team := Teams.Player
+enum Teams { Player, Enemy }
+export (Teams) var team := Teams.Player
 
 export var can_hit_multiple := false
-export var hit_scene: PackedScene 
+export var hit_scene: PackedScene
 
 var _can_hit := true
+
 
 func apply_hit(hurt_box: HurtBox2D) -> void:
 	if team == hurt_box.team:

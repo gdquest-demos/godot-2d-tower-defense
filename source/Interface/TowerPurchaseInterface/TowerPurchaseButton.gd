@@ -2,7 +2,7 @@ extends TextureButton
 
 signal tower_purchased(tower_scene)
 
-export var tower_packed_scene:PackedScene = preload("res://Actors/Towers/BasicTower.tscn")
+export var tower_packed_scene: PackedScene = preload("res://Actors/Towers/BasicTower.tscn")
 export var hover_modulate := Color(1.3, 1.3, 1.3, 1.0)
 export var pressed_modulate := Color(0.7, 0.7, 0.7, 1.0)
 

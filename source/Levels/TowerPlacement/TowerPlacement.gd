@@ -26,9 +26,9 @@ func _input(event: InputEvent) -> void:
 func add_new_tower(tower_scene: PackedScene) -> void:
 	var tower_instance := tower_scene.instance() as Node2D
 	add_child(tower_instance)
-	
+
 	_current_tower = tower_instance
-	
+
 	set_process(true)
 	_grid.visible = true
 
