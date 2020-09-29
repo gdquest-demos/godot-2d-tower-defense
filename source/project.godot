@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://Actors/Enemies/BasicEnemy.gd"
 }, {
 "base": "Node2D",
+"class": "BasicTower",
+"language": "GDScript",
+"path": "res://Actors/Towers/BasicTower.gd"
+}, {
+"base": "Node2D",
 "class": "Bullet",
 "language": "GDScript",
 "path": "res://Objects/Bullets/Bullet.gd"
@@ -44,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Interface/SelectionArea2D/SelectionArea2D.gd"
 }, {
+"base": "Node",
+"class": "Upgrade",
+"language": "GDScript",
+"path": "res://Actors/Towers/UpgradableTower/Upgrades/Upgrade.gd"
+}, {
 "base": "Node2D",
 "class": "Wave",
 "language": "GDScript",
@@ -56,12 +66,14 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BasicEnemy": "",
+"BasicTower": "",
 "Bullet": "",
 "Hit": "",
 "HurtBox2D": "",
 "Modifier": "",
 "SelectableArea2D": "",
 "SelectionArea2D": "",
+"Upgrade": "",
 "Wave": "",
 "Weapon": ""
 }

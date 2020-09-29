@@ -3,14 +3,23 @@ extends Position2D
 
 var target: Node2D
 
-export var bullet_scene: PackedScene
-
-onready var sight_shape: CircleShape2D = $RangeArea2D/CollisionShape2D.shape
+export var bullet_scene: PackedScene = preload("res://Objects/Bullets/Bullet.tscn")
+export var sight_range := 200.0 setget set_sight_range
 
 onready var _bullet_spawner := $BulletSpawner2D
 onready var _cooldown_timer := $CooldownTimer
 onready var _range_area := $RangeArea2D
 onready var _animation_player := $AnimationPlayer
+
+func _ready() -> void:
+	self.sight_range = sight_range
+
+
+func set_sight_range(new_range: float) -> void:
+	sight_range = new_range
+	if not is_inside_tree():
+		yield(self, "ready")
+	_range_area.get_node("CollisionShape2D").shape.radius = sight_range
 
 
 func _shoot() -> void:

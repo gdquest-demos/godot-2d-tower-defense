@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Interface/TowerPurchaseInterface/TowerPurchaseButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/TestLevel/TestLevel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
+[ext_resource path="res://Actors/Towers/UpgradableTower/UpgradableTower.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "SETUP"
@@ -165,6 +166,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 64.0
 margin_bottom = 64.0
+tower_packed_scene = ExtResource( 4 )
 
 [node name="WaveStartOverlay" type="ColorRect" parent="UserInterface"]
 modulate = Color( 1, 1, 1, 0 )

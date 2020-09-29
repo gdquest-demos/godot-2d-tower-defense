@@ -40,13 +40,19 @@ margin_top = 24.0
 margin_right = 286.0
 margin_bottom = 28.0
 
-[node name="WeaponRangeOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="OptionsVBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 38.0
 margin_right = 286.0
-margin_bottom = 58.0
+margin_bottom = 286.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WeaponRangeOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer"]
+margin_right = 286.0
+margin_bottom = 20.0
 custom_constants/separation = 10
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/WeaponRangeOption"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer/WeaponRangeOption"]
 margin_right = 138.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
@@ -55,7 +61,7 @@ text = "Weapon Range"
 valign = 2
 clip_text = true
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/VBoxContainer/WeaponRangeOption"]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer/WeaponRangeOption"]
 margin_left = 148.0
 margin_right = 286.0
 margin_bottom = 20.0
@@ -63,13 +69,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Upgrade"
 
-[node name="BulletSpeedOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 68.0
+[node name="BulletSpeedOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer"]
+margin_top = 24.0
 margin_right = 286.0
-margin_bottom = 88.0
+margin_bottom = 44.0
 custom_constants/separation = 10
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BulletSpeedOption"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer/BulletSpeedOption"]
 margin_right = 138.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
@@ -78,12 +84,10 @@ text = "Bullet Speed"
 valign = 2
 clip_text = true
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/VBoxContainer/BulletSpeedOption"]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer/BulletSpeedOption"]
 margin_left = 148.0
 margin_right = 286.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Upgrade"
-[connection signal="pressed" from="MarginContainer/VBoxContainer/WeaponRangeOption/UpgradeButton" to="." method="_on_WeaponUpgradeButton_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BulletSpeedOption/UpgradeButton" to="." method="_on_BulletSpeedUpgradeButton_pressed"]
