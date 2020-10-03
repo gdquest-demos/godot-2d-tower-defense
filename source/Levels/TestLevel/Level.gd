@@ -1,3 +1,4 @@
+# Controls Wave's flow and TowerPlacement
 extends Node2D
 
 signal wave_finished
@@ -9,24 +10,32 @@ onready var _astar_grid := $AStarGrid
 
 var _wave: Wave
 
-var _current_wave := 0
+
+func _ready() -> void:
+	setup_tower_placeable_cells()
 
 
 func start():
 	_spawn_next_wave()
-	for enemy in _wave.get_children():
-		var movement_path = _astar_grid.get_walkable_path(enemy.global_position)
-		enemy.position += movement_path[0]
-		_wave.setup_enemy_movement_path(enemy, movement_path)
+	setup_wave_walk_path()
+
 	_wave.start()
+
+
+func setup_tower_placeable_cells() -> void:
+	for cell in _astar_grid.get_used_cells_by_id(_astar_grid.WALKABLE_CELLS_ID):
+		_towers_placement.set_cell_unplaceable(cell)
 
 
 func place_new_tower(new_tower_scene: PackedScene) -> void:
 	_towers_placement.add_new_tower(new_tower_scene)
 
 
-func _on_Wave_finished() -> void:
-	emit_signal("wave_finished")
+func setup_wave_walk_path() -> void:
+	var movement_path: PoolVector2Array = _astar_grid.get_walkable_path(_wave.global_position)
+	for enemy in _wave.get_children():
+		enemy.position += movement_path[0]
+		_wave.set_enemy_movement_path(enemy, movement_path)
 
 
 func _spawn_next_wave() -> void:
@@ -37,5 +46,8 @@ func _spawn_next_wave() -> void:
 	_wave = new_wave
 
 	add_child(_wave)
-	move_child(_wave, _towers_placement.get_index() + 1)
 	_wave.connect("finished", self, "_on_Wave_finished")
+
+
+func _on_Wave_finished() -> void:
+	emit_signal("wave_finished")
