@@ -4,7 +4,7 @@
 [ext_resource path="res://Levels/Wave/Wave.tscn" type="PackedScene" id=3]
 
 [node name="Wave" instance=ExtResource( 3 )]
-enemy_time_interval = 2.0
+enemy_time_interval = 1.0
 
 [node name="BasicEnemy" parent="." index="0" instance=ExtResource( 2 )]
 
