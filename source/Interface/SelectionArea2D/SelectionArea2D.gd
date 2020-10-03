@@ -1,3 +1,5 @@
+# Selects and stores SelectableArea2Ds overlapping with its CollisionShape2D
+
 class_name SelectionArea2D
 extends Area2D
 
