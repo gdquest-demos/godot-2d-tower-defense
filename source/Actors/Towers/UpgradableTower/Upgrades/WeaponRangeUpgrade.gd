@@ -1,6 +1,5 @@
 extends Upgrade
 
 
-func upgrade() -> void:
-	.upgrade()
-	_upgradable.sight_range += value
+func _apply_upgrade() -> void:
+	weapon.sight_range += value

@@ -29,7 +29,9 @@ margin_right = 36.0
 margin_bottom = 18.2757
 hint_tooltip = "$200"
 mouse_filter = 1
-text = "BasicTower"
+text = "Tower"
+align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

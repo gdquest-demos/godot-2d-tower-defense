@@ -41,4 +41,4 @@ shape = SubResource( 1 )
 [node name="Weapon2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -32 )
 bullet_scene = ExtResource( 5 )
-[connection signal="selection_toggled" from="SelectableArea2D" to="." method="_on_SelectableArea2D_selection_toggled"]
+[connection signal="selection_changed" from="SelectableArea2D" to="." method="_on_SelectableArea2D_selection_changed"]

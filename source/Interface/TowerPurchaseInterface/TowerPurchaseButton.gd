@@ -6,9 +6,19 @@ export var tower_packed_scene: PackedScene = preload("res://Actors/Towers/BasicT
 export var hover_modulate := Color(1.3, 1.3, 1.3, 1.0)
 export var pressed_modulate := Color(0.7, 0.7, 0.7, 1.0)
 
-onready var _normal_modulate = modulate
+onready var _normal_modulate := modulate
+onready var _label := $Label
 
 var _is_mouse_on := false
+
+func _ready() -> void:
+	setup_tower_data()
+
+
+func setup_tower_data() -> void:
+	var tower: BasicTower = tower_packed_scene.instance()
+	_label.text = "%s. Cost: %s" % [tower.name, tower.cost]
+	tower.queue_free()
 
 
 func _pressed() -> void:

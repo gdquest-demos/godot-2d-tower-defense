@@ -84,6 +84,10 @@ config/name="Mini Tower Defense"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Player="*res://Player/Player.tscn"
+
 [display]
 
 window/size/width=1920

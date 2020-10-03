@@ -1,22 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Actors/Towers/BasicTower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Towers/UpgradableTower/UpgradableTower.gd" type="Script" id=2]
 [ext_resource path="res://Interface/UpgradePanel/UpgradePanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actors/Towers/UpgradableTower/Upgrades/WeaponRangeUpgrade.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Actors/Towers/UpgradableTower/Upgrades/BulletSpeedUpgrade.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actors/Towers/UpgradableTower/Upgrades/WeaponFireRateUpgrade.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Bullets/BasicTowerBullet.tscn" type="PackedScene" id=8]
 
 [node name="UpgradableTower" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Sprite" parent="." index="0"]
+z_index = -1
+
+[node name="SelectableArea2D" parent="." index="2"]
+z_index = -1
+
+[node name="Weapon2D" parent="." index="3"]
+z_index = -1
+bullet_scene = ExtResource( 8 )
+
 [node name="Upgrades" type="Node" parent="." index="4"]
 
 [node name="WeaponRangeUpgrade" parent="Upgrades" index="0" instance=ExtResource( 4 )]
-upgradable_path = NodePath("../../Weapon2D")
 
-[node name="BulletSpeedUpgrade" parent="Upgrades" index="1" instance=ExtResource( 5 )]
+[node name="WeaponFireRateUpgrade" parent="Upgrades" index="1" instance=ExtResource( 6 )]
+value = 0.2
+
+[node name="BulletSpeedUpgrade" parent="Upgrades" index="2" instance=ExtResource( 5 )]
 value = 500.0
-upgradable_path = NodePath("../../Weapon2D")
 
 [node name="UpgradePanel" parent="." index="5" instance=ExtResource( 3 )]
 visible = false

@@ -6,10 +6,16 @@ export var cost := 100
 export var value := 10.0
 export (float, EASE) var cost_curve := 1.0
 
-export var upgradable_path: NodePath
+var weapon: Weapon
 
-onready var _upgradable := get_node(upgradable_path)
 
 func upgrade() -> void:
-	# Todo check if player has enough resources to upgrade
+	if Player.current_gold - cost < 0:
+		return
+	_apply_upgrade()
+	Player.current_gold -= cost
 	cost *= cost_curve
+
+
+func _apply_upgrade() -> void:
+	pass

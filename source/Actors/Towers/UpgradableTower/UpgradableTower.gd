@@ -3,8 +3,19 @@ extends BasicTower
 onready var _upgrades_container := $Upgrades
 onready var _upgrade_panel := $UpgradePanel
 
-func _on_SelectableArea2D_selection_toggled(selected: bool) -> void:
-	._on_SelectableArea2D_selection_toggled(selected)
+
+func _ready() -> void:
+	setup_upgrades()
+
+
+func setup_upgrades() -> void:
+	for upgrade in _upgrades_container.get_children():
+		upgrade = upgrade as Upgrade
+		upgrade.weapon = _weapon
+
+
+func _on_SelectableArea2D_selection_changed(selected) -> void:
+	._on_SelectableArea2D_selection_changed(selected)
 
 	_upgrade_panel.visible = selected
 

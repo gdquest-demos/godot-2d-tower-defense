@@ -5,21 +5,27 @@ var target: Node2D
 
 export var bullet_scene: PackedScene = preload("res://Objects/Bullets/Bullet.tscn")
 export var sight_range := 200.0 setget set_sight_range
+export var cooldown := 1.0
 
 onready var _bullet_spawner := $BulletSpawner2D
 onready var _cooldown_timer := $CooldownTimer
 onready var _range_area := $RangeArea2D
+onready var _range_shape: CircleShape2D = $RangeArea2D/CollisionShape2D.shape
 onready var _animation_player := $AnimationPlayer
+
 
 func _ready() -> void:
 	self.sight_range = sight_range
+	_range_shape = _range_shape.duplicate()
+	$RangeArea2D/CollisionShape2D.shape = _range_shape
+	bullet_scene = bullet_scene.duplicate()
 
 
 func set_sight_range(new_range: float) -> void:
 	sight_range = new_range
 	if not is_inside_tree():
 		yield(self, "ready")
-	_range_area.get_node("CollisionShape2D").shape.radius = sight_range
+	_range_shape.radius = sight_range
 
 
 func _shoot() -> void:
@@ -28,7 +34,7 @@ func _shoot() -> void:
 		return
 	if not _cooldown_timer.is_stopped():
 		return
-	_cooldown_timer.start()
+	_cooldown_timer.start(cooldown)
 
 	look_at(target.global_position)
 	_animation_player.play("shoot")
@@ -48,7 +54,6 @@ func _update_target() -> void:
 
 func _clear_target() -> void:
 	target = null
-	_cooldown_timer.stop()
 
 
 func _on_RangeArea2D_area_entered(area: Area2D) -> void:

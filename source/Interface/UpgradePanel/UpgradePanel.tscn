@@ -46,6 +46,7 @@ margin_right = 286.0
 margin_bottom = 286.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 10
 
 [node name="WeaponRangeOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer"]
 margin_right = 286.0
@@ -69,10 +70,33 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Upgrade"
 
-[node name="BulletSpeedOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer"]
-margin_top = 24.0
+[node name="WeaponFireRateOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer"]
+margin_top = 30.0
 margin_right = 286.0
-margin_bottom = 44.0
+margin_bottom = 50.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer/WeaponFireRateOption"]
+margin_right = 138.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Weapon Fire Rate"
+valign = 2
+autowrap = true
+
+[node name="UpgradeButton" type="Button" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer/WeaponFireRateOption"]
+margin_left = 148.0
+margin_right = 286.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Upgrade"
+
+[node name="BulletSpeedOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer"]
+margin_top = 60.0
+margin_right = 286.0
+margin_bottom = 80.0
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/OptionsVBoxContainer/BulletSpeedOption"]

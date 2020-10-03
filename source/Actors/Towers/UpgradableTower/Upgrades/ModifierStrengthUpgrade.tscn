@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Actors/Towers/UpgradableTower/Upgrades/Upgrade.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actors/Towers/UpgradableTower/Upgrades/ModifierStrengthUpgrade.gd" type="Script" id=2]
+
+[node name="ModifierStrengthUpgrade" instance=ExtResource( 1 )]
+script = ExtResource( 2 )

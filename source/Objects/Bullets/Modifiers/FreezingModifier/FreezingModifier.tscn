@@ -25,6 +25,7 @@ color = Color( 0.305882, 0.729412, 0.980392, 1 )
 z_index = 1
 script = ExtResource( 2 )
 duration = 2.0
+strength = 0.5
 
 [node name="Particles2D" parent="." index="3"]
 position = Vector2( 0, -80 )

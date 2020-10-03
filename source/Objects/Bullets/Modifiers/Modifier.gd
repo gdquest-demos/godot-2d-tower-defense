@@ -2,6 +2,7 @@ class_name Modifier
 extends Node2D
 
 export var duration := 1.0
+export var strength := 1.0
 
 var target: BasicEnemy
 
