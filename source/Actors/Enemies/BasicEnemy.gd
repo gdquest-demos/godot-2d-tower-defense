@@ -3,10 +3,10 @@ extends Node2D
 
 signal movement_started
 signal movement_finished
-signal moved
 
 export var speed := 64.0 setget set_speed
 export var idle_duration := 0.5
+export var move_delay := 0.5
 
 var movement_path: PoolVector2Array = []
 
@@ -21,12 +21,13 @@ func move() -> void:
 	if movement_path.size() == 0:
 		return
 
+	_timer.start(move_delay)
+	yield(_timer, "timeout")
 	emit_signal("movement_started")
 
 	for point in movement_path:
 		_tween_to_next_point(point)
 		yield(_tween, "tween_completed")
-		emit_signal("moved")
 
 		if idle_duration > 0.0:
 			_timer.start(idle_duration)
