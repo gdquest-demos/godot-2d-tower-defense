@@ -1,5 +1,5 @@
 class_name Wave
-extends Node2D
+extends Path2D
 
 signal starting
 signal started
@@ -25,11 +25,11 @@ func setup_enemies() -> void:
 		enemy.move_delay = enemy_time_interval
 		enemy.move_delay += enemy.get_index() * enemy_time_interval
 		enemy.connect("tree_exited", self, "_on_Enemy_tree_exited")
-		enemy.connect("movement_finished", self, "_on_Enemy_movement_finished", [enemy])
 
 
 func move_enemies() -> void:
 	for enemy in get_children():
+		enemy.move_length = curve.get_baked_length()
 		enemy.move()
 	emit_signal("started")
 
@@ -38,14 +38,12 @@ func is_wave_finished() -> bool:
 	return get_child_count() < 1
 
 
-func set_enemy_movement_path(enemy: BasicEnemy, movement_path: PoolVector2Array) -> void:
-	enemy.movement_path = movement_path
+func set_movement_path(movement_path: PoolVector2Array) -> void:
+	curve.clear_points()
+	for point in movement_path:
+		curve.add_point(point)
 
 
 func _on_Enemy_tree_exited() -> void:
 	if is_wave_finished():
 		emit_signal("finished")
-
-
-func _on_Enemy_movement_finished(enemy: BasicEnemy) -> void:
-	enemy.queue_free()

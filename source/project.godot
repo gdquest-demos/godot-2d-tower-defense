@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
+"base": "PathFollow2D",
 "class": "BasicEnemy",
 "language": "GDScript",
 "path": "res://Actors/Enemies/BasicEnemy.gd"
@@ -54,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Towers/UpgradableTower/Upgrades/Upgrade.gd"
 }, {
-"base": "Node2D",
+"base": "Path2D",
 "class": "Wave",
 "language": "GDScript",
 "path": "res://Levels/Wave/Wave.gd"

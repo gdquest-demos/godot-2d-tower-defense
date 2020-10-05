@@ -1,14 +1,13 @@
 class_name BasicEnemy
-extends Node2D
+extends PathFollow2D
 
 signal movement_started
 signal movement_finished
 
-export var speed := 64.0 setget set_speed
 export var idle_duration := 0.5
 export var move_delay := 0.5
-
-var movement_path: PoolVector2Array = []
+export var speed := 64.0 setget set_speed
+export var move_length := 100.0
 
 onready var _tween := $MovementTween
 onready var _timer := $IdleTimer
@@ -18,24 +17,9 @@ onready var _sprite_anim := $Sprite/AnimationPlayer
 
 
 func move() -> void:
-	if movement_path.size() == 0:
-		return
-
-	_timer.start(move_delay)
-	yield(_timer, "timeout")
+	yield(get_tree().create_timer(move_delay), "timeout")
 	emit_signal("movement_started")
-
-	for point in movement_path:
-		_tween_to_next_point(point)
-		yield(_tween, "tween_completed")
-
-		if idle_duration > 0.0:
-			_timer.start(idle_duration)
-			yield(_timer, "timeout")
-
-		movement_path.remove(0)
-
-	emit_signal("movement_finished")
+	_walk_path()
 
 
 func die() -> void:
@@ -47,15 +31,16 @@ func set_speed(new_speed: float) -> void:
 	speed = new_speed
 	if not is_inside_tree():
 		yield(self, "ready")
-	_tween.stop(self, "global_position")
-	move()
+	if _tween.is_active():
+		_walk_path()
 
 
-func _tween_to_next_point(point: Vector2) -> void:
-	var distance_to_point := global_position.distance_to(point)
-	var duration := distance_to_point / speed
+func _walk_path() -> void:
+	if _tween.is_active():
+		_tween.stop(self, "unit_offset")
 
-	_tween.interpolate_property(self, "global_position", global_position, point, duration)
+	var duration := move_length / speed
+	_tween.interpolate_property(self, "unit_offset", unit_offset, 1.0, duration)
 	_tween.start()
 
 
@@ -68,3 +53,17 @@ func _on_HurtBoxArea2D_hit_landed(hit: Hit) -> void:
 	add_child(hit)
 	for modifier in hit.modifiers:
 		modifier.target = self
+	_walk_path()
+
+
+func _on_MovementTween_tween_completed(object: Object, key: NodePath) -> void:
+	if idle_duration > 0.0:
+		_timer.start(idle_duration)
+
+	if unit_offset >= 1.0:
+		emit_signal("movement_finished")
+		die()
+
+
+func _on_IdleTimer_timeout() -> void:
+	_walk_path()

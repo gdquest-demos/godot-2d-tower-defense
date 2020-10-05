@@ -5,10 +5,10 @@ signal wave_finished
 
 export var next_wave_scene: PackedScene = preload("res://Levels/TestLevel/Waves/Wave1.tscn")
 
+var _wave: Wave
+
 onready var _towers_placement := $TowerPlacement
 onready var _astar_grid := $AStarGrid
-
-var _wave: Wave
 
 
 func _ready() -> void:
@@ -35,7 +35,7 @@ func setup_wave_walk_path() -> void:
 	var movement_path: PoolVector2Array = _astar_grid.get_walkable_path(_wave.global_position)
 	for enemy in _wave.get_children():
 		enemy.position += movement_path[0]
-		_wave.set_enemy_movement_path(enemy, movement_path)
+		_wave.set_movement_path(movement_path)
 
 
 func _spawn_next_wave() -> void:
