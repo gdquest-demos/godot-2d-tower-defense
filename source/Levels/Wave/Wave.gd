@@ -26,8 +26,7 @@ func setup_enemies() -> void:
 		enemy.move_delay += enemy.get_index() * enemy_time_interval
 		enemy.connect("tree_exited", self, "_on_Enemy_tree_exited")
 		enemy.connect("movement_finished", self, "_on_Enemy_movement_finished", [enemy])
-		print(enemy_time_interval)
-		print(enemy.move_delay)
+
 
 func move_enemies() -> void:
 	for enemy in get_children():
