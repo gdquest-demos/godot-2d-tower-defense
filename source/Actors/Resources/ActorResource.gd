@@ -1,3 +1,5 @@
+# Manages a resource used by an Actor. Don't confuse with Resource.
+# Used to represent Health, Energy...
 extends Node
 
 signal changed(current_amount)
@@ -11,7 +13,6 @@ onready var amount := max_amount setget set_amount
 func set_amount(new_amount: int) -> void:
 	amount = new_amount
 	amount = clamp(amount, 0, max_amount)
-	if amount <= 0:
+	if amount < 1:
 		emit_signal("depleted")
-		return
 	emit_signal("changed", amount)
