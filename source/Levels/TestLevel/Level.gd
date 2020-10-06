@@ -32,7 +32,7 @@ func place_new_tower(new_tower_scene: PackedScene) -> void:
 
 
 func setup_wave_walk_path() -> void:
-	var movement_path: PoolVector2Array = _astar_grid.get_walkable_path(_wave.global_position)
+	var movement_path: PoolVector2Array = _astar_grid.get_walkable_path()
 	for enemy in _wave.get_children():
 		enemy.position += movement_path[0]
 		_wave.set_movement_path(movement_path)
