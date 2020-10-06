@@ -1,3 +1,4 @@
+# Represents a Hit dealt from the attacker perspective
 extends Area2D
 
 signal hit_landed
