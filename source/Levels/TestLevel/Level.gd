@@ -2,6 +2,7 @@
 extends Node2D
 
 signal wave_finished
+signal base_died
 
 export var next_wave_scene: PackedScene = preload("res://Levels/TestLevel/Waves/Wave1.tscn")
 
@@ -51,3 +52,7 @@ func _spawn_next_wave() -> void:
 
 func _on_Wave_finished() -> void:
 	emit_signal("wave_finished")
+
+
+func _on_PlayerBase_tree_exited() -> void:
+	emit_signal("base_died")

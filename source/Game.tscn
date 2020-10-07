@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Interface/TowerPurchaseInterface/TowerPurchaseButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/TestLevel/TestLevel.tscn" type="PackedScene" id=2]
@@ -6,23 +6,8 @@
 [ext_resource path="res://Actors/Towers/UpgradableTower/UpgradableTower.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Interface/PlayerDataPanel/PlayerDataPanel.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Animation" id=1]
-resource_name = "SETUP"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "wave_starting"
+[sub_resource type="Animation" id=3]
+resource_name = "PlayerLost"
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:rect_position")
@@ -72,6 +57,97 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "You lost! :(" ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "SETUP"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "WaveStarting"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2.5, 4.5 ),
+"transitions": PoolRealArray( 0.5, 0.5, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 640, 488 ), Vector2( 640, 488 ), Vector2( 832, 488 ), Vector2( 832, 488 ), Vector2( 1088, 488 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2.5, 4.5 ),
+"transitions": PoolRealArray( 0.5, 0.5, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Enemies approaching!!" ]
+}
 
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
@@ -112,6 +188,21 @@ margin_top = -376.0
 margin_right = 1792.0
 margin_bottom = -312.0
 text = "Start!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RetryButton" type="Button" parent="UserInterfaceLayer/UserInterface/HUD"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = -32.0
+margin_right = 96.0
+margin_bottom = 32.0
+text = "Retry"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -186,8 +277,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WaveStartOverlay" type="ColorRect" parent="UserInterfaceLayer/UserInterface"]
-visible = false
+[node name="ScreenOverlay" type="ColorRect" parent="UserInterfaceLayer/UserInterface"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -197,25 +287,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="UserInterfaceLayer/UserInterface/WaveStartOverlay"]
+[node name="Label" type="Label" parent="UserInterfaceLayer/UserInterface/ScreenOverlay"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 128.0
+margin_left = -320.0
 margin_top = -52.0
-margin_right = 242.002
+margin_right = -176.0
 margin_bottom = -28.0
 mouse_filter = 0
-text = "Enemies arriving!!"
+text = "Enemies approaching!!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UserInterfaceLayer/UserInterface/WaveStartOverlay"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UserInterfaceLayer/UserInterface/ScreenOverlay"]
 autoplay = "SETUP"
+anims/PlayerLost = SubResource( 3 )
 anims/SETUP = SubResource( 1 )
-anims/wave_starting = SubResource( 2 )
+anims/WaveStarting = SubResource( 2 )
+[connection signal="base_died" from="WorldLayer/Level" to="." method="_on_Level_base_died"]
 [connection signal="wave_finished" from="WorldLayer/Level" to="." method="_on_Level_wave_finished"]
 [connection signal="pressed" from="UserInterfaceLayer/UserInterface/HUD/StartWaveButton" to="." method="_on_StartWaveButton_pressed"]
+[connection signal="pressed" from="UserInterfaceLayer/UserInterface/HUD/RetryButton" to="." method="_on_RetryButton_pressed"]

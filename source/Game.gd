@@ -6,9 +6,9 @@ onready var _interface := $UserInterfaceLayer/UserInterface
 onready var _interface_hud := $UserInterfaceLayer/UserInterface/HUD
 onready var _tower_purchase_hud := $UserInterfaceLayer/UserInterface/HUD/TowerPurcahseInterface
 onready var _start_button := $UserInterfaceLayer/UserInterface/HUD/StartWaveButton
-onready var _wave_overlay_animator := $UserInterfaceLayer/UserInterface/WaveStartOverlay/AnimationPlayer
+onready var _overlay_animator := $UserInterfaceLayer/UserInterface/ScreenOverlay/AnimationPlayer
 onready var _mouse_barrier := $UserInterfaceLayer/UserInterface/MouseBarrier
-
+onready var _retry_button := $UserInterfaceLayer/UserInterface/HUD/RetryButton
 
 func _ready() -> void:
 	setup_tower_purchase_interface()
@@ -45,8 +45,8 @@ func _on_StartWaveButton_pressed() -> void:
 	# Enters in the "play mode". In play mode, players become passive to the
 	# game's event. Interface becomes invisible and the Level starts.
 	_toggle_interface()
-	_wave_overlay_animator.play("wave_starting")
-	yield(_wave_overlay_animator, "animation_finished")
+	_overlay_animator.play("WaveStarting")
+	yield(_overlay_animator, "animation_finished")
 	_level.start()
 
 
@@ -54,3 +54,13 @@ func _on_Level_wave_finished() -> void:
 	# Enters in the "plan mode". In plan mode, players can take actions and plan
 	# their Tower Layout for the next wave. Interface becomes visible again.
 	_toggle_interface()
+
+
+func _on_Level_base_died() -> void:
+	_mouse_barrier.hide()
+	_retry_button.show()
+	_overlay_animator.play("PlayerLost")
+
+
+func _on_RetryButton_pressed() -> void:
+	get_tree().reload_current_scene()

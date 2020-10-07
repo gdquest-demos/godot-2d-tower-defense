@@ -51,3 +51,4 @@ z_index = 1
 
 [node name="PlayerBase" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1504, 832 )
+[connection signal="tree_exited" from="PlayerBase" to="." method="_on_PlayerBase_tree_exited"]
