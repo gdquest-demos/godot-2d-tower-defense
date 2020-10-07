@@ -53,6 +53,7 @@ func _place_tower() -> void:
 		set_cell_unplaceable(cell)
 	set_process(false)
 	_grid.visible = false
+	_current_tower = null
 
 
 func _snap_tower_to_grid() -> void:
