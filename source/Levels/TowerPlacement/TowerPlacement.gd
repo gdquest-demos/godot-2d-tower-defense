@@ -12,6 +12,7 @@ var _current_tower: BasicTower
 func _ready() -> void:
 	_tower_placement_offset.x *= 0.5
 	set_process(false)
+	set_process_input(false)
 
 
 func _process(delta: float) -> void:
@@ -37,6 +38,7 @@ func add_new_tower(tower_scene: PackedScene) -> void:
 	_current_tower = tower_instance
 
 	set_process(true)
+	set_process_input(true)
 	_grid.visible = true
 
 
@@ -54,6 +56,7 @@ func _place_tower() -> void:
 	set_process(false)
 	_grid.visible = false
 	_current_tower = null
+	set_process_input(false)
 
 
 func _snap_tower_to_grid() -> void:
