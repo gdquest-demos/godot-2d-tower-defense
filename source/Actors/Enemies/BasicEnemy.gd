@@ -40,6 +40,9 @@ func _walk_path() -> void:
 		_tween.stop(self, "unit_offset")
 	
 	var duration := move_length / speed
+	# Sets the duration relative to where the Enemy is on the walk path
+	duration -= duration * unit_offset
+	
 	_tween.interpolate_property(self, "unit_offset", unit_offset, 1.0, duration)
 	_tween.start()
 
