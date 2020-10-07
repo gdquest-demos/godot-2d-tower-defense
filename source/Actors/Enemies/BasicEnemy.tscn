@@ -1,9 +1,28 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Actors/Enemies/BasicEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Enemies/enemies-blob-sprite.svg" type="Texture" id=2]
 [ext_resource path="res://Objects/HurtBox/HurtBoxArea2D.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actors/Resources/ActorResource.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/GameResources/GameResource.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/HitBox/HitBoxArea2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/HitBox/Hits/BasicEnemyHit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Interface/HealthBar/HealthBar.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=3]
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1.5, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1.5, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1.5, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "die"
@@ -75,24 +94,14 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1.5, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1.5, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1.5, 1, 1, 1 ) ]
-}
+[sub_resource type="CircleShape2D" id=6]
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 32.0
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 24, 24 )
 
 [node name="BasicEnemy" type="PathFollow2D"]
 rotate = false
@@ -102,11 +111,6 @@ script = ExtResource( 1 )
 idle_duration = 0.0
 speed = 256.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "spawn"
-anims/die = SubResource( 1 )
-anims/spawn = SubResource( 2 )
-
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1.5, 1, 1, 1 )
 position = Vector2( 0, -32 )
@@ -115,19 +119,51 @@ texture = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/hurt = SubResource( 3 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spawn"
+anims/die = SubResource( 1 )
+anims/spawn = SubResource( 2 )
+
 [node name="MovementTween" type="Tween" parent="."]
 
 [node name="IdleTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="VisibleArea2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibleArea2D"]
+position = Vector2( 0, -28 )
+shape = SubResource( 6 )
+
+[node name="Health" parent="." instance=ExtResource( 4 )]
+
 [node name="HurtBoxArea2D" parent="." instance=ExtResource( 3 )]
 team = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
+position = Vector2( 0, -4 )
 shape = SubResource( 4 )
 
-[node name="Health" parent="." instance=ExtResource( 4 )]
+[node name="HitBox2D" parent="." instance=ExtResource( 5 )]
+team = 1
+hit_scene = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
+position = Vector2( 0, -24 )
+shape = SubResource( 5 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = -76.0
+margin_top = -84.0
+margin_right = 68.0
+margin_bottom = -70.0
+step = 1.0
 [connection signal="tween_completed" from="MovementTween" to="." method="_on_MovementTween_tween_completed"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
-[connection signal="hit_landed" from="HurtBoxArea2D" to="." method="_on_HurtBoxArea2D_hit_landed"]
+[connection signal="changed" from="Health" to="." method="_on_Health_changed"]
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
+[connection signal="max_changed" from="Health" to="." method="_on_Health_max_changed"]
+[connection signal="hit_landed" from="HurtBoxArea2D" to="." method="_on_HurtBoxArea2D_hit_landed"]

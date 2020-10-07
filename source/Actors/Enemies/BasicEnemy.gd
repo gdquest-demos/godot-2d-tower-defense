@@ -8,12 +8,19 @@ export var idle_duration := 0.5
 export var move_delay := 0.5
 export var speed := 64.0 setget set_speed
 export var move_length := 1.0
+export var gold_amount := 50
 
 onready var _tween := $MovementTween
 onready var _timer := $IdleTimer
 onready var _health := $Health
+onready var _health_bar := $HealthBar
 onready var _anim := $AnimationPlayer
 onready var _sprite_anim := $Sprite/AnimationPlayer
+
+
+func _ready() -> void:
+	_health_bar.value = _health.amount
+	_health_bar.max_value = _health.max_amount
 
 
 func set_speed(new_speed: float) -> void:
@@ -31,6 +38,7 @@ func move() -> void:
 
 
 func die() -> void:
+	Player.current_gold += gold_amount
 	_tween.stop_all()
 	_anim.play("die")
 
@@ -45,10 +53,6 @@ func _walk_path() -> void:
 	
 	_tween.interpolate_property(self, "unit_offset", unit_offset, 1.0, duration)
 	_tween.start()
-
-
-func _on_Health_depleted() -> void:
-	die()
 
 
 func _on_HurtBoxArea2D_hit_landed(hit: Hit) -> void:
@@ -71,3 +75,15 @@ func _on_MovementTween_tween_completed(object: Object, key: NodePath) -> void:
 
 func _on_IdleTimer_timeout() -> void:
 	_walk_path()
+
+
+func _on_Health_changed(current_amount: int) -> void:
+	_health_bar.value = current_amount
+
+
+func _on_Health_depleted() -> void:
+	die()
+
+
+func _on_Health_max_changed(new_max: int) -> void:
+	_health_bar.max_value = new_max
