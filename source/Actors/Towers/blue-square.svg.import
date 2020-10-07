@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player-blue-square.svg-182ba854cb4f0d8f3763f940b946ea4d.stex"
+path="res://.import/blue-square.svg-794f754b4656e43b56b1404001e40281.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Towers/player-blue-square.svg"
-dest_files=[ "res://.import/player-blue-square.svg-182ba854cb4f0d8f3763f940b946ea4d.stex" ]
+source_file="res://Actors/Towers/blue-square.svg"
+dest_files=[ "res://.import/blue-square.svg-794f754b4656e43b56b1404001e40281.stex" ]
 
 [params]
 

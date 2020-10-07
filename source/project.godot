@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "SelectableArea2D",
 "language": "GDScript",
-"path": "res://Actors/SelectableArea2D/SelectableArea2D.gd"
+"path": "res://Objects/SelectableArea2D/SelectableArea2D.gd"
 }, {
 "base": "Area2D",
 "class": "SelectionArea2D",
