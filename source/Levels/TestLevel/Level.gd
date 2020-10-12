@@ -1,26 +1,29 @@
 # Controls Wave's flow and TowerPlacement
 extends Node2D
 
+signal finished
 signal wave_finished
 signal base_died
 
-export var next_wave_scene: PackedScene = preload("res://Levels/TestLevel/Waves/Wave1.tscn")
-
+export var current_event := 0
 var _wave: Wave
 
 onready var _towers_placement := $TowerPlacement
 onready var _astar_grid := $AStarGrid
+onready var _wave_spawner := $WaveSpawner2D
+onready var _events_player := $EventsPlayer
 
 
 func _ready() -> void:
 	setup_tower_placeable_cells()
 
 
-func start():
-	_spawn_next_wave()
-	setup_wave_walk_path()
+func start() -> void:
+	play_next_event()
 
-	_wave.start()
+
+func finish() -> void:
+	emit_signal("finished")
 
 
 func setup_tower_placeable_cells() -> void:
@@ -39,18 +42,30 @@ func setup_wave_walk_path() -> void:
 		_wave.set_movement_path(movement_path)
 
 
-func _spawn_next_wave() -> void:
-	if _wave:
-		_wave.queue_free()
-
-	var new_wave := next_wave_scene.instance()
-	_wave = new_wave
-
-	add_child(_wave)
+func spawn_wave() -> void:
+	_wave = yield(_wave_spawner.spawn(), "completed")
 	_wave.connect("finished", self, "_on_Wave_finished")
+	setup_wave_walk_path()
+	_wave.start()
+
+
+func play_event(event_index := current_event) -> void:
+	var events_list: Array = _events_player.get_animation_list()
+	var animation_count := events_list.size()
+	if event_index >= animation_count:
+		return
+	_events_player.play(events_list[event_index])
+
+
+func play_next_event() -> void:
+	play_event(current_event)
+	current_event += 1
 
 
 func _on_Wave_finished() -> void:
+	if current_event >= _events_player.get_animation_list().size():
+		finish()
+		return
 	emit_signal("wave_finished")
 
 

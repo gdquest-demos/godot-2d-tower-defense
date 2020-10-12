@@ -57,9 +57,15 @@ func _on_Level_wave_finished() -> void:
 
 
 func _on_Level_base_died() -> void:
+	# Lose condition
 	_mouse_barrier.hide()
 	_retry_button.show()
 	_overlay_animator.play("PlayerLost")
+
+
+func _on_Level_finished() -> void:
+	# Win condition
+	_overlay_animator.play("PlayerWon")
 
 
 func _on_RetryButton_pressed() -> void:

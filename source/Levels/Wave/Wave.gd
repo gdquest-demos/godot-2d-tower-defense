@@ -47,3 +47,4 @@ func set_movement_path(movement_path: PoolVector2Array) -> void:
 func _on_Enemy_tree_exited() -> void:
 	if is_wave_finished():
 		emit_signal("finished")
+		queue_free()
