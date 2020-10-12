@@ -78,6 +78,8 @@ func _on_IdleTimer_timeout() -> void:
 
 
 func _on_Health_changed(current_amount: int) -> void:
+	if not is_inside_tree():
+		yield(self, "ready")
 	_health_bar.value = current_amount
 
 
@@ -86,4 +88,6 @@ func _on_Health_depleted() -> void:
 
 
 func _on_Health_max_changed(new_max: int) -> void:
+	if not is_inside_tree():
+		yield(self, "ready")
 	_health_bar.max_value = new_max

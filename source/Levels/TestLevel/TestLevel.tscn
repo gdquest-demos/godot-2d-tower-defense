@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Interface/SelectionArea2D/SelectionArea2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/TestLevel/Level.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Levels/TowerPlacement/TowerPlacement.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Spawners/Spawner2D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/TestLevel/Waves/Wave1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/TestLevel/Waves/Wave2.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "00.first-wave"
@@ -22,6 +23,35 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ ExtResource( 8 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_wave"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "01.second-wave"
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 9 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -88,4 +118,5 @@ spawn_scene = ExtResource( 8 )
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
 anims/00.first-wave = SubResource( 1 )
+anims/01.second-wave = SubResource( 2 )
 [connection signal="tree_exited" from="PlayerBase" to="." method="_on_PlayerBase_tree_exited"]
