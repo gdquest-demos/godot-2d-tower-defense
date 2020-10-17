@@ -70,7 +70,7 @@ tracks/4/keys = {
 "values": [ "You lost! :(" ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "PlayerWon"
 length = 5.0
 tracks/0/type = "value"
@@ -134,7 +134,7 @@ tracks/4/keys = {
 "values": [ "Level cleared!! :D" ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -148,7 +148,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:rect_position")
@@ -214,15 +214,7 @@ tracks/4/keys = {
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
 
-[node name="WorldLayer" type="CanvasLayer" parent="."]
-layer = 0
-follow_viewport_enable = true
-
-[node name="Level" parent="WorldLayer" instance=ExtResource( 2 )]
-
-[node name="Camera2D" type="Camera2D" parent="WorldLayer"]
-anchor_mode = 0
-current = true
+[node name="Level" parent="." instance=ExtResource( 2 )]
 
 [node name="UserInterfaceLayer" type="CanvasLayer" parent="."]
 
@@ -369,11 +361,11 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UserInterfaceLayer/UserInterface/ScreenOverlay"]
 autoplay = "SETUP"
 anims/PlayerLost = SubResource( 1 )
-anims/PlayerWon = SubResource( 4 )
-anims/SETUP = SubResource( 2 )
-anims/WaveStarting = SubResource( 3 )
-[connection signal="base_died" from="WorldLayer/Level" to="." method="_on_Level_base_died"]
-[connection signal="finished" from="WorldLayer/Level" to="." method="_on_Level_finished"]
-[connection signal="wave_finished" from="WorldLayer/Level" to="." method="_on_Level_wave_finished"]
+anims/PlayerWon = SubResource( 2 )
+anims/SETUP = SubResource( 3 )
+anims/WaveStarting = SubResource( 4 )
+[connection signal="base_died" from="Level" to="." method="_on_Level_base_died"]
+[connection signal="finished" from="Level" to="." method="_on_Level_finished"]
+[connection signal="wave_finished" from="Level" to="." method="_on_Level_wave_finished"]
 [connection signal="pressed" from="UserInterfaceLayer/UserInterface/HUD/StartWaveButton" to="." method="_on_StartWaveButton_pressed"]
 [connection signal="pressed" from="UserInterfaceLayer/UserInterface/HUD/RetryButton" to="." method="_on_RetryButton_pressed"]

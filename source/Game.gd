@@ -1,7 +1,7 @@
 # Intermediates communication between game's World and User Interface
 extends Node
 
-onready var _level := $WorldLayer/Level
+onready var _level := $Level
 onready var _interface := $UserInterfaceLayer/UserInterface
 onready var _interface_hud := $UserInterfaceLayer/UserInterface/HUD
 onready var _tower_purchase_hud := $UserInterfaceLayer/UserInterface/HUD/TowerPurcahseInterface

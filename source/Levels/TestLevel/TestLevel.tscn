@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Levels/TestLevel/Level.gd" type="Script" id=2]
 [ext_resource path="res://Levels/TestLevel/tileset.tres" type="TileSet" id=3]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Objects/Spawners/Spawner2D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/TestLevel/Waves/Wave1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/TestLevel/Waves/Wave2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/PanningCamera2D/PanningCamera2D.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "00.first-wave"
@@ -116,4 +117,7 @@ spawn_scene = ExtResource( 8 )
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
 anims/00.first-wave = SubResource( 1 )
 anims/01.second-wave = SubResource( 2 )
+
+[node name="PanningCamera2D" parent="." instance=ExtResource( 10 )]
+position = Vector2( 960, 544 )
 [connection signal="tree_exited" from="PlayerBase" to="." method="_on_PlayerBase_tree_exited"]
