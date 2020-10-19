@@ -16,14 +16,12 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouse:
+		return
 	_direction = Vector2.ZERO
-	var horizontal := Input.is_action_pressed("camera_pan_left") or Input.is_action_pressed("camera_pan_right")
-	if horizontal:
-		_direction.x = Input.get_action_strength("camera_pan_right") - Input.get_action_strength("camera_pan_left")
-	var vertical := Input.is_action_pressed("camera_pan_up") or Input.is_action_pressed("camera_pan_down")
-	if vertical:
-		_direction.y = Input.get_action_strength("camera_pan_down") - Input.get_action_strength("camera_pan_up")
-	set_process(horizontal or vertical)
+	_direction.x = Input.get_action_strength("camera_pan_right") - Input.get_action_strength("camera_pan_left")
+	_direction.y = Input.get_action_strength("camera_pan_down") - Input.get_action_strength("camera_pan_up")
+	set_process(not _direction.is_equal_approx(Vector2.ZERO))
 
 
 func _on_Area2D_mouse_exited() -> void:
