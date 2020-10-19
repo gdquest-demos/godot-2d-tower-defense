@@ -41,4 +41,16 @@ shape = SubResource( 1 )
 [node name="Weapon2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -32 )
 bullet_scene = ExtResource( 5 )
+
+[node name="SellButton" type="Button" parent="."]
+visible = false
+margin_left = -32.0
+margin_top = 8.0
+margin_right = 32.0
+margin_bottom = 28.0
+text = "Sell"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="selection_changed" from="SelectableArea2D" to="." method="_on_SelectableArea2D_selection_changed"]
+[connection signal="pressed" from="SellButton" to="." method="_on_SellButton_pressed"]

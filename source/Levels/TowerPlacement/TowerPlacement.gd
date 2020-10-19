@@ -27,7 +27,7 @@ func _input(event: InputEvent) -> void:
 
 
 func add_new_tower(tower_scene: PackedScene) -> void:
-	var tower_instance := tower_scene.instance() as Node2D
+	var tower_instance: BasicTower = tower_scene.instance()
 	if Player.current_gold - tower_instance.cost < 0:
 		tower_instance.queue_free()
 		return
@@ -46,6 +46,10 @@ func set_cell_unplaceable(cell: Vector2) -> void:
 	_grid.set_cellv(cell, -1)
 
 
+func set_cell_placeable(cell: Vector2) -> void:
+	_grid.set_cellv(cell, PLACEBLE_CELLS_ID)
+
+
 func _place_tower() -> void:
 	var cell: Vector2 = _grid.world_to_map(get_global_mouse_position())
 	if not cell in _grid.get_used_cells_by_id(PLACEBLE_CELLS_ID):
@@ -53,6 +57,7 @@ func _place_tower() -> void:
 		_current_tower.queue_free()
 	else:
 		set_cell_unplaceable(cell)
+		_current_tower.connect("sold", self, "_on_BasicTower_sold")
 	set_process(false)
 	_grid.visible = false
 	_current_tower = null
@@ -67,3 +72,8 @@ func _snap_tower_to_grid() -> void:
 		_current_tower.modulate = Color.white
 	_current_tower.global_position = _grid.map_to_world(cell)
 	_current_tower.global_position += _tower_placement_offset
+
+
+func _on_BasicTower_sold(price: int, place: Vector2) -> void:
+	Player.current_gold += price
+	set_cell_placeable(_grid.world_to_map(place))
