@@ -8,6 +8,7 @@ margin_left = 40.0
 margin_top = 40.0
 margin_right = 200.0
 margin_bottom = 224.0
+mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -18,6 +19,7 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 153.0
 margin_bottom = 177.0
+mouse_filter = 2
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -28,6 +30,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 136.0
 margin_bottom = 160.0
+mouse_filter = 2
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 126.0
@@ -39,12 +42,15 @@ align = 1
 margin_top = 18.0
 margin_right = 126.0
 margin_bottom = 22.0
+mouse_filter = 2
 
 [node name="DataDisplays" type="Control" parent="MarginContainer/VBoxContainer"]
 margin_top = 26.0
 margin_right = 126.0
 margin_bottom = 150.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GoldAmountDisplay" parent="MarginContainer/VBoxContainer/DataDisplays" instance=ExtResource( 2 )]
+mouse_filter = 2
