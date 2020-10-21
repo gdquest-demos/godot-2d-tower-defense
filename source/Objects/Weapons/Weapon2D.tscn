@@ -25,6 +25,7 @@ tracks/0/keys = {
 }
 
 [node name="Weapon2D" type="Position2D"]
+position = Vector2( 560, 264 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]

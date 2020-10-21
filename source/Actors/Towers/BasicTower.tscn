@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Actors/Towers/blue-square.svg" type="Texture" id=1]
 [ext_resource path="res://Objects/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Actors/Towers/BasicTower.gd" type="Script" id=3]
 [ext_resource path="res://Objects/Weapons/Weapon2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Bullets/TowerFreezingBullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actors/Towers/RangePreview/RangePreview.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -52,5 +53,10 @@ text = "Sell"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RangePreview" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, -32 )
+[connection signal="mouse_entered" from="SelectableArea2D" to="." method="_on_SelectableArea2D_mouse_entered"]
+[connection signal="mouse_exited" from="SelectableArea2D" to="." method="_on_SelectableArea2D_mouse_exited"]
 [connection signal="selection_changed" from="SelectableArea2D" to="." method="_on_SelectableArea2D_selection_changed"]
 [connection signal="pressed" from="SellButton" to="." method="_on_SellButton_pressed"]
