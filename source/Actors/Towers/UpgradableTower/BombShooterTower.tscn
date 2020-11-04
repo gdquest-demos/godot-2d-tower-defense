@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Actors/Towers/UpgradableTower/UpgradableTower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actors/Towers/UpgradableTower/bomb-cannon.svg" type="Texture" id=2]
+[ext_resource path="res://Objects/Bullets/BombBullet.tscn" type="PackedScene" id=3]
+
+[node name="Bombshooter" instance=ExtResource( 1 )]
+cost = 200
+
+[node name="Weapon2D" parent="." index="2"]
+bullet_scene = ExtResource( 3 )
+cooldown = 3.0
+
+[node name="Sprite" parent="Weapon2D" index="0"]
+texture = ExtResource( 2 )
+offset = Vector2( 8, 0 )
+
+[node name="BulletSpawner2D" parent="Weapon2D" index="2"]
+position = Vector2( 26, 0 )
+
+[node name="SellButton" parent="." index="3"]
+theme = null
+
+[editable path="Weapon2D"]

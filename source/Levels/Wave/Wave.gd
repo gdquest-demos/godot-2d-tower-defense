@@ -22,6 +22,7 @@ func start() -> void:
 
 func setup_enemies() -> void:
 	for enemy in get_children():
+		enemy.unit_offset = 0.0
 		enemy.move_delay = enemy_time_interval
 		enemy.move_delay += enemy.get_index() * enemy_time_interval
 		enemy.connect("tree_exited", self, "_on_Enemy_tree_exited")

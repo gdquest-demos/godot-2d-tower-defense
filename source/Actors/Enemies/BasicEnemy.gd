@@ -37,6 +37,10 @@ func move() -> void:
 	_walk_path()
 
 
+func apply_damage(damage: int) -> void:
+	_health.amount -= damage
+
+
 func die() -> void:
 	Player.current_gold += gold_amount
 	_tween.stop_all()
@@ -56,7 +60,7 @@ func _walk_path() -> void:
 
 
 func _on_HurtBoxArea2D_hit_landed(hit: Hit) -> void:
-	_health.amount -= hit.damage
+	apply_damage(hit.damage)
 	# Hits are added as children in order to process their Modifiers 
 	add_child(hit)
 	for modifier in hit.modifiers:

@@ -8,7 +8,7 @@
 [ext_resource path="res://Objects/HitBox/Hits/BasicEnemyHit.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Interface/HealthBar/HealthBar.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=1]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "values": [ Color( 1.5, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1.5, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1.5, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 length = 0.25
 step = 0.05
 tracks/0/type = "value"
@@ -92,16 +92,17 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=4]
 radius = 32.0
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=5]
 radius = 32.0
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 24, 24 )
 
 [node name="BasicEnemy" type="PathFollow2D"]
+z_index = 1
 rotate = false
 cubic_interp = false
 loop = false
@@ -111,15 +112,15 @@ speed = 256.0
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1.5, 1, 1, 1 )
-position = Vector2( 0, -32 )
+position = Vector2( 32, 32 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/hurt = SubResource( 7 )
+anims/hurt = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
-anims/die = SubResource( 8 )
+anims/die = SubResource( 2 )
 anims/spawn = SubResource( 3 )
 
 [node name="MovementTween" type="Tween" parent="."]
@@ -128,31 +129,34 @@ anims/spawn = SubResource( 3 )
 one_shot = true
 
 [node name="VisibleArea2D" type="Area2D" parent="."]
+position = Vector2( 32, 64 )
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisibleArea2D"]
 position = Vector2( 0, -28 )
-shape = SubResource( 9 )
+shape = SubResource( 4 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 7 )]
 visible = false
-margin_left = -76.0
-margin_top = -84.0
-margin_right = 68.0
-margin_bottom = -70.0
+margin_left = -32.0
+margin_top = 72.0
+margin_right = 112.0
+margin_bottom = 86.0
 step = 1.0
 
 [node name="Health" parent="." instance=ExtResource( 4 )]
 
 [node name="HurtBoxArea2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 40 )
 team = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
 position = Vector2( 0, -4 )
-shape = SubResource( 10 )
+shape = SubResource( 5 )
 
 [node name="HitBox2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 32, 64 )
 team = 1
 hit_scene = ExtResource( 6 )
 

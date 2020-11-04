@@ -12,27 +12,39 @@ onready var _towers_placement := $TowerPlacement
 onready var _astar_grid := $AStarGrid
 onready var _wave_spawner := $WaveSpawner2D
 onready var _events_player := $EventsPlayer
+onready var _path_preview := $PathPreview
+onready var _tilemap := $TileMap
 
 
 func _ready() -> void:
 	setup_tower_placeable_cells()
+	show_walkable_path()
 
 
 func start() -> void:
+	_path_preview.fade_out()
 	play_next_event()
-
 
 func finish() -> void:
 	emit_signal("finished")
 
 
 func setup_tower_placeable_cells() -> void:
-	for cell in _astar_grid.get_used_cells_by_id(_astar_grid.WALKABLE_CELLS_ID):
-		_towers_placement.set_cell_unplaceable(cell)
+	for cell in _tilemap.get_used_cells():
+		if _tilemap.get_cellv(cell) == _towers_placement.PLACEBLE_CELLS_ID:
+			_towers_placement.set_cell_placeable(cell)
+		else:
+			_towers_placement.set_cell_unplaceable(cell)
 
 
 func place_new_tower(new_tower_scene: PackedScene) -> void:
 	_towers_placement.add_new_tower(new_tower_scene)
+
+
+func show_walkable_path(walking_path := _astar_grid.get_walkable_path()) -> void:
+	_path_preview.clear_points()
+	_path_preview.points = walking_path
+	_path_preview.fade_in()
 
 
 func setup_wave_walk_path() -> void:
@@ -67,6 +79,7 @@ func _on_Wave_finished() -> void:
 		finish()
 		return
 	emit_signal("wave_finished")
+	show_walkable_path()
 
 
 func _on_PlayerBase_tree_exited() -> void:

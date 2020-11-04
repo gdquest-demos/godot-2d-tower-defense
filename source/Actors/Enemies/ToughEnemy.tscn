@@ -3,13 +3,13 @@
 [ext_resource path="res://Actors/Enemies/BasicEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Enemies/tough-blob-sprite.svg" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 40.0
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 40.0
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=2]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 40, 32 )
 
 [node name="ToughEnemy" instance=ExtResource( 1 )]
@@ -23,15 +23,15 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="VisibleArea2D" index="0"]
 position = Vector2( 0, -32 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Health" parent="." index="6"]
-max_amount = 25
+max_amount = 50
 
 [node name="CollisionShape2D" parent="HurtBoxArea2D" index="0"]
 position = Vector2( 0, -8 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
 position = Vector2( 0, -32 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )

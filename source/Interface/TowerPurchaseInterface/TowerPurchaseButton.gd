@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func setup_tower_data() -> void:
 	var tower: BasicTower = tower_packed_scene.instance()
-	_label.text = "%s. Cost: %s" % [tower.name, tower.cost]
+	_label.text = "Cost: %s" % tower.cost
 	tower.queue_free()
 
 

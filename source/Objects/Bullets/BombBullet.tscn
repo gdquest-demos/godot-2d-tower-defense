@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Objects/Bullets/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Bullets/player-bomb.svg" type="Texture" id=2]
+[ext_resource path="res://Objects/HitBox/Hits/BombHit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Bullets/Explosions/Explosion.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 48.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "explode"
+length = 3.0
+tracks/0/type = "animation"
+tracks/0/path = NodePath("Explosion/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "Explode" ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitBoxArea2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Bullet" instance=ExtResource( 1 )]
+speed = 250.0
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.363636, 0.363636 )
+texture = ExtResource( 2 )
+
+[node name="HitBoxArea2D" parent="." index="1"]
+can_hit_multiple = true
+hit_scene = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="HitBoxArea2D" index="0"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/explode = SubResource( 2 )
+
+[node name="Explosion" parent="." index="5" instance=ExtResource( 4 )]
+z_index = 3

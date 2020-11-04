@@ -5,7 +5,6 @@ signal sold(price, place)
 
 export var cost := 100
 
-onready var _label := $Label
 onready var _weapon := $Weapon2D
 onready var _sell_button := $SellButton
 onready var _range_preview := $RangePreview
@@ -16,7 +15,6 @@ func _ready() -> void:
 
 
 func _on_SelectableArea2D_selection_changed(selected) -> void:
-	_label.visible = selected
 	_sell_button.visible = selected
 
 

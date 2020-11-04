@@ -6,6 +6,7 @@ export var speed := 500.0
 onready var modifiers := $Modifiers
 onready var _tween := $Tween
 onready var _hitbox := $HitBoxArea2D
+onready var _anim_player := $AnimationPlayer
 
 
 func fly_to(target_global_position: Vector2) -> void:
@@ -20,4 +21,4 @@ func fly_to(target_global_position: Vector2) -> void:
 
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
-	queue_free()
+	_anim_player.play("explode")

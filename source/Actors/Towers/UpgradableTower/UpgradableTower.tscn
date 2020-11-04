@@ -14,10 +14,10 @@ script = ExtResource( 2 )
 [node name="Sprite" parent="." index="0"]
 z_index = -1
 
-[node name="SelectableArea2D" parent="." index="2"]
+[node name="SelectableArea2D" parent="." index="1"]
 z_index = -1
 
-[node name="Weapon2D" parent="." index="3"]
+[node name="Weapon2D" parent="." index="2"]
 z_index = -1
 bullet_scene = ExtResource( 8 )
 
@@ -33,6 +33,8 @@ value = 500.0
 
 [node name="UpgradePanel" parent="." index="5" instance=ExtResource( 3 )]
 visible = false
-margin_top = -416.0
-margin_bottom = -96.0
+margin_left = -128.0
+margin_top = -341.0
+margin_right = 192.0
+margin_bottom = -21.0
 [connection signal="upgrade_requested" from="UpgradePanel" to="." method="_on_UpgradePanel_upgrade_requested"]

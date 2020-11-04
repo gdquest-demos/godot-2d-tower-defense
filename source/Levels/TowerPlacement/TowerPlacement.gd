@@ -1,16 +1,15 @@
 extends Node2D
 
 # The ID of _grid cells that BasicTower can be placed on
-const PLACEBLE_CELLS_ID := 0
+const PLACEBLE_CELLS_ID := 4
 
 onready var _grid := $Grid
-onready var _tower_placement_offset: Vector2 = _grid.cell_size
+onready var _visual_grid := $VisualGrid
 
 var _current_tower: BasicTower
 
 
 func _ready() -> void:
-	_tower_placement_offset.x *= 0.5
 	set_process(false)
 	set_process_input(false)
 
@@ -39,7 +38,7 @@ func add_new_tower(tower_scene: PackedScene) -> void:
 
 	set_process(true)
 	set_process_input(true)
-	_grid.visible = true
+	_visual_grid.visible  = true
 
 
 func set_cell_unplaceable(cell: Vector2) -> void:
@@ -59,7 +58,7 @@ func _place_tower() -> void:
 		set_cell_unplaceable(cell)
 		_current_tower.connect("sold", self, "_on_BasicTower_sold")
 	set_process(false)
-	_grid.visible = false
+	_visual_grid.visible = false
 	_current_tower = null
 	set_process_input(false)
 
@@ -71,7 +70,6 @@ func _snap_tower_to_grid() -> void:
 	else:
 		_current_tower.modulate = Color.white
 	_current_tower.global_position = _grid.map_to_world(cell)
-	_current_tower.global_position += _tower_placement_offset
 
 
 func _on_BasicTower_sold(price: int, place: Vector2) -> void:

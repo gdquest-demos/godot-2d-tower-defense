@@ -92,9 +92,8 @@ Player="*res://Player/Player.tscn"
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 window/size/always_on_top=true
-window/size/test_width=1280
-window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep_width"
 
@@ -143,5 +142,6 @@ camera_pan_right={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.196078, 0.160784, 0.278431, 1 )
+quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.588235, 0.258824, 0.32549, 1 )
 environment/default_environment="res://default_env.tres"

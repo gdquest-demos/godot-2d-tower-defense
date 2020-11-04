@@ -4,8 +4,6 @@ extends TileMap
 # The ID of the tile in the Tileset used to draw walkable cells
 const WALKABLE_CELLS_ID := 1
 
-export var position_offset := Vector2(32, 64)
-
 onready var _start_point := $StartPosition2D
 onready var _goal_point :=$GoalPosition2D
 onready var _astar := AStar2D.new()
@@ -23,7 +21,6 @@ func get_walkable_path() -> PoolVector2Array:
 	var astar_path = _get_astar_path()
 	for cell in astar_path:
 		var point := map_to_world(cell)
-		point += position_offset
 		walkable_path.append(to_global(point))
 	return walkable_path
 
