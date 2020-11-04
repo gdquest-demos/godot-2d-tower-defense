@@ -26,15 +26,15 @@ func _input(event: InputEvent) -> void:
 
 
 func add_new_tower(tower_scene: PackedScene) -> void:
-	var tower_instance: BasicTower = tower_scene.instance()
-	if Player.current_gold - tower_instance.cost < 0:
-		tower_instance.queue_free()
+	var tower: BasicTower = tower_scene.instance()
+	if Player.current_gold - tower.cost < 0:
+		tower.queue_free()
 		return
-	Player.current_gold -= tower_instance.cost
+	Player.current_gold -= tower.cost
 
-	add_child(tower_instance)
+	add_child(tower)
 
-	_current_tower = tower_instance
+	_current_tower = tower
 
 	set_process(true)
 	set_process_input(true)
@@ -56,7 +56,7 @@ func _place_tower() -> void:
 		_current_tower.queue_free()
 	else:
 		set_cell_unplaceable(cell)
-		_current_tower.connect("sold", self, "_on_BasicTower_sold")
+		_current_tower.connect("sold", self, "_on_Tower_sold")
 	set_process(false)
 	_visual_grid.visible = false
 	_current_tower = null
@@ -72,6 +72,6 @@ func _snap_tower_to_grid() -> void:
 	_current_tower.global_position = _grid.map_to_world(cell)
 
 
-func _on_BasicTower_sold(price: int, place: Vector2) -> void:
+func _on_Tower_sold(price: int, place: Vector2) -> void:
 	Player.current_gold += price
 	set_cell_placeable(_grid.world_to_map(place))

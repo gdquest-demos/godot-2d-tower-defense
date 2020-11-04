@@ -12,6 +12,7 @@
 extents = Vector2( 32, 32 )
 
 [node name="BasicTower" type="Node2D"]
+z_index = 1
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]

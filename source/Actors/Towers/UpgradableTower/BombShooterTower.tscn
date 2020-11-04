@@ -18,7 +18,4 @@ offset = Vector2( 8, 0 )
 [node name="BulletSpawner2D" parent="Weapon2D" index="2"]
 position = Vector2( 26, 0 )
 
-[node name="SellButton" parent="." index="3"]
-theme = null
-
 [editable path="Weapon2D"]
