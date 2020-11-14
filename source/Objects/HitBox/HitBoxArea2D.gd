@@ -1,4 +1,5 @@
 # Represents a Hit dealt from the attacker perspective
+class_name HitBox
 extends Area2D
 
 signal hit_landed

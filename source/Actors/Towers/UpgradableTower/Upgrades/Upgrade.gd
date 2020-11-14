@@ -1,6 +1,8 @@
 class_name Upgrade
 extends Node
 
+signal upgraded
+
 
 export var cost := 100
 export var value := 10.0
@@ -15,6 +17,7 @@ func upgrade() -> void:
 	_apply_upgrade()
 	Player.current_gold -= cost
 	cost *= cost_curve
+	emit_signal("upgraded")
 
 
 func _apply_upgrade() -> void:

@@ -5,4 +5,4 @@
 
 [node name="WeaponRangeUpgrade" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-value = 200.0
+value = 50.0

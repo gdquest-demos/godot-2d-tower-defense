@@ -25,13 +25,14 @@ func start() -> void:
 	_path_preview.fade_out()
 	play_next_event()
 
+
 func finish() -> void:
 	emit_signal("finished")
 
 
 func setup_tower_placeable_cells() -> void:
 	for cell in _tilemap.get_used_cells():
-		if _tilemap.get_cellv(cell) == _towers_placement.PLACEBLE_CELLS_ID:
+		if _tilemap.get_cellv(cell) == _towers_placement.PLACEABLE_CELLS_ID:
 			_towers_placement.set_cell_placeable(cell)
 		else:
 			_towers_placement.set_cell_unplaceable(cell)

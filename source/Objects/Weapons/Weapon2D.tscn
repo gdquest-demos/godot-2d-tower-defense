@@ -6,6 +6,7 @@
 [ext_resource path="res://Actors/Towers/UpgradableTower/laser-cannon.svg" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
 radius = 128.0
 
 [sub_resource type="Animation" id=2]
@@ -24,7 +25,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -16, 0 ), Vector2( 0, 0 ) ]
 }
 
-[node name="Weapon2D" type="Position2D"]
+[node name="Weapon2D" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]

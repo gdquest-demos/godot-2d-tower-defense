@@ -60,7 +60,7 @@ hit_scene = ExtResource( 3 )
 [node name="CollisionShape2D" parent="HitBoxArea2D" index="0"]
 shape = SubResource( 1 )
 
-[node name="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" parent="." index="3"]
 anims/explode = SubResource( 2 )
 
 [node name="Explosion" parent="." index="5" instance=ExtResource( 4 )]

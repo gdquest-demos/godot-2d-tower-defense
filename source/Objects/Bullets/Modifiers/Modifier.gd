@@ -16,11 +16,11 @@ func _ready() -> void:
 
 
 func apply_effect() -> void:
-	print("effect applied")
+	pass
 
 
 func remove_effect() -> void:
-	print("effect removed")
+	pass
 
 
 func _on_DurationTimer_timeout() -> void:

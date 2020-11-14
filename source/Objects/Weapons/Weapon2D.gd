@@ -1,9 +1,9 @@
 class_name Weapon
-extends Position2D
+extends Node2D
 
 var target: Node2D
 
-export var bullet_scene: PackedScene = preload("res://Objects/Bullets/Bullet.tscn")
+export var bullet_scene: PackedScene
 export var sight_range := 200.0 setget set_sight_range
 export var cooldown := 1.0
 
@@ -16,8 +16,6 @@ onready var _animation_player := $AnimationPlayer
 
 func _ready() -> void:
 	self.sight_range = sight_range
-	_range_shape = _range_shape.duplicate()
-	$RangeArea2D/CollisionShape2D.shape = _range_shape
 	bullet_scene = bullet_scene.duplicate()
 
 
@@ -57,15 +55,11 @@ func _clear_target() -> void:
 
 
 func _on_RangeArea2D_area_entered(area: Area2D) -> void:
-	target = area
-	target.connect("tree_exiting", self, "_clear_target")
 	_shoot()
 
 
 func _on_RangeArea2D_area_exited(area: Area2D) -> void:
-	if target and target.is_connected("tree_exiting", self, "_clear_target"):
-		target.disconnect("tree_exiting", self, "_clear_target")
-	_update_target()
+	_shoot()
 
 
 func _on_CooldownTimer_timeout() -> void:

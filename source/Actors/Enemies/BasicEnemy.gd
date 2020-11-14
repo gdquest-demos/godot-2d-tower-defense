@@ -63,7 +63,7 @@ func _on_HurtBoxArea2D_hit_landed(hit: Hit) -> void:
 	apply_damage(hit.damage)
 	# Hits are added as children in order to process their Modifiers 
 	add_child(hit)
-	for modifier in hit.modifiers:
+	for modifier in hit.modifiers.get_children():
 		modifier.target = self
 	_walk_path()
 
