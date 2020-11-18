@@ -25,6 +25,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=2]
+resource_name = "disappear"
 length = 0.25
 step = 0.05
 tracks/0/type = "value"
@@ -68,24 +69,12 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MovementTween:playback/active")
+tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -119,10 +108,8 @@ anims/hurt = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
-anims/die = SubResource( 2 )
+anims/disappear = SubResource( 2 )
 anims/spawn = SubResource( 3 )
-
-[node name="MovementTween" type="Tween" parent="."]
 
 [node name="VisibleArea2D" type="Area2D" parent="."]
 position = Vector2( 32, 64 )
@@ -142,6 +129,7 @@ margin_bottom = 86.0
 step = 1.0
 
 [node name="Health" parent="." instance=ExtResource( 4 )]
+max_amount = 15
 
 [node name="HurtBoxArea2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 32, 40 )
@@ -159,7 +147,6 @@ hit_scene = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
 position = Vector2( 0, -24 )
 shape = SubResource( 6 )
-[connection signal="tween_completed" from="MovementTween" to="." method="_on_MovementTween_tween_completed"]
 [connection signal="changed" from="Health" to="." method="_on_Health_changed"]
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
 [connection signal="max_changed" from="Health" to="." method="_on_Health_max_changed"]

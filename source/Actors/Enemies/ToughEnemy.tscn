@@ -13,7 +13,6 @@ radius = 40.0
 extents = Vector2( 40, 32 )
 
 [node name="ToughEnemy" instance=ExtResource( 1 )]
-idle_duration = 0.5
 speed = 128.0
 gold_amount = 200
 
@@ -25,7 +24,7 @@ texture = ExtResource( 2 )
 position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
-[node name="Health" parent="." index="6"]
+[node name="Health" parent="." index="4"]
 max_amount = 50
 
 [node name="CollisionShape2D" parent="HurtBoxArea2D" index="0"]
