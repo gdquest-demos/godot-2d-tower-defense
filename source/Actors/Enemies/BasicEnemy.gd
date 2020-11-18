@@ -4,14 +4,12 @@ extends PathFollow2D
 signal movement_started
 signal movement_finished
 
-export var idle_duration := 0.5
 export var move_delay := 0.5
 export var speed := 64.0 setget set_speed
 export var move_length := 1.0
 export var gold_amount := 50
 
 onready var _tween := $MovementTween
-onready var _timer := $IdleTimer
 onready var _health := $Health
 onready var _health_bar := $HealthBar
 onready var _anim := $AnimationPlayer
@@ -47,6 +45,11 @@ func die() -> void:
 	_anim.play("die")
 
 
+func disappear() -> void:
+	_tween.stop_all()
+	_anim.play("die")
+
+
 func _walk_path() -> void:
 	if _tween.is_active():
 		_tween.stop(self, "unit_offset")
@@ -69,16 +72,9 @@ func _on_HurtBoxArea2D_hit_landed(hit: Hit) -> void:
 
 
 func _on_MovementTween_tween_completed(object: Object, key: NodePath) -> void:
-	if idle_duration > 0.0:
-		_timer.start(idle_duration)
-
 	if unit_offset >= 1.0:
 		emit_signal("movement_finished")
-		die()
-
-
-func _on_IdleTimer_timeout() -> void:
-	_walk_path()
+		disappear()
 
 
 func _on_Health_changed(current_amount: int) -> void:

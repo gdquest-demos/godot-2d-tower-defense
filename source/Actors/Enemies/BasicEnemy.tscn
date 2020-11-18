@@ -107,7 +107,6 @@ rotate = false
 cubic_interp = false
 loop = false
 script = ExtResource( 1 )
-idle_duration = 0.0
 speed = 256.0
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -124,9 +123,6 @@ anims/die = SubResource( 2 )
 anims/spawn = SubResource( 3 )
 
 [node name="MovementTween" type="Tween" parent="."]
-
-[node name="IdleTimer" type="Timer" parent="."]
-one_shot = true
 
 [node name="VisibleArea2D" type="Area2D" parent="."]
 position = Vector2( 32, 64 )
@@ -164,7 +160,6 @@ hit_scene = ExtResource( 6 )
 position = Vector2( 0, -24 )
 shape = SubResource( 6 )
 [connection signal="tween_completed" from="MovementTween" to="." method="_on_MovementTween_tween_completed"]
-[connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="changed" from="Health" to="." method="_on_Health_changed"]
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
 [connection signal="max_changed" from="Health" to="." method="_on_Health_max_changed"]
