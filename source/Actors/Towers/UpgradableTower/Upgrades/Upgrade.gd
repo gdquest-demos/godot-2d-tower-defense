@@ -3,7 +3,6 @@ extends Node
 
 signal upgraded
 
-
 export var cost := 100
 export var value := 10.0
 export (float, EASE) var cost_curve := 1.0

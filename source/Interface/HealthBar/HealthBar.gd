@@ -1,6 +1,5 @@
 extends ProgressBar
 
-
 onready var _timer := $Timer
 
 

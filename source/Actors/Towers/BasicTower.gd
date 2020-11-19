@@ -29,7 +29,7 @@ func hide_interface() -> void:
 func _on_SelectableArea2D_selection_changed(selected) -> void:
 	if selected:
 		show_interface()
-		
+
 	else:
 		hide_interface()
 

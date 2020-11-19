@@ -36,7 +36,7 @@ func add_new_tower(tower_scene: PackedScene) -> void:
 
 	set_process(true)
 	set_process_input(true)
-	_visual_grid.visible  = true
+	_visual_grid.visible = true
 
 
 func set_cell_unplaceable(cell: Vector2) -> void:
@@ -63,7 +63,7 @@ func _place_tower() -> void:
 		set_cell_unplaceable(_current_cell)
 		_current_tower.connect("sold", self, "_on_Tower_sold")
 		_current_tower.hide_interface()
-	
+
 	set_process(false)
 	set_process_input(false)
 	_visual_grid.visible = false

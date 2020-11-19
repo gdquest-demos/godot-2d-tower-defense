@@ -10,6 +10,7 @@ onready var _overlay_animator := $UserInterfaceLayer/UserInterface/ScreenOverlay
 onready var _mouse_barrier := $UserInterfaceLayer/UserInterface/MouseBarrier
 onready var _retry_button := $UserInterfaceLayer/UserInterface/HUD/RetryButton
 
+
 func _ready() -> void:
 	setup_tower_purchase_interface()
 

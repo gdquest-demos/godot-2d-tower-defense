@@ -5,7 +5,7 @@ extends TileMap
 const WALKABLE_CELLS_ID := 1
 
 onready var _start_point := $StartPosition2D
-onready var _goal_point :=$GoalPosition2D
+onready var _goal_point := $GoalPosition2D
 onready var _astar := AStar2D.new()
 
 onready var _walkable_cells: PoolVector2Array = get_used_cells_by_id(WALKABLE_CELLS_ID)
@@ -27,7 +27,7 @@ func get_walkable_path() -> PoolVector2Array:
 
 func _get_astar_path() -> PoolVector2Array:
 	var astar_path: PoolVector2Array
-	
+
 	_create_astar_points()
 
 	_astar.set_point_position(0, world_to_map(_start_point.position))

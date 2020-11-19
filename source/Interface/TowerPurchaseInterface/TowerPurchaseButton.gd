@@ -11,6 +11,7 @@ onready var _label := $Label
 
 var _is_mouse_on := false
 
+
 func _ready() -> void:
 	setup_tower_data()
 

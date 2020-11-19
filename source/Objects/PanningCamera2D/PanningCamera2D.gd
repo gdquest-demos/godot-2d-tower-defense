@@ -40,6 +40,12 @@ func _handle_mouse(event: InputEventMouseMotion) -> void:
 
 func _handle_key(event: InputEventKey) -> void:
 	_direction = Vector2.ZERO
-	_direction.x = Input.get_action_strength("camera_pan_right") - Input.get_action_strength("camera_pan_left")
-	_direction.y = Input.get_action_strength("camera_pan_down") - Input.get_action_strength("camera_pan_up")
+	_direction.x = (
+		Input.get_action_strength("camera_pan_right")
+		- Input.get_action_strength("camera_pan_left")
+	)
+	_direction.y = (
+		Input.get_action_strength("camera_pan_down")
+		- Input.get_action_strength("camera_pan_up")
+	)
 	set_process(not _direction.is_equal_approx(Vector2.ZERO))

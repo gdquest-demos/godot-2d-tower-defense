@@ -1,7 +1,6 @@
 # The Player's main building.
 extends Node2D
 
-
 onready var _health := $Health
 onready var _health_bar := $HealthBar
 onready var _anim_player := $AnimationPlayer

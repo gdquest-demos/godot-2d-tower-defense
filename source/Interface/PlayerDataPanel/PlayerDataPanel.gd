@@ -1,7 +1,7 @@
 extends PanelContainer
 
-
 onready var _data_displays_container := $MarginContainer/VBoxContainer/DataDisplays
+
 
 func _ready() -> void:
 	setup_gold_data()
