@@ -37,7 +37,7 @@ func apply_damage(damage: int) -> void:
 
 
 func die() -> void:
-	Player.current_gold += gold_amount
+	Player.gold += gold_amount
 	disappear()
 
 

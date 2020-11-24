@@ -11,10 +11,10 @@ var weapon: Weapon
 
 
 func upgrade() -> void:
-	if Player.current_gold - cost < 0:
+	if Player.gold - cost < 0:
 		return
 	_apply_upgrade()
-	Player.current_gold -= cost
+	Player.gold -= cost
 	cost *= cost_curve
 	emit_signal("upgraded")
 

@@ -26,10 +26,10 @@ func _input(event: InputEvent) -> void:
 
 func add_new_tower(tower_scene: PackedScene) -> void:
 	var tower: BasicTower = tower_scene.instance()
-	if Player.current_gold - tower.cost < 0:
+	if Player.gold - tower.cost < 0:
 		tower.queue_free()
 		return
-	Player.current_gold -= tower.cost
+	Player.gold -= tower.cost
 
 	add_child(tower)
 	_current_tower = tower
@@ -57,7 +57,7 @@ func _is_current_cell_placeable() -> bool:
 
 func _place_tower() -> void:
 	if not _is_current_cell_placeable():
-		Player.current_gold += _current_tower.cost
+		Player.gold += _current_tower.cost
 		_current_tower.queue_free()
 	else:
 		set_cell_unplaceable(_current_cell)
@@ -79,5 +79,5 @@ func _snap_tower_to_grid() -> void:
 
 
 func _on_Tower_sold(price: int, place: Vector2) -> void:
-	Player.current_gold += price
+	Player.gold += price
 	set_cell_placeable(_grid.world_to_map(place))
