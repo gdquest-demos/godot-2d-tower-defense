@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Interface/SelectionArea2D/SelectionArea2D.gd" type="Script" id=2]
+[ext_resource path="res://Objects/SelectionArea2D/SelectionArea2D.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 0, 0 )
@@ -9,7 +9,7 @@ extents = Vector2( 0, 0 )
 monitorable = false
 collision_layer = 0
 collision_mask = 2147483649
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 color = Color( 0.333333, 0.466667, 1, 0.266667 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

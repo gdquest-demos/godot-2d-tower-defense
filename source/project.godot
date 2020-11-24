@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "SelectionArea2D",
 "language": "GDScript",
-"path": "res://Interface/SelectionArea2D/SelectionArea2D.gd"
+"path": "res://Objects/SelectionArea2D/SelectionArea2D.gd"
 }, {
 "base": "Node",
 "class": "Upgrade",
