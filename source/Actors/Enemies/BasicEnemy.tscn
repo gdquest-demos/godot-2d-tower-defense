@@ -6,7 +6,10 @@
 [ext_resource path="res://Objects/GameResources/GameResource.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/HitBox/HitBoxArea2D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/HitBox/Hits/BasicEnemyHit.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Interface/HealthBar/HealthBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/UIHealthBar/UIHealthBar.tscn" type="PackedScene" id=7]
+
+
+
 
 [sub_resource type="Animation" id=1]
 length = 0.2

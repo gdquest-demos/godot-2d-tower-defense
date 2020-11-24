@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/heart.svg-16b589dd9c93f85dcf2391696f04f2f5.stex"
+path="res://.import/heart.svg-49f6cf64586eb6a039065531a8f12ab4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interface/HealthBar/heart.svg"
-dest_files=[ "res://.import/heart.svg-16b589dd9c93f85dcf2391696f04f2f5.stex" ]
+source_file="res://UI/UIHealthBar/heart.svg"
+dest_files=[ "res://.import/heart.svg-49f6cf64586eb6a039065531a8f12ab4.stex" ]
 
 [params]
 

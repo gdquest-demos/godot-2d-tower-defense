@@ -2,7 +2,7 @@ extends TextureButton
 
 signal tower_purchased(tower_scene)
 
-export var tower_packed_scene: PackedScene = preload("res://Actors/Towers/BasicTower.tscn")
+export var tower: PackedScene = preload("res://Actors/Towers/BasicTower.tscn")
 export var hover_modulate := Color(1.3, 1.3, 1.3, 1.0)
 export var pressed_modulate := Color(0.7, 0.7, 0.7, 1.0)
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func setup_tower_data() -> void:
-	var tower: BasicTower = tower_packed_scene.instance()
+	var tower: BasicTower = tower.instance()
 	_label.text = "Cost: %s" % tower.cost
 	tower.queue_free()
 
@@ -25,7 +25,7 @@ func setup_tower_data() -> void:
 func _pressed() -> void:
 	set_process(pressed)
 	if pressed:
-		emit_signal("tower_purchased", tower_packed_scene)
+		emit_signal("tower_purchased", tower)
 	update_modulate()
 
 

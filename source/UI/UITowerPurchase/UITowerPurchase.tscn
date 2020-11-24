@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Bullets/projectile-player.svg" type="Texture" id=2]
+[ext_resource path="res://Objects/Bullets/player-bomb.svg" type="Texture" id=4]
+[ext_resource path="res://UI/UITowerPurchase/UITowerPurchaseButton.tscn" type="PackedScene" id=6]
+
+[node name="UITowerPurchase" type="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = -220.48
+margin_right = 160.0
+margin_bottom = -36.48
+rect_min_size = Vector2( 320, 184 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -129.0
+margin_top = -69.2966
+margin_right = 129.0
+margin_bottom = -55.2966
+text = "Purchase your towers"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -138.0
+margin_top = -30.9999
+margin_right = 138.0
+margin_bottom = 71.0001
+mouse_filter = 2
+custom_constants/separation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TowerPurchaseButton" parent="HBoxContainer" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+mouse_filter = 1
+texture_normal = ExtResource( 2 )
+
+[node name="TowerPurchaseButton2" parent="HBoxContainer" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 80.0
+margin_right = 144.0
+margin_bottom = 64.0
+mouse_filter = 1
+texture_normal = ExtResource( 4 )

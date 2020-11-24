@@ -4,7 +4,10 @@
 [ext_resource path="res://Objects/HurtBox/HurtBoxArea2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/GameResources/GameResource.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/PlayerBase/PlayerBase.gd" type="Script" id=4]
-[ext_resource path="res://Interface/HealthBar/HealthBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/UIHealthBar/UIHealthBar.tscn" type="PackedScene" id=5]
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 32 )
