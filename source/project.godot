@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "PathFollow2D",
 "class": "BasicEnemy",
 "language": "GDScript",
-"path": "res://Actors/Enemies/BasicEnemy.gd"
+"path": "res://Actors/Enemies/Enemy.gd"
 }, {
 "base": "Node2D",
 "class": "BasicTower",
 "language": "GDScript",
-"path": "res://Actors/Towers/BasicTower.gd"
+"path": "res://Actors/Towers/Tower.gd"
 }, {
 "base": "Node2D",
 "class": "Bullet",
@@ -99,6 +99,10 @@ config/icon="res://icon.png"
 [autoload]
 
 Player="*res://Player/Player.tscn"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
 
 [display]
 

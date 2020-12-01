@@ -38,7 +38,7 @@ func _handle_mouse(event: InputEventMouseMotion) -> void:
 	set_process(not _direction.is_equal_approx(Vector2.ZERO))
 
 
-func _handle_key(event: InputEventKey) -> void:
+func _handle_key(_event: InputEventKey) -> void:
 	_direction = Vector2.ZERO
 	_direction.x = (
 		Input.get_action_strength("camera_pan_right")

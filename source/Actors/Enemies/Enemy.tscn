@@ -1,15 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Actors/Enemies/BasicEnemy.gd" type="Script" id=1]
+[ext_resource path="res://Actors/Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Enemies/enemies-blob-sprite.svg" type="Texture" id=2]
 [ext_resource path="res://Objects/HurtBox/HurtBoxArea2D.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/GameResources/GameResource.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/HitBox/HitBoxArea2D.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Objects/HitBox/Hits/BasicEnemyHit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/HitBox/Hits/EnemyHit.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/UIHealthBar/UIHealthBar.tscn" type="PackedScene" id=7]
-
-
-
 
 [sub_resource type="Animation" id=1]
 length = 0.2
@@ -93,7 +89,7 @@ radius = 32.0
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 24, 24 )
 
-[node name="BasicEnemy" type="PathFollow2D"]
+[node name="Enemy" type="PathFollow2D"]
 z_index = 1
 rotate = false
 cubic_interp = false
@@ -131,9 +127,6 @@ margin_right = 112.0
 margin_bottom = 86.0
 step = 1.0
 
-[node name="Health" parent="." instance=ExtResource( 4 )]
-max_amount = 15
-
 [node name="HurtBoxArea2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 32, 40 )
 team = 1
@@ -150,7 +143,5 @@ hit_scene = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
 position = Vector2( 0, -24 )
 shape = SubResource( 6 )
-[connection signal="changed" from="Health" to="." method="_on_Health_changed"]
-[connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
-[connection signal="max_changed" from="Health" to="." method="_on_Health_max_changed"]
+[connection signal="health_changed" from="." to="HealthBar" method="_on_owner_health_changed"]
 [connection signal="hit_landed" from="HurtBoxArea2D" to="." method="_on_HurtBoxArea2D_hit_landed"]

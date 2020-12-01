@@ -19,5 +19,5 @@ func fly_to(target_global_position: Vector2) -> void:
 	look_at(target_global_position)
 
 
-func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
+func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	_anim_player.play("explode")

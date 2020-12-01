@@ -18,7 +18,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		set_selected(false)
 
 
-func _input_event(viewport: Object, event: InputEvent, shape_idx: int) -> void:
+func _input_event(_viewport: Object, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed(select_action):
 		self.selected = not selected
 		get_tree().set_input_as_handled()

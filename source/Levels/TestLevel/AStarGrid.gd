@@ -16,7 +16,7 @@ func update_walkable_cells() -> void:
 
 
 func get_walkable_path() -> PoolVector2Array:
-	var walkable_path: PoolVector2Array
+	var walkable_path := PoolVector2Array()
 
 	var astar_path = _get_astar_path()
 	for cell in astar_path:

@@ -1,13 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Objects/PlayerBase/player-base.svg" type="Texture" id=1]
 [ext_resource path="res://Objects/HurtBox/HurtBoxArea2D.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Objects/GameResources/GameResource.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/PlayerBase/PlayerBase.gd" type="Script" id=4]
 [ext_resource path="res://UI/UIHealthBar/UIHealthBar.tscn" type="PackedScene" id=5]
-
-
-
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 32 )
@@ -83,8 +79,6 @@ tracks/1/keys = {
 [node name="PlayerBase" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Health" parent="." instance=ExtResource( 3 )]
-
 [node name="Sprites" type="Node2D" parent="."]
 position = Vector2( 0, -32 )
 
@@ -135,7 +129,5 @@ step = 1.0
 autoplay = "SETUP"
 anims/Death = SubResource( 2 )
 anims/SETUP = SubResource( 3 )
-[connection signal="changed" from="Health" to="." method="_on_Health_changed"]
-[connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
-[connection signal="max_changed" from="Health" to="." method="_on_Health_max_changed"]
+[connection signal="health_changed" from="." to="HealthBar" method="_on_owner_health_changed"]
 [connection signal="hit_landed" from="HurtBoxArea2D" to="." method="_on_HurtBoxArea2D_hit_landed"]

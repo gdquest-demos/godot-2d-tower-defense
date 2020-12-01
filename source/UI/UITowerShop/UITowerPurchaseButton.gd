@@ -1,6 +1,6 @@
 extends TextureButton
 
-export var tower: PackedScene = preload("res://Actors/Towers/BasicTower.tscn")
+export var tower: PackedScene = preload("res://Actors/Towers/Tower.tscn")
 
 # TODO: replace with graphics?
 export var hover_modulate := Color(1.3, 1.3, 1.3, 1.0)

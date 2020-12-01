@@ -4,4 +4,3 @@
 
 [node name="Player" type="Node"]
 script = ExtResource( 1 )
-current_gold = 300

@@ -54,11 +54,11 @@ func _clear_target() -> void:
 	target = null
 
 
-func _on_RangeArea2D_area_entered(area: Area2D) -> void:
+func _on_RangeArea2D_area_entered(_area: Area2D) -> void:
 	_shoot()
 
 
-func _on_RangeArea2D_area_exited(area: Area2D) -> void:
+func _on_RangeArea2D_area_exited(_area: Area2D) -> void:
 	_shoot()
 
 

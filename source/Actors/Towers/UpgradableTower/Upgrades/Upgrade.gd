@@ -15,7 +15,7 @@ func upgrade() -> void:
 		return
 	_apply_upgrade()
 	Player.gold -= cost
-	cost *= cost_curve
+	cost = int(cost * cost_curve)
 	emit_signal("upgraded")
 
 

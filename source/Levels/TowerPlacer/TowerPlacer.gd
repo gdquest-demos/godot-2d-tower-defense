@@ -17,7 +17,7 @@ func _ready() -> void:
 	set_process_unhandled_input(false)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_snap_tower_to_grid()
 
 
