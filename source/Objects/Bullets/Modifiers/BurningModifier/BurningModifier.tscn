@@ -37,6 +37,6 @@ draw_order = 1
 process_material = SubResource( 3 )
 texture = ExtResource( 3 )
 
-[node name="EffectTic" type="Timer" parent="." index="4"]
+[node name="EffectTick" type="Timer" parent="." index="4"]
 autostart = true
-[connection signal="timeout" from="EffectTic" to="." method="apply_effect"]
+[connection signal="timeout" from="EffectTick" to="." method="apply_effect"]

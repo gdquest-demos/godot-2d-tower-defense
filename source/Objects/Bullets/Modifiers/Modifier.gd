@@ -4,7 +4,7 @@ extends Node2D
 export var duration := 1.0
 export var strength := 1.0
 
-var target: BasicEnemy
+var target: Enemy
 
 onready var _duration_timer := $DurationTimer
 onready var _animation_player := $AnimationPlayer
@@ -15,11 +15,15 @@ func _ready() -> void:
 	_animation_player.play("start")
 
 
-func apply_effect() -> void:
+# Virtual function.
+# Applies the effect to the `target`.
+func _apply_effect() -> void:
 	pass
 
 
-func remove_effect() -> void:
+# Virtual function.
+# Cleans the effect from the `target`.
+func _remove_effect() -> void:
 	pass
 
 

@@ -103,7 +103,6 @@ tracks/3/keys = {
 speed = 250.0
 
 [node name="Sprite" parent="." index="0"]
-visible = false
 scale = Vector2( 0.363636, 0.363636 )
 texture = ExtResource( 2 )
 

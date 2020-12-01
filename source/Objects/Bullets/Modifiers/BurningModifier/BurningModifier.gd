@@ -1,5 +1,5 @@
 extends Modifier
 
 
-func apply_effect() -> void:
+func _apply_effect() -> void:
 	target.apply_damage(1)

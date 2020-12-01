@@ -30,7 +30,7 @@ scale_random = 0.3
 scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
-[node name="ExplodeParticles" type="Particles2D"]
+[node name="SmallExplosion" type="Particles2D"]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
 self_modulate = Color( 0.34902, 0.67451, 1, 1 )
 emitting = false

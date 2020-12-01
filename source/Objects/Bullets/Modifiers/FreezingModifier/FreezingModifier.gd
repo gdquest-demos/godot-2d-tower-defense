@@ -1,9 +1,9 @@
 extends Modifier
 
 
-func apply_effect() -> void:
+func _apply_effect() -> void:
 	target.speed *= strength
 
 
-func remove_effect() -> void:
+func _remove_effect() -> void:
 	target.speed /= strength

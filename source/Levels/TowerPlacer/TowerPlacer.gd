@@ -9,7 +9,7 @@ onready var _grid := $Grid
 onready var _visual_grid := $VisualGrid
 
 var _current_cell := Vector2.ZERO
-var _current_tower: BasicTower
+var _current_tower: Tower
 
 
 func _ready() -> void:
@@ -33,7 +33,7 @@ func setup(tower_shop: UITowerShop) -> void:
 # TODO: move player gold management?
 # Gold should change when a tower is bought or sold
 func add_new_tower(tower_scene: PackedScene) -> void:
-	var tower: BasicTower = tower_scene.instance()
+	var tower: Tower = tower_scene.instance()
 	if Player.gold - tower.cost < 0:
 		tower.queue_free()
 		return

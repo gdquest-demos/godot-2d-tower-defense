@@ -18,7 +18,7 @@ func _ready() -> void:
 
 # TODO: the towers are instanced in two places like that to get their price
 func setup_tower_data() -> void:
-	var instance: BasicTower = tower.instance()
+	var instance: Tower = tower.instance()
 	_label.text = "Cost: %s" % instance.cost
 	instance.queue_free()
 

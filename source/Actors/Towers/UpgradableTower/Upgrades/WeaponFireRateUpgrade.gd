@@ -2,4 +2,5 @@ extends Upgrade
 
 
 func _apply_upgrade() -> void:
-	weapon.cooldown = max(0.0, weapon.cooldown - value)
+	# The maximum allowed fire rate is of 20 bullets per second.
+	weapon.cooldown = max(0.05, weapon.cooldown - value)

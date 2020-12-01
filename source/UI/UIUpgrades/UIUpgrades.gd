@@ -2,6 +2,7 @@ extends PanelContainer
 
 signal upgrade_requested(upgrade_index)
 
+#TODO: refactor
 onready var _options := $MarginContainer/VBoxContainer/OptionsVBoxContainer
 
 

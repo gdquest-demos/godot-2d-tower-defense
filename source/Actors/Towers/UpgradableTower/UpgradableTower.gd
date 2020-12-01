@@ -1,4 +1,4 @@
-extends BasicTower
+extends Tower
 
 onready var _upgrades_container := $Upgrades
 
