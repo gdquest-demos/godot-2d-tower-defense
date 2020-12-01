@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Objects/SelectionArea2D/SelectionArea2D.gd"
 }, {
+"base": "Panel",
+"class": "UITowerShop",
+"language": "GDScript",
+"path": "res://UI/UITowerShop/UITowerShop.gd"
+}, {
 "base": "Node",
 "class": "Upgrade",
 "language": "GDScript",
@@ -79,6 +84,7 @@ _global_script_class_icons={
 "Modifier": "",
 "SelectableArea2D": "",
 "SelectionArea2D": "",
+"UITowerShop": "",
 "Upgrade": "",
 "Wave": "",
 "Weapon": ""

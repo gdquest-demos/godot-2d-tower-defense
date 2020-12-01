@@ -3,7 +3,7 @@ extends Node
 
 onready var _level := $Level
 onready var _hud := $UILayer/UI/HUD
-onready var _tower_purchase := $UILayer/UI/HUD/UITowerPurchase
+onready var _tower_shop := $UILayer/UI/HUD/UITowerShop
 #TODO: refactor to not access the anim player directly
 onready var _screen_overlay := $UILayer/UI/UIScreenOverlay
 onready var _mouse_barrier := $UILayer/UI/MouseBarrier
@@ -11,17 +11,8 @@ onready var _retry_button := $UILayer/UI/HUD/RetryButton
 
 
 func _ready() -> void:
-	setup_tower_purchase_interface()
-
-
-# Ensures the current available TowerPurchaseButtons communicate
-# with the Level properly
-func setup_tower_purchase_interface() -> void:
-	var buttons_container := _tower_purchase.find_node("TowerButtonsContainer")
-	for button in buttons_container.get_children():
-		if button.is_connected("tower_purchased", self, "_on_TowerPurchaseButton_tower_purchased"):
-			continue
-		button.connect("tower_purchased", self, "_on_TowerPurchaseButton_tower_purchased")
+	Player.gold = 1000
+	_level.tower_placer.setup(_tower_shop)
 
 
 func _toggle_interface() -> void:
@@ -34,11 +25,6 @@ func _toggle_interface() -> void:
 func _toggle_mouse_barrier() -> void:
 	_mouse_barrier.grab_focus()
 	_mouse_barrier.visible = not _hud.visible
-
-
-func _on_TowerPurchaseButton_tower_purchased(tower_scene: PackedScene) -> void:
-	# Tells the Level which Tower to place based on the Tower bought by the Player
-	_level.place_new_tower(tower_scene)
 
 
 func _on_StartWaveButton_pressed() -> void:

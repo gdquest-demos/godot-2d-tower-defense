@@ -8,7 +8,7 @@ signal base_died
 export var current_event := 0
 var _wave: Wave
 
-onready var _towers_placement := $TowerPlacement
+onready var tower_placer := $TowerPlacer
 onready var _astar_grid := $AStarGrid
 onready var _wave_spawner := $WaveSpawner2D
 onready var _events_player := $EventsPlayer
@@ -30,16 +30,13 @@ func finish() -> void:
 	emit_signal("finished")
 
 
+# TODO: pass the data to tower_placer and let it do its thing.
 func setup_tower_placeable_cells() -> void:
 	for cell in _tilemap.get_used_cells():
-		if _tilemap.get_cellv(cell) == _towers_placement.PLACEABLE_CELLS_ID:
-			_towers_placement.set_cell_placeable(cell)
+		if _tilemap.get_cellv(cell) == tower_placer.EMPTY_CELL_ID:
+			tower_placer.set_cell_placeable(cell)
 		else:
-			_towers_placement.set_cell_unplaceable(cell)
-
-
-func place_new_tower(new_tower_scene: PackedScene) -> void:
-	_towers_placement.add_new_tower(new_tower_scene)
+			tower_placer.set_cell_unplaceable(cell)
 
 
 func show_walkable_path(walking_path := _astar_grid.get_walkable_path()) -> void:
