@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://Objects/Bullets/Bullet.gd"
+"path": "res://Actors/Towers/Weapons/Bullets/Bullet.gd"
 }, {
 "base": "Node",
 "class": "Hit",
@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Modifier",
 "language": "GDScript",
-"path": "res://Objects/Bullets/Modifiers/Modifier.gd"
+"path": "res://Actors/Towers/Weapons/Bullets/Modifiers/Modifier.gd"
 }, {
 "base": "Area2D",
 "class": "SelectableArea2D",
@@ -59,20 +59,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/UITowerShop/UITowerShop.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "Upgrade",
 "language": "GDScript",
-"path": "res://Actors/Towers/UpgradableTower/Upgrades/Upgrade.gd"
+"path": "res://Actors/Towers/Upgrades/Upgrade.gd"
 }, {
 "base": "Path2D",
 "class": "Wave",
 "language": "GDScript",
 "path": "res://Levels/Wave/Wave.gd"
 }, {
+"base": "Reference",
+"class": "WaveSpawner2D",
+"language": "GDScript",
+"path": "res://Objects/WaveSpawner2D/WaveSpawner2D.gd"
+}, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
-"path": "res://Objects/Weapons/Weapon2D.gd"
+"path": "res://Actors/Towers/Weapons/Weapon2D.gd"
 } ]
 _global_script_class_icons={
 "BasicEnemy": "",
@@ -87,6 +92,7 @@ _global_script_class_icons={
 "UITowerShop": "",
 "Upgrade": "",
 "Wave": "",
+"WaveSpawner2D": "",
 "Weapon": ""
 }
 
@@ -155,6 +161,7 @@ camera_pan_right={
 
 2d_physics/layer_1="selectable"
 2d_physics/layer_2="combat"
+2d_physics/layer_3="enemies"
 
 [rendering]
 

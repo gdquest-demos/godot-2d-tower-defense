@@ -1,11 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Actors/Towers/Tower.gd" type="Script" id=1]
-[ext_resource path="res://UI/theme/main_theme.tres" type="Theme" id=2]
-[ext_resource path="res://Actors/Towers/RangePreview/RangePreview.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actors/Towers/player-turrent.svg" type="Texture" id=4]
-[ext_resource path="res://Objects/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Objects/Weapons/Weapon2D.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/theme/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Actors/Towers/Tower.gd" type="Script" id=2]
+[ext_resource path="res://UI/UIUpgradePanel/UIUpgradePanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/Towers/Upgrades/WeaponRangeUpgrade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Towers/Upgrades/BulletSpeedUpgrade.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actors/Towers/Upgrades/WeaponFireRateUpgrade.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Actors/Towers/Weapons/Weapon2D.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Actors/Towers/player-turrent.svg" type="Texture" id=8]
+[ext_resource path="res://Objects/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Actors/Towers/RangePreview/RangePreview.tscn" type="PackedScene" id=10]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -68,24 +73,35 @@ tracks/1/keys = {
 
 [node name="Tower" type="Node2D"]
 z_index = 1
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
-texture = ExtResource( 4 )
+z_index = -1
+texture = ExtResource( 8 )
 
-[node name="SelectableArea2D" parent="." instance=ExtResource( 5 )]
+[node name="SelectableArea2D" parent="." instance=ExtResource( 9 )]
 position = Vector2( 32, 64 )
+z_index = -1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableArea2D"]
 position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
-[node name="Weapon2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 32, 8 )
+[node name="Weapon2D" parent="." instance=ExtResource( 7 )]
+z_index = -1
 
-[node name="RangePreview" parent="." instance=ExtResource( 3 )]
+[node name="RangePreview" parent="." instance=ExtResource( 10 )]
 position = Vector2( 32, 32 )
+
+[node name="Upgrades" type="Node" parent="."]
+
+[node name="WeaponRangeUpgrade" parent="Upgrades" instance=ExtResource( 4 )]
+
+[node name="WeaponFireRateUpgrade" parent="Upgrades" instance=ExtResource( 6 )]
+
+[node name="BulletSpeedUpgrade" parent="Upgrades" instance=ExtResource( 5 )]
+value = 500.0
 
 [node name="Interface" type="Control" parent="."]
 rect_scale = Vector2( 1e-05, 1e-05 )
@@ -98,14 +114,21 @@ __meta__ = {
 margin_top = 72.0
 margin_right = 64.0
 margin_bottom = 98.0
-theme = ExtResource( 2 )
+theme = ExtResource( 1 )
 text = "Sell"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="UpgradePanel" parent="Interface" instance=ExtResource( 3 )]
+margin_left = -128.0
+margin_top = -405.0
+margin_right = 192.0
+margin_bottom = -85.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/appear = SubResource( 2 )
 anims/disappear = SubResource( 3 )
 [connection signal="selection_changed" from="SelectableArea2D" to="." method="_on_SelectableArea2D_selection_changed"]
 [connection signal="pressed" from="Interface/SellButton" to="." method="_on_SellButton_pressed"]
+[connection signal="upgrade_requested" from="Interface/UpgradePanel" to="." method="_on_UpgradePanel_upgrade_requested"]

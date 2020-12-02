@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Objects/HitBox/Hits/Hit.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Objects/Bullets/Modifiers/FreezingModifier/FreezingModifier.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actors/Towers/Weapons/Bullets/Modifiers/FreezingModifier/FreezingModifier.tscn" type="PackedScene" id=2]
+
 
 [node name="FreezingHit" instance=ExtResource( 1 )]
 damage = 3

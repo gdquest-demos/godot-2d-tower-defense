@@ -2,6 +2,7 @@ class_name Enemy
 extends PathFollow2D
 
 signal health_changed(new_amount)
+signal died
 
 # Movement speed in pixels per second.
 export var speed := 64.0
@@ -12,8 +13,8 @@ export var max_health := 15
 var health := max_health setget set_health
 
 onready var _health_bar := $HealthBar
-onready var _anim := $AnimationPlayer
-onready var _sprite_anim := $Sprite/AnimationPlayer
+onready var _anim_player := $AnimationPlayer
+onready var _sprite_anim_player := $Sprite/AnimationPlayer
 
 
 func _ready() -> void:
@@ -34,11 +35,12 @@ func move() -> void:
 
 
 func disappear() -> void:
-	_anim.play("disappear")
+	_anim_player.play("disappear")
 
 
-# TODO: move gold management?
 func die() -> void:
+	emit_signal("died")
+	# TODO: move gold management?
 	Player.gold += gold_value
 	disappear()
 
