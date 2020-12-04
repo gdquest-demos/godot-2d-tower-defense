@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/theme/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Actors/Towers/Tower.gd" type="Script" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://Actors/Towers/player-turrent.svg" type="Texture" id=8]
 [ext_resource path="res://Objects/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Actors/Towers/RangePreview/RangePreview.tscn" type="PackedScene" id=10]
-
+[ext_resource path="res://Actors/Towers/Weapons/Bullets/TowerBullet.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -89,7 +89,9 @@ position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
 [node name="Weapon2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 32, 8 )
 z_index = -1
+bullet_scene = ExtResource( 11 )
 
 [node name="RangePreview" parent="." instance=ExtResource( 10 )]
 position = Vector2( 32, 32 )

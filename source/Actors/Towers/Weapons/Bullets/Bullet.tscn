@@ -49,7 +49,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "test"
+resource_name = "explode"
 length = 0.1
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -123,7 +123,7 @@ playback_process_mode = 0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "SETUP"
 anims/SETUP = SubResource( 2 )
-anims/test = SubResource( 3 )
+anims/explode = SubResource( 3 )
 
 [node name="ExplodeParticles" parent="." instance=ExtResource( 5 )]
 position = Vector2( 8, 8 )

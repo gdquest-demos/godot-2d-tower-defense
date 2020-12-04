@@ -46,8 +46,11 @@ func die() -> void:
 
 
 func set_health(value: int) -> void:
-	health = int(clamp(value, 0, 10))
-	emit_signal("health_changed")
+	health = int(clamp(value, 0, max_health))
+	emit_signal("health_changed", health)
+	
+	if health < 1:
+		die()
 
 
 func _on_HurtBoxArea2D_hit_landed(hit: Hit) -> void:
@@ -56,7 +59,3 @@ func _on_HurtBoxArea2D_hit_landed(hit: Hit) -> void:
 	add_child(hit)
 	for modifier in hit.modifiers.get_children():
 		modifier.target = self
-
-
-func _on_Health_depleted() -> void:
-	die()

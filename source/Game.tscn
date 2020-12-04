@@ -61,6 +61,8 @@ __meta__ = {
 }
 
 [node name="UIPlayerGold" parent="UILayer/UI/HUD" instance=ExtResource( 4 )]
+margin_right = 256.0
+margin_bottom = 96.0
 
 [node name="UITowerShop" parent="UILayer/UI/HUD" instance=ExtResource( 1 )]
 

@@ -116,6 +116,7 @@ region_rect = Rect2( 53, 6, 23, 29 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
 position = Vector2( 0, -8 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="HealthBar" parent="." instance=ExtResource( 5 )]
 visible = false

@@ -6,10 +6,6 @@
 [ext_resource path="res://Actors/Towers/Weapons/Bullets/player-bomb.svg" type="Texture" id=4]
 [ext_resource path="res://UI/UITowerShop/UITowerPurchaseButton.tscn" type="PackedScene" id=6]
 
-
-
-
-
 [node name="UITowerShop" type="Panel"]
 anchor_left = 0.5
 anchor_top = 1.0

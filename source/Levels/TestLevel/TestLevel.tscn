@@ -11,8 +11,6 @@
 [ext_resource path="res://Objects/PanningCamera2D/PanningCamera2D.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Objects/EnemySpawn/enemy-spawn.svg" type="Texture" id=11]
 
-
-
 [sub_resource type="GDScript" id=1]
 script/source = "extends Line2D
 
@@ -160,4 +158,4 @@ position = Vector2( 960, 544 )
 anims/00.first-wave = SubResource( 2 )
 anims/01.second-wave = SubResource( 3 )
 [connection signal="timeout" from="PathPreview/Timer" to="PathPreview" method="_on_Timer_timeout"]
-[connection signal="tree_exited" from="PlayerBase" to="." method="_on_PlayerBase_tree_exited"]
+[connection signal="destroyed" from="PlayerBase" to="." method="_on_PlayerBase_destroyed"]

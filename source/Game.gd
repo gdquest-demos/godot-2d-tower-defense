@@ -43,14 +43,14 @@ func _on_Level_wave_finished() -> void:
 
 # Lose condition
 func _on_Level_base_died() -> void:
+	yield(_screen_overlay.play_lost(), "completed")
 	_mouse_barrier.hide()
 	_retry_button.show()
-	_screen_overlay.play_win()
 
 
 # Win condition
 func _on_Level_finished() -> void:
-	_screen_overlay.play_lost()
+	_screen_overlay.play_win()
 
 
 func _on_RetryButton_pressed() -> void:

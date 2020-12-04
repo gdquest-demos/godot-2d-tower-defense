@@ -14,14 +14,14 @@ var _current_tower: Tower
 
 func _ready() -> void:
 	set_process(false)
-	set_process_unhandled_input(false)
+	set_process_input(false)
 
 
 func _process(_delta: float) -> void:
 	_snap_tower_to_grid()
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_released("tower_placement"):
 		_place_tower()
 
@@ -43,7 +43,7 @@ func add_new_tower(tower_scene: PackedScene) -> void:
 	_current_tower = tower
 
 	set_process(true)
-	set_process_unhandled_input(true)
+	set_process_input(true)
 	_visual_grid.visible = true
 
 
@@ -69,7 +69,7 @@ func _place_tower() -> void:
 		_current_tower.hide_interface()
 
 	set_process(false)
-	set_process_unhandled_input(false)
+	set_process_input(false)
 	_visual_grid.visible = false
 
 

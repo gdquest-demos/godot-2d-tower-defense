@@ -2,8 +2,6 @@
 
 [ext_resource path="res://UI/UIGold.gd" type="Script" id=2]
 
-
-
 [node name="UIPlayerGold" type="Panel"]
 margin_left = 40.0
 margin_top = 40.0

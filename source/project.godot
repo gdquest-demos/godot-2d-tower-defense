@@ -9,15 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "PathFollow2D",
-"class": "BasicEnemy",
-"language": "GDScript",
-"path": "res://Actors/Enemies/Enemy.gd"
-}, {
 "base": "Node2D",
 "class": "Bullet",
 "language": "GDScript",
 "path": "res://Actors/Towers/Weapons/Bullets/Bullet.gd"
+}, {
+"base": "PathFollow2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Actors/Enemies/Enemy.gd"
 }, {
 "base": "Node",
 "class": "Hit",
@@ -59,7 +59,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/UITowerShop/UITowerShop.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Upgrade",
 "language": "GDScript",
 "path": "res://Actors/Towers/Upgrades/Upgrade.gd"
@@ -69,7 +69,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Levels/Wave/Wave.gd"
 }, {
-"base": "Reference",
+"base": "Position2D",
 "class": "WaveSpawner2D",
 "language": "GDScript",
 "path": "res://Objects/WaveSpawner2D/WaveSpawner2D.gd"
@@ -80,8 +80,8 @@ _global_script_classes=[ {
 "path": "res://Actors/Towers/Weapons/Weapon2D.gd"
 } ]
 _global_script_class_icons={
-"BasicEnemy": "",
 "Bullet": "",
+"Enemy": "",
 "Hit": "",
 "HitBox": "",
 "HurtBox2D": "",

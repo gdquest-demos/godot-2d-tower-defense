@@ -80,5 +80,6 @@ func _on_Wave_finished() -> void:
 	show_walkable_path()
 
 
-func _on_PlayerBase_tree_exited() -> void:
+func _on_PlayerBase_destroyed():
 	emit_signal("base_died")
+	pass # Replace with function body.

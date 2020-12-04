@@ -19,7 +19,7 @@ func _ready() -> void:
 	bullet_scene = bullet_scene.duplicate()
 
 
-func _physic_process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not _cooldown_timer.is_stopped():
 		return
 
@@ -55,3 +55,6 @@ func _shoot_at(target: Node2D) -> void:
 	add_child(bullet)
 	bullet.global_position = _bullet_spawn_position.global_position
 	bullet.fly_to(target.global_position)
+
+
+
