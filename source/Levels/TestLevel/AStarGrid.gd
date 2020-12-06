@@ -1,18 +1,14 @@
-# Calculates a set of walkable positions between the _start_point and the _goal_point
+# Calculates a set of walkable positions between the start_point and the goal_point
 extends TileMap
 
 # The ID of the tile in the Tileset used to draw walkable cells
-const WALKABLE_CELLS_ID := 1
+const WALKABLE_CELLS_ID := 2
 
-onready var _start_point := $StartPosition2D
-onready var _goal_point := $GoalPosition2D
+export var start_point := Vector2.ZERO
+export var goal_point := Vector2.ZERO
 onready var _astar := AStar2D.new()
 
-onready var _walkable_cells: PoolVector2Array = get_used_cells_by_id(WALKABLE_CELLS_ID)
-
-
-func update_walkable_cells() -> void:
-	_walkable_cells = get_used_cells_by_id(WALKABLE_CELLS_ID)
+onready var walkable_cells: PoolVector2Array
 
 
 func get_walkable_path() -> PoolVector2Array:
@@ -30,31 +26,31 @@ func _get_astar_path() -> PoolVector2Array:
 
 	_create_astar_points()
 
-	_astar.set_point_position(0, world_to_map(_start_point.position))
-	_astar.set_point_position(_astar.get_point_count() - 1, world_to_map(_goal_point.position))
+	_astar.set_point_position(0, world_to_map(start_point))
+	_astar.set_point_position(_astar.get_point_count() - 1, world_to_map(goal_point))
 
 	_connect_neighbor_cells()
 
-	# Creates a walkable path from the _start_point to the _goal_point
+	# Creates a walkable path from the start_point to the goal_point
 	astar_path = _astar.get_point_path(0, _astar.get_point_count() - 1)
 	return astar_path
 
 
 func _create_astar_points() -> void:
-	var start_to_goal_distance: float = _start_point.position.distance_to(_goal_point.position)
+	var start_to_goal_distance: float = start_point.distance_to(goal_point)
 
 	# Sets cells ID by iteration order and their respective weight
 	var cell_id := 0
-	for cell in _walkable_cells:
+	for cell in walkable_cells:
 		var weight := 1.0
-		weight += map_to_world(cell).distance_to(_goal_point.position) / start_to_goal_distance
+		weight += map_to_world(cell).distance_to(goal_point) / start_to_goal_distance
 		_astar.add_point(cell_id, cell, weight)
 		cell_id += 1
 
 
 func _connect_neighbor_cells():
-	# Turn the _walkable_cells in an Array in order to find its elements indices
-	var walkable_cells_array := Array(_walkable_cells)
+	# Turn the walkable_cells in an Array in order to find its elements indices
+	var walkable_cells_array := Array(walkable_cells)
 
 	for point in _astar.get_points():
 		var cell = _astar.get_point_position(point)
@@ -64,10 +60,14 @@ func _connect_neighbor_cells():
 				cell + Vector2.RIGHT,
 				cell + Vector2.DOWN,
 				cell + Vector2.LEFT,
+				cell + Vector2.UP + Vector2.RIGHT,
+				cell + Vector2.UP + Vector2.LEFT,
+				cell + Vector2.DOWN + Vector2.RIGHT,
+				cell + Vector2.DOWN + Vector2.LEFT,
 			]
 		)
 		for neighbor_cell in neighbor_cells:
-			if not neighbor_cell in _walkable_cells:
+			if not neighbor_cell in walkable_cells:
 				continue
 			var neighbor_cell_id := walkable_cells_array.find(neighbor_cell)
 			if not point == neighbor_cell_id:

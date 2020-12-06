@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Objects/PlayerBase/player-base.svg" type="Texture" id=1]
+[ext_resource path="res://Actors/sprite-sheet.svg" type="Texture" id=1]
 [ext_resource path="res://Objects/HurtBox/HurtBoxArea2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/PlayerBase/PlayerBase.gd" type="Script" id=4]
 [ext_resource path="res://UI/UIHealthBar/UIHealthBar.tscn" type="PackedScene" id=5]
@@ -84,32 +84,41 @@ position = Vector2( 0, -32 )
 
 [node name="Sprite" type="Sprite" parent="Sprites"]
 texture = ExtResource( 1 )
-offset = Vector2( 0, -4 )
 region_enabled = true
-region_rect = Rect2( 2, 52, 124, 70 )
+region_rect = Rect2( 16, 15, 129, 82 )
+
+[node name="Sprite6" type="Sprite" parent="Sprites/Sprite"]
+show_behind_parent = true
+position = Vector2( -16, 16 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 63, 160, 29, 58 )
 
 [node name="Sprite2" type="Sprite" parent="Sprites"]
-position = Vector2( -29.1496, 3.80359 )
+position = Vector2( 0, -4 )
 texture = ExtResource( 1 )
-offset = Vector2( 0, -4 )
 region_enabled = true
-region_rect = Rect2( 8, 12, 24, 23 )
+region_rect = Rect2( 16, 112, 42, 43 )
 
 [node name="Sprite3" type="Sprite" parent="Sprites"]
-position = Vector2( 11.1087, -37.46 )
-rotation = 0.227089
+position = Vector2( 48, 0 )
 texture = ExtResource( 1 )
-offset = Vector2( 0, -4 )
 region_enabled = true
-region_rect = Rect2( 102, 16, 16, 19 )
+region_rect = Rect2( 96, 128, 31, 26 )
 
-[node name="Sprite4" type="Sprite" parent="Sprites/Sprite3"]
-position = Vector2( -0.211426, -8.69176 )
-rotation = 0.455943
+[node name="Sprite4" type="Sprite" parent="Sprites"]
+position = Vector2( 28, 20 )
 texture = ExtResource( 1 )
-offset = Vector2( 0.211426, -9.87603 )
 region_enabled = true
-region_rect = Rect2( 53, 6, 23, 29 )
+region_rect = Rect2( 64, 112, 18, 14 )
+
+[node name="Sprite5" type="Sprite" parent="Sprites"]
+position = Vector2( -36, 16 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 108, 4, 4 )
 
 [node name="HurtBoxArea2D" parent="." instance=ExtResource( 2 )]
 
