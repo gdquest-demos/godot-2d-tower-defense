@@ -3,7 +3,7 @@ extends Node2D
 
 signal finished
 signal wave_finished
-signal base_died
+signal base_destroyed
 
 export var current_event := 0
 var _wave: Wave
@@ -37,17 +37,17 @@ func setup_tower_placeable_cells() -> void:
 		if _tilemap.get_cellv(cell) == tower_placer.EMPTY_CELL_ID:
 			tower_placer.set_cell_placeable(cell)
 		else:
-			_towers_placement.set_cell_unplaceable(cell)
+			tower_placer.set_cell_unplaceable(cell)
 
 
 func setup_walkable_cells() -> void:
 	_astar_grid.start_point = $StartPosition2D.position
 	_astar_grid.goal_point = $GoalPosition2D.position
-	_astar_grid.walkable_cells = _tilemap.get_used_cells_by_id(_astar_grid.WALKABLE_CELLS_ID)
+	_astar_grid.walkable_cells = _astar_grid.get_used_cells_by_id(_astar_grid.WALKABLE_CELLS_ID)
 
 
 func place_new_tower(new_tower_scene: PackedScene) -> void:
-	_towers_placement.add_new_tower(new_tower_scene)
+	tower_placer.add_new_tower(new_tower_scene)
 
 
 func show_walkable_path(walking_path := _astar_grid.get_walkable_path()) -> void:
@@ -92,5 +92,4 @@ func _on_Wave_finished() -> void:
 
 
 func _on_PlayerBase_destroyed():
-	emit_signal("base_died")
-	pass # Replace with function body.
+	emit_signal("base_destroyed")

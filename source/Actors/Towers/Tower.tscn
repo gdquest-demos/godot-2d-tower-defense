@@ -7,7 +7,7 @@
 [ext_resource path="res://Actors/Towers/Upgrades/BulletSpeedUpgrade.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Actors/Towers/Upgrades/WeaponFireRateUpgrade.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Actors/Towers/Weapons/Weapon2D.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Actors/Towers/player-turrent.svg" type="Texture" id=8]
+[ext_resource path="res://Actors/sprite-sheet.svg" type="Texture" id=8]
 [ext_resource path="res://Objects/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Actors/Towers/RangePreview/RangePreview.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Actors/Towers/Weapons/Bullets/TowerBullet.tscn" type="PackedScene" id=11]
@@ -77,8 +77,15 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
-z_index = -1
 texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 192, 64, 73, 64 )
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+position = Vector2( -0.668175, 6.45901 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 272, 89, 26, 27 )
 
 [node name="SelectableArea2D" parent="." instance=ExtResource( 9 )]
 position = Vector2( 32, 64 )
@@ -89,8 +96,7 @@ position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
 [node name="Weapon2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 32, 8 )
-z_index = -1
+position = Vector2( 32.2694, 39.417 )
 bullet_scene = ExtResource( 11 )
 
 [node name="RangePreview" parent="." instance=ExtResource( 10 )]

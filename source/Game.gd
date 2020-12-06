@@ -4,10 +4,10 @@ extends Node
 onready var _level := $Level
 onready var _hud := $UILayer/UI/HUD
 onready var _tower_shop := $UILayer/UI/HUD/UITowerShop
-#TODO: refactor to not access the anim player directly
 onready var _screen_overlay := $UILayer/UI/UIScreenOverlay
 onready var _mouse_barrier := $UILayer/UI/MouseBarrier
 onready var _retry_button := $UILayer/UI/HUD/RetryButton
+onready var _start_button := $UILayer/UI/HUD/StartWaveButton
 
 
 func _ready() -> void:
@@ -23,7 +23,6 @@ func _toggle_interface() -> void:
 # Releases the focus from other UI elements and prevents
 # mouse interactions in play mode
 func _toggle_mouse_barrier() -> void:
-	_mouse_barrier.grab_focus()
 	_mouse_barrier.visible = not _hud.visible
 
 
@@ -42,7 +41,8 @@ func _on_Level_wave_finished() -> void:
 
 
 # Lose condition
-func _on_Level_base_died() -> void:
+func _on_Level_base_destroyed() -> void:
+	_start_button.hide()
 	yield(_screen_overlay.play_lost(), "completed")
 	_mouse_barrier.hide()
 	_retry_button.show()

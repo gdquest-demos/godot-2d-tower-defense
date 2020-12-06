@@ -3,6 +3,7 @@ extends TileMap
 
 # The ID of the tile in the Tileset used to draw walkable cells
 const WALKABLE_CELLS_ID := 2
+const DIRECTIONS := [Vector2.UP, Vector2.RIGHT, Vector2.DOWN]
 
 export var start_point := Vector2.ZERO
 export var goal_point := Vector2.ZERO
@@ -54,18 +55,10 @@ func _connect_neighbor_cells():
 
 	for point in _astar.get_points():
 		var cell = _astar.get_point_position(point)
-		var neighbor_cells := Array(
-			[
-				cell + Vector2.UP,
-				cell + Vector2.RIGHT,
-				cell + Vector2.DOWN,
-				cell + Vector2.LEFT,
-				cell + Vector2.UP + Vector2.RIGHT,
-				cell + Vector2.UP + Vector2.LEFT,
-				cell + Vector2.DOWN + Vector2.RIGHT,
-				cell + Vector2.DOWN + Vector2.LEFT,
-			]
-		)
+		var neighbor_cells = []
+		for direction in DIRECTIONS:
+			neighbor_cells.append(cell + direction)
+		
 		for neighbor_cell in neighbor_cells:
 			if not neighbor_cell in walkable_cells:
 				continue
