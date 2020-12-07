@@ -49,7 +49,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Idle"
 length = 2.0
 loop = true
@@ -114,8 +114,7 @@ tracks/4/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "SETUP"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("HurtBoxArea2D/CollisionShape2D:disabled")
 tracks/0/interp = 1
@@ -144,16 +143,39 @@ tracks/1/keys = {
 [node name="PlayerBase" type="Node2D"]
 script = ExtResource( 4 )
 
+[node name="HurtBoxArea2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -40 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
+position = Vector2( 0, -8 )
+shape = SubResource( 1 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 5 )]
+visible = false
+margin_left = -80.0
+margin_top = -100.0
+margin_right = 92.0
+margin_bottom = -82.0
+step = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Death = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/SETUP = SubResource( 4 )
+
 [node name="Sprites" type="Node2D" parent="."]
-position = Vector2( 0, -42 )
+position = Vector2( 0, -48 )
 
 [node name="Sprite" type="Sprite" parent="Sprites"]
+use_parent_material = true
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 16, 15, 129, 82 )
 
 [node name="Sprite6" type="Sprite" parent="Sprites/Sprite"]
 show_behind_parent = true
+use_parent_material = true
 position = Vector2( -16, 16 )
 texture = ExtResource( 1 )
 centered = false
@@ -204,25 +226,5 @@ texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 96, 108, 4, 4 )
-
-[node name="HurtBoxArea2D" parent="." instance=ExtResource( 2 )]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
-position = Vector2( 0, -8 )
-shape = SubResource( 1 )
-
-[node name="HealthBar" parent="." instance=ExtResource( 5 )]
-visible = false
-margin_left = -80.0
-margin_top = -100.0
-margin_right = 92.0
-margin_bottom = -82.0
-step = 1.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Idle"
-anims/Death = SubResource( 2 )
-anims/Idle = SubResource( 4 )
-anims/SETUP = SubResource( 3 )
 [connection signal="health_changed" from="." to="HealthBar" method="_on_owner_health_changed"]
 [connection signal="hit_landed" from="HurtBoxArea2D" to="." method="_on_HurtBoxArea2D_hit_landed"]

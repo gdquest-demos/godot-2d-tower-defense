@@ -3,7 +3,7 @@
 extends Node2D
 
 # The ID of the tiles where we can place a tower.
-const EMPTY_CELL_ID := 3
+const EMPTY_CELL_ID := 2
 
 onready var _grid := $Grid
 onready var _visual_grid := $VisualGrid

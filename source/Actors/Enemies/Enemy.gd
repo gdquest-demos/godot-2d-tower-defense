@@ -12,9 +12,9 @@ export var gold_value := 50
 export var max_health := 15
 var health := max_health setget set_health
 
-onready var _health_bar := $HealthBar
+onready var _health_bar := $UI/Pivot/HealthBar
 onready var _anim_player := $AnimationPlayer
-onready var _sprite_anim_player := $Sprite/AnimationPlayer
+onready var _sprite_anim_player := $Sprites/AnimationPlayer
 
 
 func _ready() -> void:
@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 
 func move() -> void:
 	set_physics_process(true)
+	_anim_player.play("move")
 
 
 func disappear() -> void:

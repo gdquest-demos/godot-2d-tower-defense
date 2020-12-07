@@ -2,8 +2,17 @@
 extends TileMap
 
 # The ID of the tile in the Tileset used to draw walkable cells
-const WALKABLE_CELLS_ID := 2
-const DIRECTIONS := [Vector2.UP, Vector2.RIGHT, Vector2.DOWN]
+const WALKABLE_CELLS_ID := 1
+const DIRECTIONS := [
+	Vector2.UP + Vector2.LEFT,
+	Vector2.UP,
+	Vector2.UP + Vector2.RIGHT,
+	Vector2.LEFT,
+	Vector2.RIGHT,
+	Vector2.DOWN + Vector2.LEFT,
+	Vector2.DOWN,
+	Vector2.DOWN + Vector2.RIGHT
+	]
 
 export var start_point := Vector2.ZERO
 export var goal_point := Vector2.ZERO

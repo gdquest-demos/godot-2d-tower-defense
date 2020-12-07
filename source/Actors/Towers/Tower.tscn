@@ -75,6 +75,14 @@ tracks/1/keys = {
 z_index = 1
 script = ExtResource( 2 )
 
+[node name="SelectableArea2D" parent="." instance=ExtResource( 9 )]
+position = Vector2( 32, 64 )
+z_index = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableArea2D"]
+position = Vector2( 0, -32 )
+shape = SubResource( 1 )
+
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
 texture = ExtResource( 8 )
@@ -83,17 +91,10 @@ region_rect = Rect2( 192, 64, 73, 64 )
 
 [node name="Sprite" type="Sprite" parent="Sprite"]
 position = Vector2( -0.668175, 6.45901 )
+z_index = 1
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 272, 89, 26, 27 )
-
-[node name="SelectableArea2D" parent="." instance=ExtResource( 9 )]
-position = Vector2( 32, 64 )
-z_index = -1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableArea2D"]
-position = Vector2( 0, -32 )
-shape = SubResource( 1 )
 
 [node name="Weapon2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 32.2694, 39.417 )

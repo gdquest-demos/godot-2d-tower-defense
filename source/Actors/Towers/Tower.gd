@@ -56,5 +56,5 @@ func _on_UpgradePanel_upgrade_requested(upgrade_index: int) -> void:
 
 
 func _on_Upgrade_upgraded() -> void:
-	_range_preview.radius = _weapon.sight_range
+	_range_preview.radius = _weapon.fire_range
 	_range_preview.appear()
