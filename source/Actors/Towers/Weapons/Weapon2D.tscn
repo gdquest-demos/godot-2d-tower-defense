@@ -28,18 +28,18 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 bullet_scene = ExtResource( 3 )
 
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 40, 0 )
+region_enabled = true
+region_rect = Rect2( 192, 176, 54, 18 )
+
 [node name="RangeArea2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea2D"]
 shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-offset = Vector2( 40, 0 )
-region_enabled = true
-region_rect = Rect2( 192, 176, 54, 18 )
 
 [node name="BulletSpawnPosition" type="Position2D" parent="."]
 position = Vector2( 64, 0 )

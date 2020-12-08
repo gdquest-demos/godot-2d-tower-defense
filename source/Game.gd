@@ -11,8 +11,7 @@ onready var _start_button := $UILayer/UI/HUD/StartWaveButton
 
 
 func _ready() -> void:
-	Player.gold = 1000
-	_level.tower_placer.setup(_tower_shop)
+	_tower_shop.tower_placer = _level.tower_placer
 
 
 func _toggle_interface() -> void:

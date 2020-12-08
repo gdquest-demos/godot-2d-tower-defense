@@ -1,6 +1,9 @@
 # Allows the player to interactively place a tower on the game grid.
-# Keeps track of cells that are free and those that are occupied.
+# Keeps track free and occupied cells.
+class_name TowerPlacer
 extends Node2D
+
+signal tower_placed(tower)
 
 # The ID of the tiles where we can place a tower.
 const EMPTY_CELL_ID := 2
@@ -26,18 +29,9 @@ func _input(event: InputEvent) -> void:
 		_place_tower()
 
 
-func setup(tower_shop: UITowerShop) -> void:
-	tower_shop.connect("tower_purchased", self, "add_new_tower")
-
-
 # TODO: move player gold management?
 # Gold should change when a tower is bought or sold
-func add_new_tower(tower_scene: PackedScene) -> void:
-	var tower: Tower = tower_scene.instance()
-	if Player.gold - tower.cost < 0:
-		tower.queue_free()
-		return
-	Player.gold -= tower.cost
+func add_new_tower(tower: Tower) -> void:
 
 	add_child(tower)
 	_current_tower = tower
@@ -61,12 +55,12 @@ func is_cell_placeable(cell: Vector2) -> bool:
 
 func _place_tower() -> void:
 	if not is_cell_placeable(_current_cell):
-		Player.gold += _current_tower.cost
 		_current_tower.queue_free()
 	else:
 		set_cell_unplaceable(_current_cell)
 		_current_tower.connect("sold", self, "_on_Tower_sold")
 		_current_tower.hide_interface()
+		emit_signal("tower_placed", _current_tower)
 
 	set_process(false)
 	set_process_input(false)
@@ -83,5 +77,4 @@ func _snap_tower_to_grid() -> void:
 
 
 func _on_Tower_sold(price: int, place: Vector2) -> void:
-	Player.gold += price
 	set_cell_placeable(_grid.world_to_map(place))
