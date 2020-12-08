@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://UI/theme/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Actors/Towers/Tower.gd" type="Script" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Actors/sprite-sheet.svg" type="Texture" id=8]
 [ext_resource path="res://Objects/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Actors/Towers/RangePreview/RangePreview.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Actors/Towers/Weapons/Bullets/TowerBullet.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -72,8 +71,27 @@ tracks/1/keys = {
 }
 
 [node name="Tower" type="Node2D"]
+position = Vector2( 1856, 768 )
 z_index = 1
 script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 32, 32 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 192, 64, 73, 64 )
+
+[node name="Weapon2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 32, 36 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 31.3318, 38.459 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 272, 89, 26, 27 )
+
+[node name="RangePreview" parent="." instance=ExtResource( 10 )]
+position = Vector2( 32, 32 )
 
 [node name="SelectableArea2D" parent="." instance=ExtResource( 9 )]
 position = Vector2( 32, 64 )
@@ -82,26 +100,6 @@ z_index = -1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableArea2D"]
 position = Vector2( 0, -32 )
 shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 32, 32 )
-texture = ExtResource( 8 )
-region_enabled = true
-region_rect = Rect2( 192, 64, 73, 64 )
-
-[node name="Sprite" type="Sprite" parent="Sprite"]
-position = Vector2( -0.668175, 6.45901 )
-z_index = 1
-texture = ExtResource( 8 )
-region_enabled = true
-region_rect = Rect2( 272, 89, 26, 27 )
-
-[node name="Weapon2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 32.2694, 39.417 )
-bullet_scene = ExtResource( 11 )
-
-[node name="RangePreview" parent="." instance=ExtResource( 10 )]
-position = Vector2( 32, 32 )
 
 [node name="Upgrades" type="Node" parent="."]
 
@@ -131,9 +129,9 @@ __meta__ = {
 
 [node name="UpgradePanel" parent="Interface" instance=ExtResource( 3 )]
 margin_left = -128.0
-margin_top = -405.0
+margin_top = -336.0
 margin_right = 192.0
-margin_bottom = -85.0
+margin_bottom = -16.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/appear = SubResource( 2 )

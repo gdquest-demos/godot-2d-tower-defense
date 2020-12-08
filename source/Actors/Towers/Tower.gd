@@ -15,7 +15,6 @@ onready var _selection := $SelectableArea2D
 func _ready() -> void:
 	show_interface()
 	setup_upgrades()
-	find_node("TowerNameLabel").text = name.capitalize()
 
 
 func show_interface() -> void:
