@@ -11,7 +11,8 @@ onready var _start_button := $UILayer/UI/HUD/StartWaveButton
 
 
 func _ready() -> void:
-	_tower_shop.tower_placer = _level.tower_placer
+	_level.tower_placer.connect("tower_placed", _tower_shop, "_on_TowerPlacer_tower_placed")
+	_tower_shop.connect("tower_purchased", _level.tower_placer, "add_new_tower")
 
 
 func _toggle_interface() -> void:
