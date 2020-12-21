@@ -21,5 +21,5 @@ func _on_TowerPlacer_tower_placed(tower: Tower) -> void:
 	Player.gold -= tower.cost
 
 
-func _on_Tower_sold(price: int, position: Vector2) -> void:
+func _on_Tower_sold(price: int, _position: Vector2) -> void:
 	Player.gold += price

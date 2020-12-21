@@ -235,14 +235,14 @@ script = ExtResource( 1 )
 speed = 256.0
 
 [node name="UIRemoteTransform2D" type="RemoteTransform2D" parent="."]
-position = Vector2( 32, 0 )
+position = Vector2( -8, -40 )
 remote_path = NodePath("../UI/Pivot")
 update_rotation = false
 update_scale = false
 
 [node name="Sprites" type="Node2D" parent="."]
 material = ExtResource( 8 )
-position = Vector2( 32, 32 )
+position = Vector2( 12, -4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites"]
 anims/hurt = SubResource( 1 )
@@ -303,7 +303,7 @@ anims/move = SubResource( 8 )
 anims/spawn = SubResource( 9 )
 
 [node name="VisibleArea2D" type="Area2D" parent="."]
-position = Vector2( 32, 64 )
+position = Vector2( 0, 24 )
 collision_layer = 4
 collision_mask = 0
 
@@ -312,7 +312,7 @@ position = Vector2( 0, -28 )
 shape = SubResource( 10 )
 
 [node name="HurtBoxArea2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 32, 40 )
+position = Vector2( 0, 0 )
 team = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
@@ -320,7 +320,7 @@ position = Vector2( 0, -4 )
 shape = SubResource( 11 )
 
 [node name="HitBox2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 32, 64 )
+position = Vector2( 0, 24 )
 team = 1
 hit_scene = ExtResource( 6 )
 
@@ -331,7 +331,7 @@ shape = SubResource( 12 )
 [node name="UI" type="Node" parent="."]
 
 [node name="Pivot" type="Node2D" parent="UI"]
-position = Vector2( 32, 0 )
+position = Vector2( -8, -40 )
 z_index = 2
 
 [node name="HealthBar" parent="UI/Pivot" instance=ExtResource( 7 )]

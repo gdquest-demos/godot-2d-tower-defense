@@ -32,14 +32,14 @@ __meta__ = {
 }
 
 [node name="StartWaveButton" type="Button" parent="UILayer/UI/HUD"]
-anchor_left = 0.833
-anchor_top = 0.6
-anchor_right = 0.933
-anchor_bottom = 0.652
-margin_left = 0.639893
-margin_top = -8.0
-margin_right = 0.639893
-margin_bottom = -0.160034
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 256.0
+margin_top = -184.0
+margin_right = 448.0
+margin_bottom = -120.0
 text = "Start!"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,10 +61,18 @@ __meta__ = {
 }
 
 [node name="UIPlayerGold" parent="UILayer/UI/HUD" instance=ExtResource( 4 )]
-margin_right = 256.0
-margin_bottom = 96.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -108.0
+margin_top = -56.0
+margin_right = 108.0
+margin_bottom = 0.0
 
 [node name="UITowerShop" parent="UILayer/UI/HUD" instance=ExtResource( 1 )]
+margin_top = -248.0
+margin_bottom = -64.0
 
 [node name="MouseBarrier" type="Control" parent="UILayer/UI"]
 visible = false

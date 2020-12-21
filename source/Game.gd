@@ -54,4 +54,5 @@ func _on_Level_finished() -> void:
 
 
 func _on_RetryButton_pressed() -> void:
+	Player.reset()
 	get_tree().reload_current_scene()

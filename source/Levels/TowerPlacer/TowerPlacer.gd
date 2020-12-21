@@ -1,14 +1,14 @@
 # Allows the player to interactively place a tower on the game grid.
 # Keeps track free and occupied cells.
 class_name TowerPlacer
-extends Node2D
+extends TileMap
 
 signal tower_placed(tower)
 
 # The ID of the tiles where we can place a tower.
-const EMPTY_CELL_ID := 2
+const EMPTY_CELL_ID := 0
+const OCCUPIED_CELL_ID := 1
 
-onready var _grid := $Grid
 onready var _visual_grid := $VisualGrid
 
 var _current_cell := Vector2.ZERO
@@ -29,10 +29,12 @@ func _input(event: InputEvent) -> void:
 		_place_tower()
 
 
-# TODO: move player gold management?
-# Gold should change when a tower is bought or sold
-func add_new_tower(tower: Tower) -> void:
+func setup_available_cells(cells_array: PoolVector2Array) -> void:
+	for cell in cells_array:
+		set_cell_placeable(cell)
 
+
+func add_new_tower(tower: Tower) -> void:
 	add_child(tower)
 	_current_tower = tower
 
@@ -42,15 +44,15 @@ func add_new_tower(tower: Tower) -> void:
 
 
 func set_cell_unplaceable(cell: Vector2) -> void:
-	_grid.set_cellv(cell, -1)
+	set_cellv(cell, OCCUPIED_CELL_ID)
 
 
 func set_cell_placeable(cell: Vector2) -> void:
-	_grid.set_cellv(cell, EMPTY_CELL_ID)
+	set_cellv(cell, EMPTY_CELL_ID)
 
 
 func is_cell_placeable(cell: Vector2) -> bool:
-	return _grid.get_cellv(cell) == EMPTY_CELL_ID
+	return get_cellv(cell) == EMPTY_CELL_ID
 
 
 func _place_tower() -> void:
@@ -68,13 +70,13 @@ func _place_tower() -> void:
 
 
 func _snap_tower_to_grid() -> void:
-	_current_cell = _grid.world_to_map(get_global_mouse_position())
+	_current_cell = world_to_map(get_global_mouse_position())
 	if not is_cell_placeable(_current_cell):
 		_current_tower.modulate = Color(1, 0.375, 0.375)
 	else:
 		_current_tower.modulate = Color.white
-	_current_tower.global_position = _grid.map_to_world(_current_cell)
+	_current_tower.global_position = map_to_world(_current_cell)
 
 
-func _on_Tower_sold(price: int, place: Vector2) -> void:
-	set_cell_placeable(_grid.world_to_map(place))
+func _on_Tower_sold(_price: int, place: Vector2) -> void:
+	set_cell_placeable(world_to_map(place))

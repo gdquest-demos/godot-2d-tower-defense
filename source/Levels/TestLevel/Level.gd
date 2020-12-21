@@ -5,21 +5,23 @@ signal finished
 signal wave_finished
 signal base_destroyed
 
+const TOWER_PLACEABLE_CELLS_ID := 3
+const ENEMY_WALK_PATH_CELLS_ID := 2
+
 export var current_event := 0
 var _wave: Wave
 
 onready var tower_placer := $TowerPlacer
+onready var _tilemap := $TileMap
 onready var _astar_grid := $AStarGrid
 onready var _wave_spawner := $WaveSpawner2D
 onready var _events_player := $EventsPlayer
 onready var _path_preview := $PathPreview
-onready var _tilemap := $TileMap
 
 
 func _ready() -> void:
-	setup_tower_placeable_cells()
-	setup_walkable_cells()
-	show_walkable_path()
+	_setup()
+	_show_walkable_path()
 
 
 func start() -> void:
@@ -31,32 +33,20 @@ func finish() -> void:
 	emit_signal("finished")
 
 
-# TODO: pass the data to tower_placer and let it do its thing.
-func setup_tower_placeable_cells() -> void:
-	for cell in _tilemap.get_used_cells():
-		if _tilemap.get_cellv(cell) == tower_placer.EMPTY_CELL_ID:
-			tower_placer.set_cell_placeable(cell)
-		else:
-			tower_placer.set_cell_unplaceable(cell)
-
-
-func setup_walkable_cells() -> void:
+func _setup() -> void:
+	tower_placer.setup_available_cells(_tilemap.get_used_cells_by_id(TOWER_PLACEABLE_CELLS_ID))
 	_astar_grid.start_point = $StartPosition2D.position
 	_astar_grid.goal_point = $GoalPosition2D.position
-	_astar_grid.walkable_cells = _astar_grid.get_used_cells_by_id(_astar_grid.WALKABLE_CELLS_ID)
+	_astar_grid.walkable_cells = _tilemap.get_used_cells_by_id(ENEMY_WALK_PATH_CELLS_ID)
 
 
-func place_new_tower(new_tower_scene: PackedScene) -> void:
-	tower_placer.add_new_tower(new_tower_scene)
-
-
-func show_walkable_path(walking_path := _astar_grid.get_walkable_path()) -> void:
+func _show_walkable_path(walking_path := _astar_grid.get_walkable_path()) -> void:
 	_path_preview.clear_points()
 	_path_preview.points = walking_path
 	_path_preview.fade_in()
 
 
-func setup_wave_walk_path() -> void:
+func _setup_wave_path() -> void:
 	var movement_path: PoolVector2Array = _astar_grid.get_walkable_path()
 	for enemy in _wave.get_children():
 		enemy.position += movement_path[0]
@@ -66,7 +56,7 @@ func setup_wave_walk_path() -> void:
 func spawn_wave() -> void:
 	_wave = yield(_wave_spawner.spawn(), "completed")
 	_wave.connect("finished", self, "_on_Wave_finished")
-	setup_wave_walk_path()
+	_setup_wave_path()
 	_wave.start()
 
 
@@ -88,7 +78,7 @@ func _on_Wave_finished() -> void:
 		finish()
 		return
 	emit_signal("wave_finished")
-	show_walkable_path()
+	_show_walkable_path()
 
 
 func _on_PlayerBase_destroyed():
