@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://Objects/PanningCamera2D/PanningCamera2D.gd" type="Script" id=1]
-
-[node name="PanningCamera2D" type="Camera2D"]
-current = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
-script = ExtResource( 1 )

@@ -14,7 +14,7 @@ func _ready() -> void:
 	set_process(false)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if get_viewport_rect().encloses(get_global_rect()):
 		rect_position = _original_position
 	rect_global_position.x = clamp(rect_global_position.x, 0.0, _safe_position.x)

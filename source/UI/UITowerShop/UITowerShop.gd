@@ -5,6 +5,8 @@ signal tower_purchased(tower_scene)
 
 onready var _buttons: Array = $HBoxContainer.get_children()
 
+var player: Player
+
 
 func _ready() -> void:
 	for button in _buttons:
@@ -18,8 +20,8 @@ func _on_TowerPurchaseButton_pressed(tower_scene: PackedScene) -> void:
 
 
 func _on_TowerPlacer_tower_placed(tower: Tower) -> void:
-	Player.gold -= tower.cost
+	player.gold -= tower.cost
 
 
 func _on_Tower_sold(price: int, _position: Vector2) -> void:
-	Player.gold += price
+	player.gold += price

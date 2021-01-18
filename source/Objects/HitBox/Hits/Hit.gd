@@ -1,4 +1,4 @@
-# Manages damage data, including damage Modifier
+# Carries damage data, including damage Modifiers
 class_name Hit
 extends Node
 

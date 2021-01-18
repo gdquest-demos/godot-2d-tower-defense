@@ -6,9 +6,8 @@ signal sold(price, place)
 export var cost := 100
 
 onready var _upgrades_container := $Upgrades
-onready var _range_preview := $RangePreview
 onready var _weapon := $Weapon2D
-onready var _anim_player := $AnimationPlayer
+onready var _ui_anim_player := $Interface/AnimationPlayer
 onready var _selection := $SelectableArea2D
 
 
@@ -18,14 +17,13 @@ func _ready() -> void:
 
 
 func show_interface() -> void:
-	_range_preview.radius = _weapon.fire_range
-	_range_preview.appear()
-	_anim_player.play("appear")
+	_weapon.show_range()
+	_ui_anim_player.play("appear")
 
 
 func hide_interface() -> void:
-	_range_preview.disappear()
-	_anim_player.play("disappear")
+	_weapon.hide_range()
+	_ui_anim_player.play("disappear")
 
 
 # TODO: refactor
@@ -55,5 +53,4 @@ func _on_UpgradePanel_upgrade_requested(upgrade_index: int) -> void:
 
 
 func _on_Upgrade_upgraded() -> void:
-	_range_preview.radius = _weapon.fire_range
-	_range_preview.appear()
+	_weapon.show_range()

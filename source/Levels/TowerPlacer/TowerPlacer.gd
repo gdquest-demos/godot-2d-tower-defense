@@ -4,8 +4,9 @@ class_name TowerPlacer
 extends TileMap
 
 signal tower_placed(tower)
+signal tower_sold()
 
-# The ID of the tiles where we can place a tower.
+# The ID of the tiles where players can place a tower.
 const EMPTY_CELL_ID := 0
 const OCCUPIED_CELL_ID := 1
 
@@ -16,15 +17,12 @@ var _current_tower: Tower
 
 
 func _ready() -> void:
-	set_process(false)
-	set_process_input(false)
+	set_process_unhandled_input(false)
 
 
-func _process(_delta: float) -> void:
-	_snap_tower_to_grid()
-
-
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		_snap_tower_to_grid()
 	if event.is_action_released("tower_placement"):
 		_place_tower()
 
@@ -38,8 +36,8 @@ func add_new_tower(tower: Tower) -> void:
 	add_child(tower)
 	_current_tower = tower
 
-	set_process(true)
-	set_process_input(true)
+	set_process_unhandled_input(true)
+	_snap_tower_to_grid()
 	_visual_grid.visible = true
 
 
@@ -64,8 +62,7 @@ func _place_tower() -> void:
 		_current_tower.hide_interface()
 		emit_signal("tower_placed", _current_tower)
 
-	set_process(false)
-	set_process_input(false)
+	set_process_unhandled_input(false)
 	_visual_grid.visible = false
 
 

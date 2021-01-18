@@ -8,20 +8,15 @@ export var select_action := "select"
 
 var selected := false setget set_selected
 
-var _is_mouse_on := false
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if not event.is_action_pressed(select_action):
-		return
-	if not _is_mouse_on:
-		set_selected(false)
-
 
 func _input_event(_viewport: Object, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed(select_action):
-		self.selected = not selected
-		get_tree().set_input_as_handled()
+		set_selected(not selected)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(select_action):
+		set_selected(false)
 
 
 func set_selected(select: bool) -> void:
@@ -30,8 +25,8 @@ func set_selected(select: bool) -> void:
 
 
 func _on_mouse_entered() -> void:
-	_is_mouse_on = true
+	set_process_unhandled_input(false)
 
 
 func _on_mouse_exited() -> void:
-	_is_mouse_on = false
+	set_process_unhandled_input(selected)

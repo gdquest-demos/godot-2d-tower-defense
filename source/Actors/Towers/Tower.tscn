@@ -1,15 +1,15 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://UI/theme/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/Theme/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Actors/Towers/Tower.gd" type="Script" id=2]
 [ext_resource path="res://UI/UIUpgradePanel/UIUpgradePanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actors/Towers/Upgrades/WeaponRangeUpgrade.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Actors/Towers/Upgrades/BulletSpeedUpgrade.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Actors/Towers/Upgrades/WeaponFireRateUpgrade.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Actors/Towers/Weapons/Weapon2D.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/Weapon2D/Weapon2D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Actors/sprite-sheet.svg" type="Texture" id=8]
 [ext_resource path="res://Objects/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Actors/Towers/RangePreview/RangePreview.tscn" type="PackedScene" id=10]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -18,7 +18,7 @@ extents = Vector2( 32, 32 )
 resource_name = "appear"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Interface:rect_scale")
+tracks/0/path = NodePath(".:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -30,7 +30,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Interface:visible")
+tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -46,7 +46,7 @@ tracks/1/keys = {
 resource_name = "disappear"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Interface:rect_scale")
+tracks/0/path = NodePath(".:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -58,7 +58,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Interface:visible")
+tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -71,11 +71,9 @@ tracks/1/keys = {
 }
 
 [node name="Tower" type="Node2D"]
-position = Vector2( 1856, 768 )
-z_index = 1
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="BaseSprite" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
 texture = ExtResource( 8 )
 region_enabled = true
@@ -84,14 +82,11 @@ region_rect = Rect2( 192, 64, 73, 64 )
 [node name="Weapon2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 32, 36 )
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="GlassSprite" type="Sprite" parent="."]
 position = Vector2( 31.3318, 38.459 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 272, 89, 26, 27 )
-
-[node name="RangePreview" parent="." instance=ExtResource( 10 )]
-position = Vector2( 32, 32 )
 
 [node name="SelectableArea2D" parent="." instance=ExtResource( 9 )]
 position = Vector2( 32, 64 )
@@ -111,8 +106,9 @@ shape = SubResource( 1 )
 value = 500.0
 
 [node name="Interface" type="Control" parent="."]
-rect_scale = Vector2( 1e-05, 1e-05 )
+visible = false
 rect_pivot_offset = Vector2( 32, 32 )
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -133,7 +129,7 @@ margin_top = -336.0
 margin_right = 192.0
 margin_bottom = -16.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interface"]
 anims/appear = SubResource( 2 )
 anims/disappear = SubResource( 3 )
 [connection signal="selection_changed" from="SelectableArea2D" to="." method="_on_SelectableArea2D_selection_changed"]

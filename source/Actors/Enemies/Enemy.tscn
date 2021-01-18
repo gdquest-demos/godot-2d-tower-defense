@@ -229,16 +229,9 @@ radius = 32.0
 extents = Vector2( 24, 24 )
 
 [node name="Enemy" type="PathFollow2D"]
-z_index = 1
 loop = false
 script = ExtResource( 1 )
 speed = 256.0
-
-[node name="UIRemoteTransform2D" type="RemoteTransform2D" parent="."]
-position = Vector2( -8, -40 )
-remote_path = NodePath("../UI/Pivot")
-update_rotation = false
-update_scale = false
 
 [node name="Sprites" type="Node2D" parent="."]
 material = ExtResource( 8 )
@@ -328,17 +321,23 @@ hit_scene = ExtResource( 6 )
 position = Vector2( 0, -24 )
 shape = SubResource( 12 )
 
-[node name="UI" type="Node" parent="."]
+[node name="UIRemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../UIPivot")
+update_rotation = false
+update_scale = false
 
-[node name="Pivot" type="Node2D" parent="UI"]
-position = Vector2( -8, -40 )
+[node name="UIPivot" type="Node2D" parent="."]
 z_index = 2
 
-[node name="HealthBar" parent="UI/Pivot" instance=ExtResource( 7 )]
-margin_left = -40.0
-margin_top = -32.0
-margin_right = 112.0
-margin_bottom = -12.0
+[node name="HealthBar" parent="UIPivot" instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -72.0
+margin_right = 80.0
+margin_bottom = -52.0
 step = 1.0
-[connection signal="health_changed" from="." to="UI/Pivot/HealthBar" method="_on_owner_health_changed"]
+[connection signal="health_changed" from="." to="UIPivot/HealthBar" method="_on_owner_health_changed"]
 [connection signal="hit_landed" from="HurtBoxArea2D" to="." method="_on_HurtBoxArea2D_hit_landed"]

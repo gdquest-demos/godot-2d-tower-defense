@@ -1,6 +1,7 @@
 # Initializes the user interface, forwarding it the data it needs from the game world.
 extends Node
 
+onready var _player := $Player
 onready var _level := $Level
 onready var _hud := $UILayer/UI/HUD
 onready var _tower_shop := $UILayer/UI/HUD/UITowerShop
@@ -8,11 +9,15 @@ onready var _screen_overlay := $UILayer/UI/UIScreenOverlay
 onready var _mouse_barrier := $UILayer/UI/MouseBarrier
 onready var _retry_button := $UILayer/UI/HUD/RetryButton
 onready var _start_button := $UILayer/UI/HUD/StartWaveButton
+onready var _gold_planel := $UILayer/UI/HUD/UIPlayerGold
 
 
 func _ready() -> void:
 	_level.tower_placer.connect("tower_placed", _tower_shop, "_on_TowerPlacer_tower_placed")
 	_tower_shop.connect("tower_purchased", _level.tower_placer, "add_new_tower")
+	_tower_shop.player = _player
+	_gold_planel.player = _player
+	_gold_planel.setup()
 
 
 func _toggle_interface() -> void:
@@ -54,5 +59,8 @@ func _on_Level_finished() -> void:
 
 
 func _on_RetryButton_pressed() -> void:
-	Player.reset()
 	get_tree().reload_current_scene()
+
+
+func _on_Level_enemy_died(gold_earned) -> void:
+	_player.gold += gold_earned

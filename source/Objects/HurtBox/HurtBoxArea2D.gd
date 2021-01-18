@@ -9,4 +9,6 @@ export (Teams) var team := Teams.Player
 
 
 func get_hurt(hit: Hit) -> void:
+	# Hits are added as children in order to process their Modifiers
+	add_child(hit)
 	emit_signal("hit_landed", hit)

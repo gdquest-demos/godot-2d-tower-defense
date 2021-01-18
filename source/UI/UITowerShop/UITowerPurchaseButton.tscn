@@ -6,12 +6,14 @@
 [ext_resource path="res://UI/UITowerShop/tower-icon-pressed.svg" type="Texture" id=4]
 
 [node name="UITowerPurchaseButton" type="TextureButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = 256.0
+margin_bottom = 256.0
 rect_min_size = Vector2( 64, 64 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 action_mode = 0
+enabled_focus_mode = 0
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 3 )
@@ -23,21 +25,17 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -36.0
-margin_top = 2.27573
-margin_right = 36.0
-margin_bottom = 18.2757
+margin_top = 16.0
+margin_bottom = 48.0
 hint_tooltip = "$200"
 mouse_filter = 1
 text = "Tower"
 align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -3,9 +3,11 @@ extends Control
 
 onready var _amount_label: Label = $AmountLabel
 
-func _ready() -> void:
-	Player.connect("gold_changed", self, "_update_gold_amount")
-	_update_gold_amount(Player.gold)
+var player: Player
+
+func setup() -> void:
+	player.connect("gold_changed", self, "_update_gold_amount")
+	_update_gold_amount(player.gold)
 
 
 func _update_gold_amount(new_amount: int) -> void:
