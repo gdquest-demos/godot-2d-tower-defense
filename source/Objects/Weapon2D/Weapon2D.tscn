@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/Weapon2D/Weapon2D.gd" type="Script" id=1]
-[ext_resource path="res://Actors/sprite-sheet.svg" type="Texture" id=2]
+[ext_resource path="res://sprite-sheet.svg" type="Texture" id=2]
 [ext_resource path="res://Objects/Weapon2D/RangePreview/RangePreview.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Weapon2D/Bullets/Bullet.tscn" type="PackedScene" id=4]
 

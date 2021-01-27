@@ -5,14 +5,14 @@ extends Area2D
 enum Teams { Player, Enemy }
 export (Teams) var team := Teams.Player
 
-export var hit_scene: PackedScene
+export var damage := 1
 export var can_hit_multiple := false
 
 
 func apply_hit(hurt_box: HurtBox2D) -> void:
 	if team == hurt_box.team:
 		return
-	hurt_box.get_hurt(hit_scene.instance())
+	hurt_box.get_hurt(damage)
 	set_deferred("monitoring", can_hit_multiple) 
 
 

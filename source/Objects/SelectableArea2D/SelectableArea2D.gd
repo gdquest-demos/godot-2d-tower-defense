@@ -15,7 +15,7 @@ func _input_event(_viewport: Object, event: InputEvent, _shape_idx: int) -> void
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(select_action):
+	if event.is_action_pressed(select_action) and selected:
 		set_selected(false)
 
 

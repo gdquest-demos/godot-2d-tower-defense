@@ -19,11 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Enemies/Enemy.gd"
 }, {
-"base": "Node",
-"class": "Hit",
-"language": "GDScript",
-"path": "res://Objects/HitBox/Hits/Hit.gd"
-}, {
 "base": "Area2D",
 "class": "HitBox2D",
 "language": "GDScript",
@@ -33,11 +28,6 @@ _global_script_classes=[ {
 "class": "HurtBox2D",
 "language": "GDScript",
 "path": "res://Objects/HurtBox/HurtBoxArea2D.gd"
-}, {
-"base": "Reference",
-"class": "Modifier",
-"language": "GDScript",
-"path": "res://Objects/Weapon2D/Bullets/Modifiers/Modifier.gd"
 }, {
 "base": "Node",
 "class": "Player",
@@ -64,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/UITowerShop/UITowerShop.gd"
 }, {
-"base": "Node",
-"class": "Upgrade",
-"language": "GDScript",
-"path": "res://Actors/Towers/Upgrades/Upgrade.gd"
-}, {
 "base": "Path2D",
 "class": "Wave",
 "language": "GDScript",
@@ -87,16 +72,13 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Bullet": "",
 "Enemy": "",
-"Hit": "",
 "HitBox2D": "",
 "HurtBox2D": "",
-"Modifier": "",
 "Player": "",
 "SelectableArea2D": "",
 "Tower": "",
 "TowerPlacer": "",
 "UITowerShop": "",
-"Upgrade": "",
 "Wave": "",
 "WaveSpawner2D": "",
 "Weapon": ""

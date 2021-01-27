@@ -3,9 +3,6 @@
 [ext_resource path="res://Levels/TowerPlacer/TowerPlacer.gd" type="Script" id=1]
 [ext_resource path="res://Areas/AsteroidSurface/tileset.tres" type="TileSet" id=2]
 
-
-
-
 [node name="TowerPlacer" type="TileMap"]
 format = 1
 script = ExtResource( 1 )

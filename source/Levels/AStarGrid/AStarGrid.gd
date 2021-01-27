@@ -13,7 +13,7 @@ export var goal_point := Vector2.ZERO
 
 var walkable_cells: PoolVector2Array
 
-onready var _astar := AStar2D.new()
+var _astar := AStar2D.new()
 
 
 func get_walkable_path() -> PoolVector2Array:
@@ -30,10 +30,6 @@ func _get_astar_path() -> PoolVector2Array:
 	var astar_path: PoolVector2Array
 
 	_create_astar_points()
-
-	_astar.set_point_position(0, world_to_map(start_point))
-	_astar.set_point_position(_astar.get_point_count() - 1, world_to_map(goal_point))
-
 	_connect_neighbor_cells()
 
 	# Creates a walkable path from the start_point to the goal_point
@@ -47,6 +43,8 @@ func _create_astar_points() -> void:
 	for cell in walkable_cells:
 		_astar.add_point(cell_id, cell)
 		cell_id += 1
+	_astar.set_point_position(0, world_to_map(start_point))
+	_astar.set_point_position(_astar.get_point_count() - 1, world_to_map(goal_point))
 
 
 func _connect_neighbor_cells():

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tough-blob-sprite.svg-166b6e4dc6d1c3305026f7c5e7d0b586.stex"
+path="res://.import/sprite-sheet.svg-770a08d3ddf9b41899e4553fd12331ab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Enemies/tough-blob-sprite.svg"
-dest_files=[ "res://.import/tough-blob-sprite.svg-166b6e4dc6d1c3305026f7c5e7d0b586.stex" ]
+source_file="res://sprite-sheet.svg"
+dest_files=[ "res://.import/sprite-sheet.svg-770a08d3ddf9b41899e4553fd12331ab.stex" ]
 
 [params]
 

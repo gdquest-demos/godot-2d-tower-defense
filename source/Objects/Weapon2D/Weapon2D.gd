@@ -2,6 +2,7 @@ class_name Weapon
 extends Node2D
 
 export var bullet_scene: PackedScene
+export var bullet_speed := 500.0
 # Range of the weapon in pixels.
 export var fire_range := 200.0 setget set_fire_range
 # Cooldown in seconds to fire again
@@ -13,13 +14,6 @@ onready var _range_area := $RangeArea2D
 onready var _animation_player := $AnimationPlayer
 onready var _range_shape: CircleShape2D = $RangeArea2D/CollisionShape2D.shape
 onready var _range_preview := $RangePreview
-
-
-func _ready() -> void:
-	# Ensures the Bullet PackedScene is unique to every Weapon, this
-	# prevents that changes made to the Weapon's Bullet reflect on other
-	# weapons due to how Resources work
-	bullet_scene = bullet_scene.duplicate()
 
 
 func _physics_process(_delta: float) -> void:
@@ -46,6 +40,7 @@ func shoot_at(target_position: Vector2) -> void:
 	_animation_player.play("shoot")
 
 	var bullet = bullet_scene.instance()
+	bullet.speed = bullet_speed
 	add_child(bullet)
 	bullet.global_position = _bullet_spawn_position.global_position
 	bullet.fly_to(target_position)

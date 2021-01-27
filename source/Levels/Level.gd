@@ -18,11 +18,11 @@ onready var _astar_grid := $AStarGrid
 onready var _wave_spawner := $WaveSpawner2D
 onready var _events_player := $EventsPlayer
 onready var _path_preview := $PathPreview
+onready var _player_base := $PlayerBase
 
 
 func _ready() -> void:
 	_setup()
-	_show_walkable_path()
 
 
 func start() -> void:
@@ -34,29 +34,8 @@ func finish() -> void:
 	emit_signal("finished")
 
 
-func _setup() -> void:
-	tower_placer.setup_available_cells(_tilemap.get_used_cells_by_id(TOWER_PLACEABLE_CELLS_ID))
-	_astar_grid.start_point = $StartPosition2D.position
-	_astar_grid.goal_point = $GoalPosition2D.position
-	_astar_grid.walkable_cells = _tilemap.get_used_cells_by_id(ENEMY_WALK_PATH_CELLS_ID)
-
-
-func _show_walkable_path(walking_path := _astar_grid.get_walkable_path()) -> void:
-	_path_preview.clear_points()
-	_path_preview.points = walking_path
-	_path_preview.fade_in()
-
-
-func _setup_wave_path() -> void:
-	var movement_path: PoolVector2Array = _astar_grid.get_walkable_path()
-	for enemy in _wave.get_children():
-		enemy.position += movement_path[0]
-		enemy.connect("died", self, "_on_Enemy_died", [enemy.gold_value])
-		_wave.set_movement_path(movement_path)
-
-
 func spawn_wave() -> void:
-	_wave = yield(_wave_spawner.spawn(), "completed")
+	_wave = _wave_spawner.spawn()
 	_wave.connect("finished", self, "_on_Wave_finished")
 	_setup_wave_path()
 	_wave.start()
@@ -73,6 +52,28 @@ func play_event(event_index := current_event) -> void:
 func play_next_event() -> void:
 	play_event(current_event)
 	current_event += 1
+
+
+func _setup() -> void:
+	tower_placer.setup_available_cells(_tilemap.get_used_cells_by_id(TOWER_PLACEABLE_CELLS_ID))
+	_astar_grid.start_point = _wave_spawner.position
+	_astar_grid.goal_point = _player_base.position
+	_astar_grid.walkable_cells = _tilemap.get_used_cells_by_id(ENEMY_WALK_PATH_CELLS_ID)
+	_show_walkable_path()
+
+
+func _show_walkable_path(walking_path := _astar_grid.get_walkable_path()) -> void:
+	_path_preview.clear_points()
+	_path_preview.points = walking_path
+	_path_preview.fade_in()
+
+
+func _setup_wave_path() -> void:
+	var movement_path: PoolVector2Array = _astar_grid.get_walkable_path()
+	_wave.set_movement_path(movement_path)
+
+	for enemy in _wave.get_children():
+		enemy.connect("died", self, "_on_Enemy_died")
 
 
 func _on_Wave_finished() -> void:

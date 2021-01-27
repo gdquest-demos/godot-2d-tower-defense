@@ -1,44 +1,26 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Actors/Enemies/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Actors/sprite-sheet.svg" type="Texture" id=2]
+[ext_resource path="res://sprite-sheet.svg" type="Texture" id=2]
 [ext_resource path="res://Objects/HurtBox/HurtBoxArea2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actors/Enemies/particle.svg" type="Texture" id=4]
 [ext_resource path="res://Objects/HitBox/HitBoxArea2D.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Objects/HitBox/Hits/EnemyHit.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/UIHealthBar/UIHealthBar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Actors/damage-shader.tres" type="Material" id=8]
 
-[sub_resource type="Animation" id=1]
-length = 0.15
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/damaged")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true, false ]
-}
-
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.987578 )
 colors = PoolColorArray( 0.921569, 0.337255, 0.294118, 1, 0.921569, 0.337255, 0.294118, 0 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=5]
 trail_divisor = 4
 emission_shape = 1
 emission_sphere_radius = 17.76
@@ -48,10 +30,10 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.5
 scale_random = 0.5
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.25
 step = 0.05
 tracks/0/type = "value"
@@ -81,7 +63,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "move"
 loop = true
 tracks/0/type = "value"
@@ -193,7 +175,7 @@ tracks/8/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.875101, 0.875101 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("HurtBoxArea2D/CollisionShape2D:disabled")
 tracks/0/interp = 1
@@ -219,33 +201,32 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="CircleShape2D" id=9]
+radius = 32.0
+
 [sub_resource type="CircleShape2D" id=10]
 radius = 32.0
 
-[sub_resource type="CircleShape2D" id=11]
-radius = 32.0
-
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 24, 24 )
 
 [node name="Enemy" type="PathFollow2D"]
 loop = false
 script = ExtResource( 1 )
 speed = 256.0
+max_health = 5
 
 [node name="Sprites" type="Node2D" parent="."]
-material = ExtResource( 8 )
 position = Vector2( 12, -4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites"]
-anims/hurt = SubResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="Sprites"]
 position = Vector2( -10.5112, 0 )
 amount = 32
 lifetime = 4.0
 local_coords = false
-process_material = SubResource( 6 )
+process_material = SubResource( 5 )
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Sprites"]
@@ -291,9 +272,9 @@ region_rect = Rect2( 319, 32, 29, 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
-anims/disappear = SubResource( 7 )
-anims/move = SubResource( 8 )
-anims/spawn = SubResource( 9 )
+anims/disappear = SubResource( 6 )
+anims/move = SubResource( 7 )
+anims/spawn = SubResource( 8 )
 
 [node name="VisibleArea2D" type="Area2D" parent="."]
 position = Vector2( 0, 24 )
@@ -302,7 +283,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisibleArea2D"]
 position = Vector2( 0, -28 )
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="HurtBoxArea2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 0 )
@@ -310,16 +291,15 @@ team = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
 position = Vector2( 0, -4 )
-shape = SubResource( 11 )
+shape = SubResource( 10 )
 
 [node name="HitBox2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 24 )
 team = 1
-hit_scene = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
 position = Vector2( 0, -24 )
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 
 [node name="UIRemoteTransform2D" type="RemoteTransform2D" parent="."]
 remote_path = NodePath("../UIPivot")
@@ -330,6 +310,7 @@ update_scale = false
 z_index = 2
 
 [node name="HealthBar" parent="UIPivot" instance=ExtResource( 7 )]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -339,5 +320,4 @@ margin_top = -72.0
 margin_right = 80.0
 margin_bottom = -52.0
 step = 1.0
-[connection signal="health_changed" from="." to="UIPivot/HealthBar" method="_on_owner_health_changed"]
 [connection signal="hit_landed" from="HurtBoxArea2D" to="." method="_on_HurtBoxArea2D_hit_landed"]

@@ -25,8 +25,7 @@ func _toggle_interface() -> void:
 	_toggle_mouse_barrier()
 
 
-# Releases the focus from other UI elements and prevents
-# mouse interactions in play mode
+# Prevents mouse interactions in play mode
 func _toggle_mouse_barrier() -> void:
 	_mouse_barrier.visible = not _hud.visible
 

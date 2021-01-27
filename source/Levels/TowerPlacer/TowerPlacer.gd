@@ -1,10 +1,9 @@
 # Allows the player to interactively place a tower on the game grid.
-# Keeps track free and occupied cells.
+# Keeps track of free and occupied cells.
 class_name TowerPlacer
 extends TileMap
 
 signal tower_placed(tower)
-signal tower_sold()
 
 # The ID of the tiles where players can place a tower.
 const EMPTY_CELL_ID := 0
@@ -23,7 +22,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		_snap_tower_to_grid()
-	if event.is_action_released("tower_placement"):
+	if event.is_action_pressed("tower_placement"):
 		_place_tower()
 
 
@@ -56,11 +55,11 @@ func is_cell_placeable(cell: Vector2) -> bool:
 func _place_tower() -> void:
 	if not is_cell_placeable(_current_cell):
 		_current_tower.queue_free()
-	else:
-		set_cell_unplaceable(_current_cell)
-		_current_tower.connect("sold", self, "_on_Tower_sold")
-		_current_tower.hide_interface()
-		emit_signal("tower_placed", _current_tower)
+		return
+
+	set_cell_unplaceable(_current_cell)
+	emit_signal("tower_placed", _current_tower)
+	_current_tower.connect("sold", self, "_on_Tower_sold")
 
 	set_process_unhandled_input(false)
 	_visual_grid.visible = false
@@ -68,11 +67,11 @@ func _place_tower() -> void:
 
 func _snap_tower_to_grid() -> void:
 	_current_cell = world_to_map(get_global_mouse_position())
+	_current_tower.global_position = map_to_world(_current_cell)
 	if not is_cell_placeable(_current_cell):
 		_current_tower.modulate = Color(1, 0.375, 0.375)
 	else:
 		_current_tower.modulate = Color.white
-	_current_tower.global_position = map_to_world(_current_cell)
 
 
 func _on_Tower_sold(_price: int, place: Vector2) -> void:

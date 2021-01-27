@@ -33,14 +33,14 @@ func move_enemies() -> void:
 	emit_signal("started")
 
 
-func is_wave_finished() -> bool:
-	return get_child_count() < 1
-
-
 func set_movement_path(movement_path: PoolVector2Array) -> void:
 	curve.clear_points()
 	for point in movement_path:
 		curve.add_point(point)
+
+
+func is_wave_finished() -> bool:
+	return get_child_count() < 1
 
 
 func _on_Enemy_tree_exited() -> void:

@@ -2,7 +2,7 @@ extends TextureButton
 
 signal tower_purchased
 
-export var tower: PackedScene = preload("res://Actors/Towers/Tower.tscn")
+export var tower: PackedScene
 
 onready var _label := $Label
 

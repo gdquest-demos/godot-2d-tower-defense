@@ -1,74 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Theme/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Actors/Towers/Tower.gd" type="Script" id=2]
-[ext_resource path="res://UI/UIUpgradePanel/UIUpgradePanel.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actors/Towers/Upgrades/WeaponRangeUpgrade.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Actors/Towers/Upgrades/BulletSpeedUpgrade.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Actors/Towers/Upgrades/WeaponFireRateUpgrade.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/UIUnit/UIUnit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Weapon2D/Weapon2D.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Actors/sprite-sheet.svg" type="Texture" id=8]
+[ext_resource path="res://sprite-sheet.svg" type="Texture" id=8]
 [ext_resource path="res://Objects/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=9]
-
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
-
-[sub_resource type="Animation" id=2]
-resource_name = "appear"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3 ),
-"transitions": PoolRealArray( 0.5, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "disappear"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3 ),
-"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
 
 [node name="Tower" type="Node2D"]
 script = ExtResource( 2 )
@@ -96,42 +36,19 @@ z_index = -1
 position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
-[node name="Upgrades" type="Node" parent="."]
-
-[node name="WeaponRangeUpgrade" parent="Upgrades" instance=ExtResource( 4 )]
-
-[node name="WeaponFireRateUpgrade" parent="Upgrades" instance=ExtResource( 6 )]
-
-[node name="BulletSpeedUpgrade" parent="Upgrades" instance=ExtResource( 5 )]
-value = 500.0
-
-[node name="Interface" type="Control" parent="."]
-visible = false
-rect_pivot_offset = Vector2( 32, 32 )
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Interface" parent="." instance=ExtResource( 3 )]
+margin_top = 32.0
+margin_bottom = 32.0
 
 [node name="SellButton" type="Button" parent="Interface"]
-margin_top = 72.0
-margin_right = 64.0
-margin_bottom = 98.0
+margin_left = -40.0
+margin_top = 48.0
+margin_right = 104.0
+margin_bottom = 86.0
 theme = ExtResource( 1 )
 text = "Sell"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="UpgradePanel" parent="Interface" instance=ExtResource( 3 )]
-margin_left = -128.0
-margin_top = -336.0
-margin_right = 192.0
-margin_bottom = -16.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Interface"]
-anims/appear = SubResource( 2 )
-anims/disappear = SubResource( 3 )
 [connection signal="selection_changed" from="SelectableArea2D" to="." method="_on_SelectableArea2D_selection_changed"]
 [connection signal="pressed" from="Interface/SellButton" to="." method="_on_SellButton_pressed"]
-[connection signal="upgrade_requested" from="Interface/UpgradePanel" to="." method="_on_UpgradePanel_upgrade_requested"]

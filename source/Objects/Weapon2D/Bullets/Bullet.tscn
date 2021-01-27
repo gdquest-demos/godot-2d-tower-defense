@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Objects/Weapon2D/Bullets/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://Actors/sprite-sheet.svg" type="Texture" id=2]
+[ext_resource path="res://sprite-sheet.svg" type="Texture" id=2]
 [ext_resource path="res://Objects/HitBox/HitBoxArea2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Weapon2D/Bullets/Explosions/SmallExplosion.tscn" type="PackedScene" id=5]
 
@@ -128,7 +128,7 @@ anims/explode = SubResource( 2 )
 [node name="ExplodeParticles" parent="." instance=ExtResource( 5 )]
 
 [node name="HitBoxArea2D" parent="." instance=ExtResource( 3 )]
-visible = false
+damage = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxArea2D"]
 rotation = 1.57079

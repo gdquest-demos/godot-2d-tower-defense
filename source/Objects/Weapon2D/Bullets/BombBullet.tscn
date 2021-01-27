@@ -1,15 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Objects/Weapon2D/Bullets/Bullet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Objects/HitBox/Hits/BombHit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Weapon2D/Bullets/Explosions/Explosion.tscn" type="PackedScene" id=4]
 
-
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 48.0
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "SETUP"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:visible")
@@ -48,7 +42,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "explode"
 length = 3.0
 tracks/0/type = "animation"
@@ -100,6 +94,9 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="CircleShape2D" id=3]
+radius = 48.0
+
 [node name="Bullet" instance=ExtResource( 1 )]
 speed = 250.0
 
@@ -109,16 +106,15 @@ region_rect = Rect2( 240, 144, 16, 16 )
 [node name="Sprite2" parent="Sprite" index="0"]
 visible = false
 
-[node name="HitBoxArea2D" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="2"]
+anims/SETUP = SubResource( 1 )
+anims/explode = SubResource( 2 )
+
+[node name="HitBoxArea2D" parent="." index="4"]
 can_hit_multiple = true
-hit_scene = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="HitBoxArea2D" index="0"]
-shape = SubResource( 1 )
-
-[node name="AnimationPlayer" parent="." index="3"]
-anims/SETUP = SubResource( 2 )
-anims/explode = SubResource( 3 )
+shape = SubResource( 3 )
 
 [node name="Explosion" parent="." index="5" instance=ExtResource( 4 )]
 z_index = 3

@@ -1,7 +1,6 @@
 class_name Enemy
 extends PathFollow2D
 
-signal health_changed(new_amount)
 signal died(gold_amount)
 
 # Movement speed in pixels per second.
@@ -47,13 +46,11 @@ func die() -> void:
 
 func set_health(value: int) -> void:
 	health = clamp(value, 0, max_health)
-	emit_signal("health_changed", health)
+	_health_bar.set_current_amount(health)
 	
 	if health < 1:
 		die()
 
 
-func _on_HurtBoxArea2D_hit_landed(hit: Hit) -> void:
-	set_health(health - hit.damage)
-	for modifier in hit.modifiers.get_children():
-		modifier.target = self
+func _on_HurtBoxArea2D_hit_landed(damage: int) -> void:
+	set_health(health - damage)
