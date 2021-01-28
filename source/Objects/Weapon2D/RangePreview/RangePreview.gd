@@ -7,8 +7,8 @@ onready var _tween := $Tween
 
 
 func appear() -> void:
-	var ratio = radius / texture.get_width()
-	var final_scale = Vector2(ratio, ratio) * 2
+	var ratio = radius / 100.0
+	var final_scale = Vector2(ratio, ratio) * 2.0
 
 	if _tween.is_active():
 		_tween.stop_all()

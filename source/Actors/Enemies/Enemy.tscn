@@ -5,7 +5,7 @@
 [ext_resource path="res://Objects/HurtBox/HurtBoxArea2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actors/Enemies/particle.svg" type="Texture" id=4]
 [ext_resource path="res://Objects/HitBox/HitBoxArea2D.tscn" type="PackedScene" id=5]
-[ext_resource path="res://UI/UIHealthBar/UIHealthBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/UIHealthBar/UITimedHealthBar.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.987578 )

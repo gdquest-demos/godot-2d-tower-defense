@@ -8,17 +8,20 @@ var health := max_health setget set_health
 
 onready var _anim_player := $AnimationPlayer
 onready var _interface := $Interface
-onready var _health_bar := $Interface/HealthBar
+onready var _ui_health_bar := $Interface/HealthBar
+onready var _health_bar := $HealthBar
 
 
 func _ready() -> void:
 	health = max_health
-	_health_bar.setup(health, max_health)
+	_ui_health_bar.share(_health_bar)
+	_ui_health_bar.max_value = max_health
+	_ui_health_bar.value = health
 
 
 func set_health(value: int) -> void:
 	health = int(clamp(value, 0, max_health))
-	_health_bar.set_current_amount(health)
+	_ui_health_bar.value = health
 
 	if health < 1:
 		_destroy()

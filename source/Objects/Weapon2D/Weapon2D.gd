@@ -4,7 +4,7 @@ extends Node2D
 export var bullet_scene: PackedScene
 export var bullet_speed := 500.0
 # Range of the weapon in pixels.
-export var fire_range := 200.0 setget set_fire_range
+export var fire_range := 128.0 setget set_fire_range
 # Cooldown in seconds to fire again
 export var fire_cooldown := 1.0
 
@@ -14,6 +14,11 @@ onready var _range_area := $RangeArea2D
 onready var _animation_player := $AnimationPlayer
 onready var _range_shape: CircleShape2D = $RangeArea2D/CollisionShape2D.shape
 onready var _range_preview := $RangePreview
+
+
+func _ready() -> void:
+	set_fire_range(fire_range)
+	show_range()
 
 
 func _physics_process(_delta: float) -> void:

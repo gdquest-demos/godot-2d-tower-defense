@@ -10,6 +10,7 @@ const DIRECTIONS := [
 
 export var start_point := Vector2.ZERO
 export var goal_point := Vector2.ZERO
+export var offset := Vector2(32, 32)
 
 var walkable_cells: PoolVector2Array
 
@@ -22,7 +23,7 @@ func get_walkable_path() -> PoolVector2Array:
 	var astar_path = _get_astar_path()
 	for cell in astar_path:
 		var point := map_to_world(cell)
-		walkable_path.append(to_global(point))
+		walkable_path.append(to_global(point) + offset)
 	return walkable_path
 
 

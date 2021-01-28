@@ -11,7 +11,7 @@ onready var _selection := $SelectableArea2D
 
 
 func _ready() -> void:
-	_weapon.show_range()
+	_selection.selected = true
 
 
 func show_interface() -> void:

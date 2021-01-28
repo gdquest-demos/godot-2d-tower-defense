@@ -17,7 +17,8 @@ onready var _sprite_anim_player := $Sprites/AnimationPlayer
 
 
 func _ready() -> void:
-	_health_bar.setup(health, max_health)
+	_health_bar.max_value = max_health
+	_health_bar.value = health
 	$UIPivot.set_as_toplevel(true)
 	set_physics_process(false)
 
@@ -46,7 +47,7 @@ func die() -> void:
 
 func set_health(value: int) -> void:
 	health = clamp(value, 0, max_health)
-	_health_bar.set_current_amount(health)
+	_health_bar.value = health
 	
 	if health < 1:
 		die()

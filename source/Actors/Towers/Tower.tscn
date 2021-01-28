@@ -37,14 +37,21 @@ position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
 [node name="Interface" parent="." instance=ExtResource( 3 )]
-margin_top = 32.0
-margin_bottom = 32.0
+margin_left = 32.0
+margin_top = 40.0
+margin_right = 32.0
+margin_bottom = 40.0
 
 [node name="SellButton" type="Button" parent="Interface"]
-margin_left = -40.0
-margin_top = 48.0
-margin_right = 104.0
-margin_bottom = 86.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -72.0
+margin_top = 32.0
+margin_right = 72.0
+margin_bottom = 70.0
+rect_pivot_offset = Vector2( 72, 16 )
 theme = ExtResource( 1 )
 text = "Sell"
 __meta__ = {

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/UIHealthBar/heart.svg" type="Texture" id=1]
+[ext_resource path="res://UI/UIHealthBar/UITimedHealthBar.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.235294, 0.639216, 0.439216, 1 )
@@ -26,14 +27,15 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="HealthBar" type="ProgressBar"]
-margin_right = 172.0
-margin_bottom = 18.0
+[node name="UIHealthBar" type="ProgressBar"]
+margin_top = 6.0
+margin_right = 192.0
+margin_bottom = 24.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
-step = 1.0
 value = 50.0
 percent_visible = false
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -49,3 +51,8 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

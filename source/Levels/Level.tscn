@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://sprite-sheet.svg" type="Texture" id=2]
@@ -10,24 +10,9 @@
 [ext_resource path="res://Levels/Waves/Wave2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/AStarGrid/AStarGrid.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/PathPreview.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/EventsPlayer.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=2]
-length = 3.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("../WaveSpawner2D/Sprite:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 360.0, 0.0 ]
-}
-
-[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
 tracks/0/interp = 1
@@ -55,7 +40,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
 tracks/0/interp = 1
@@ -83,10 +68,27 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=1]
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="AStarGrid" parent="." instance=ExtResource( 9 )]
+position = Vector2( 0, 0 )
 
 [node name="TowerPlacer" parent="." instance=ExtResource( 6 )]
 z_index = 1
@@ -99,24 +101,28 @@ tile_data = PoolIntArray( 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 
 [node name="PathPreview" parent="." instance=ExtResource( 10 )]
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 352, 160 )
 spawn_scene = ExtResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="WaveSpawner2D"]
-rotation = 6.28319
-scale = Vector2( 1, 1 )
+[node name="EventsPlayer" type="AnimationPlayer" parent="."]
+anims/00.first-wave = SubResource( 2 )
+anims/01.second-wave = SubResource( 3 )
+script = ExtResource( 11 )
+
+[node name="StartPoint" type="Position2D" parent="."]
+position = Vector2( 352, 160 )
+
+[node name="EnemySpawn" type="Sprite" parent="StartPoint"]
+rotation = -0.246199
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 319, 192, 65, 65 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="WaveSpawner2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartPoint/EnemySpawn"]
 autoplay = "spin"
-anims/spin = SubResource( 2 )
+anims/spin = SubResource( 1 )
 
-[node name="PlayerBase" parent="." instance=ExtResource( 5 )]
+[node name="GoalPoint" type="Position2D" parent="."]
 position = Vector2( 1632, 800 )
 
-[node name="EventsPlayer" type="AnimationPlayer" parent="."]
-anims/00.first-wave = SubResource( 3 )
-anims/01.second-wave = SubResource( 4 )
-[connection signal="destroyed" from="PlayerBase" to="." method="_on_PlayerBase_destroyed"]
+[node name="PlayerBase" parent="GoalPoint" instance=ExtResource( 5 )]
+[connection signal="destroyed" from="GoalPoint/PlayerBase" to="." method="_on_PlayerBase_destroyed"]
