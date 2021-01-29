@@ -262,6 +262,7 @@ margin_bottom = -54.0
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource( 8 )]
+visible = false
 margin_left = -88.0
 margin_top = -72.0
 margin_right = 84.0

@@ -35,6 +35,7 @@ tracks/0/keys = {
 }
 
 [node name="Interface" type="Control"]
+rect_scale = Vector2( 1e-05, 1e-05 )
 mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {

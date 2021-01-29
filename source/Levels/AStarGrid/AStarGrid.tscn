@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Levels/AStarGrid/AStarGrid.gd" type="Script" id=1]
 
-
 [node name="AStarGrid" type="TileMap"]
 position = Vector2( 32, 32 )
 format = 1

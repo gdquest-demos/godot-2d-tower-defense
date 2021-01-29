@@ -12,7 +12,7 @@
 [ext_resource path="res://Levels/PathPreview.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/EventsPlayer.gd" type="Script" id=11]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
 tracks/0/interp = 1
@@ -40,7 +40,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
 tracks/0/interp = 1
@@ -68,7 +68,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -104,8 +104,8 @@ tile_data = PoolIntArray( 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 
 spawn_scene = ExtResource( 7 )
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
-anims/00.first-wave = SubResource( 2 )
-anims/01.second-wave = SubResource( 3 )
+anims/00.first-wave = SubResource( 1 )
+anims/01.second-wave = SubResource( 2 )
 script = ExtResource( 11 )
 
 [node name="StartPoint" type="Position2D" parent="."]
@@ -119,7 +119,7 @@ region_rect = Rect2( 319, 192, 65, 65 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StartPoint/EnemySpawn"]
 autoplay = "spin"
-anims/spin = SubResource( 1 )
+anims/spin = SubResource( 3 )
 
 [node name="GoalPoint" type="Position2D" parent="."]
 position = Vector2( 1632, 800 )

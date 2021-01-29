@@ -54,13 +54,9 @@ func _connect_neighbor_cells():
 
 	for point in _astar.get_points():
 		var cell = _astar.get_point_position(point)
-		var neighbor_cells = []
 		for direction in DIRECTIONS:
-			neighbor_cells.append(cell + direction)
-
-		for neighbor_cell in neighbor_cells:
-			if not neighbor_cell in walkable_cells:
+			var neighbor_cell_id = walkable_cells_array.find(cell + direction)
+			# Skip cells that weren't found 
+			if neighbor_cell_id == -1:
 				continue
-			var neighbor_cell_id := walkable_cells_array.find(neighbor_cell)
-			if not point == neighbor_cell_id:
-				_astar.connect_points(point, neighbor_cell_id)
+			_astar.connect_points(point, neighbor_cell_id)
