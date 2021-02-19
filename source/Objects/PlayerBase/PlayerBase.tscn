@@ -10,7 +10,7 @@
 [ext_resource path="res://UI/UIHealthBar/UITimedHealthBar.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64, 32 )
+extents = Vector2( 11.0333, 16.5943 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Death"

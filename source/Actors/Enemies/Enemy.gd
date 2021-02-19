@@ -11,29 +11,32 @@ export var gold_value := 50
 export var max_health := 15
 onready var health := max_health setget set_health
 
+onready var _ui_pivot := $UIPivot
 onready var _health_bar := $UIPivot/HealthBar
 onready var _anim_player := $AnimationPlayer
-onready var _sprite_anim_player := $Sprites/AnimationPlayer
+onready var _cutout_anim_player := $CutoutCharacter/AnimationPlayer
 
 
 func _ready() -> void:
+	set_physics_process(false)
+
+	_ui_pivot.set_as_toplevel(true)
+
 	_health_bar.max_value = max_health
 	_health_bar.value = health
-	$UIPivot.set_as_toplevel(true)
-	set_physics_process(false)
 
 
 func _physics_process(delta: float) -> void:
+	offset += speed * delta
+
 	if unit_offset >= 1.0:
 		set_physics_process(false)
 		disappear()
-		return
-	offset += speed * delta
 
 
 func move() -> void:
 	set_physics_process(true)
-	_anim_player.play("move")
+	_cutout_anim_player.play("move")
 
 
 func disappear() -> void:

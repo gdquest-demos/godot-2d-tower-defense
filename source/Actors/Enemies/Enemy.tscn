@@ -1,39 +1,21 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Actors/Enemies/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://sprite-sheet.svg" type="Texture" id=2]
+[ext_resource path="res://Actors/Enemies/CutoutCharacter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/HurtBox/HurtBoxArea2D.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actors/Enemies/particle.svg" type="Texture" id=4]
 [ext_resource path="res://Objects/HitBox/HitBoxArea2D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/UIHealthBar/UITimedHealthBar.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.987578 )
-colors = PoolColorArray( 0.921569, 0.337255, 0.294118, 1, 0.921569, 0.337255, 0.294118, 0 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 32.0
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="CircleShape2D" id=2]
+radius = 10.2498
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="CircleShape2D" id=3]
+radius = 32.0
 
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
-
-[sub_resource type="ParticlesMaterial" id=5]
-trail_divisor = 4
-emission_shape = 1
-emission_sphere_radius = 17.76
-flag_disable_z = true
-gravity = Vector3( 0, 0, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 0.5
-scale_random = 0.5
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
-
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 length = 0.25
 step = 0.05
 tracks/0/type = "value"
@@ -63,119 +45,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "move"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites/Sprite2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 0.5, 1 ),
-"update": 0,
-"values": [ Vector2( -18.81, -15.7232 ), Vector2( -28.1644, -13.7187 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprites/Sprite2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 0.5, 1 ),
-"update": 0,
-"values": [ Vector2( 0.605846, 0.605846 ), Vector2( 0.550675, 0.550675 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprites/Sprite4:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 0.5, 1 ),
-"update": 0,
-"values": [ Vector2( -35.2691, -1.31462 ), Vector2( -44.6235, -3.09641 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprites/Sprite4:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 0.5, 1 ),
-"update": 0,
-"values": [ Vector2( 0.486181, 0.486181 ), Vector2( 0.341358, 0.341358 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Sprites/Sprite3:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 0.5, 1 ),
-"update": 0,
-"values": [ Vector2( -17.1263, 11.3562 ), Vector2( -28.0398, 10.9107 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Sprites/Sprite3:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 0.5, 1 ),
-"update": 0,
-"values": [ Vector2( 0.738769, 0.738769 ), Vector2( 0.616142, 0.616142 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Sprites/Sprite:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 0.5, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -4.67722, 0 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Sprites/Sprite:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 0.5, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.940727, 0.940727 ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Sprites/Sprite5:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0.00274062, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.875101, 0.875101 ) ]
-}
-
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("HurtBoxArea2D/CollisionShape2D:disabled")
 tracks/0/interp = 1
@@ -201,116 +71,49 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 32.0
-
-[sub_resource type="CircleShape2D" id=10]
-radius = 32.0
-
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 24, 24 )
-
 [node name="Enemy" type="PathFollow2D"]
 loop = false
 script = ExtResource( 1 )
 speed = 256.0
 max_health = 5
 
-[node name="Sprites" type="Node2D" parent="."]
-position = Vector2( 12, -4 )
+[node name="CutoutCharacter" parent="." instance=ExtResource( 2 )]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites"]
+[node name="HurtBoxArea2D" parent="." instance=ExtResource( 3 )]
+team = 1
 
-[node name="Particles2D" type="Particles2D" parent="Sprites"]
-position = Vector2( -10.5112, 0 )
-amount = 32
-lifetime = 4.0
-local_coords = false
-process_material = SubResource( 5 )
-texture = ExtResource( 4 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
+position = Vector2( 0, -4 )
+shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="Sprites"]
-use_parent_material = true
-position = Vector2( -0.972307, 0 )
-scale = Vector2( 0.987678, 0.987678 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 320, 64, 57, 57 )
+[node name="HitBoxArea2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 24 )
+team = 1
+damage = 2
 
-[node name="Sprite2" type="Sprite" parent="Sprites"]
-use_parent_material = true
-position = Vector2( -20.1064, -15.4454 )
-scale = Vector2( 0.5982, 0.5982 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 320, 64, 57, 57 )
-
-[node name="Sprite3" type="Sprite" parent="Sprites"]
-use_parent_material = true
-position = Vector2( -18.4227, 11.3033 )
-scale = Vector2( 0.724203, 0.724203 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 320, 64, 57, 57 )
-
-[node name="Sprite4" type="Sprite" parent="Sprites"]
-use_parent_material = true
-position = Vector2( -36.8248, -1.61094 )
-scale = Vector2( 0.462096, 0.462096 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 320, 64, 57, 57 )
-
-[node name="Sprite5" type="Sprite" parent="Sprites"]
-use_parent_material = true
-position = Vector2( 10.1622, -1.53735 )
-rotation = -1.57079
-scale = Vector2( 0.973362, 0.973362 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 319, 32, 29, 16 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "spawn"
-anims/disappear = SubResource( 6 )
-anims/move = SubResource( 7 )
-anims/spawn = SubResource( 8 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxArea2D"]
+position = Vector2( 0, -24 )
+shape = SubResource( 2 )
 
 [node name="VisibleArea2D" type="Area2D" parent="."]
 position = Vector2( 0, 24 )
+monitoring = false
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisibleArea2D"]
 position = Vector2( 0, -28 )
-shape = SubResource( 9 )
+shape = SubResource( 3 )
 
-[node name="HurtBoxArea2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 0 )
-team = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
-position = Vector2( 0, -4 )
-shape = SubResource( 10 )
-
-[node name="HitBox2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, 24 )
-team = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
-position = Vector2( 0, -24 )
-shape = SubResource( 11 )
-
-[node name="UIRemoteTransform2D" type="RemoteTransform2D" parent="."]
-remote_path = NodePath("../UIPivot")
-update_rotation = false
-update_scale = false
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spawn"
+anims/disappear = SubResource( 4 )
+anims/spawn = SubResource( 5 )
 
 [node name="UIPivot" type="Node2D" parent="."]
 z_index = 2
 
 [node name="HealthBar" parent="UIPivot" instance=ExtResource( 7 )]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -320,4 +123,9 @@ margin_top = -72.0
 margin_right = 80.0
 margin_bottom = -52.0
 step = 1.0
+
+[node name="UIRemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../UIPivot")
+update_rotation = false
+update_scale = false
 [connection signal="hit_landed" from="HurtBoxArea2D" to="." method="_on_HurtBoxArea2D_hit_landed"]
