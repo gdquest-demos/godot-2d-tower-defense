@@ -1,0 +1,65 @@
+[gd_resource type="TileSet" load_steps=4 format=2]
+
+[ext_resource path="res://Areas/AsteroidSurface/rocks-and-craters.svg" type="Texture" id=2]
+[ext_resource path="res://Areas/AsteroidSurface/walkable-path.svg" type="Texture" id=3]
+[ext_resource path="res://Areas/AsteroidSurface/sand.svg" type="Texture" id=4]
+
+[resource]
+1/name = "Non Placeable Cells"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 192, 192 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 1, 1 )
+1/autotile/tile_size = Vector2( 64, 64 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "Enemy Walking Path"
+2/texture = ExtResource( 3 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 384, 384 )
+2/tile_mode = 1
+2/autotile/bitmask_mode = 1
+2/autotile/bitmask_flags = [ Vector2( 0, 1 ), 48, Vector2( 0, 2 ), 56, Vector2( 0, 3 ), 432, Vector2( 0, 4 ), 438, Vector2( 0, 5 ), 54, Vector2( 1, 0 ), 144, Vector2( 1, 1 ), 186, Vector2( 1, 2 ), 18, Vector2( 1, 3 ), 504, Vector2( 1, 4 ), 511, Vector2( 1, 5 ), 63, Vector2( 2, 1 ), 24, Vector2( 2, 2 ), 146, Vector2( 2, 3 ), 216, Vector2( 2, 4 ), 219, Vector2( 2, 5 ), 27, Vector2( 3, 0 ), 176, Vector2( 3, 1 ), 50, Vector2( 3, 2 ), 184, Vector2( 3, 3 ), 178, Vector2( 3, 4 ), 16, Vector2( 4, 0 ), 152, Vector2( 4, 1 ), 26, Vector2( 4, 2 ), 58, Vector2( 4, 3 ), 154 ]
+2/autotile/icon_coordinate = Vector2( 3, 4 )
+2/autotile/tile_size = Vector2( 64, 64 )
+2/autotile/spacing = 0
+2/autotile/occluder_map = [  ]
+2/autotile/navpoly_map = [  ]
+2/autotile/priority_map = [  ]
+2/autotile/z_index_map = [  ]
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "Tower Placeable Cell"
+3/texture = ExtResource( 4 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 64, 64 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
