@@ -1,8 +1,7 @@
-class_name Weapon
+class_name Weapon2D
 extends Node2D
 
 export var bullet_scene: PackedScene
-export var bullet_speed := 500.0
 # Range of the weapon in pixels.
 export var fire_range := 128.0 setget set_fire_range
 # Cooldown in seconds to fire again
@@ -45,7 +44,6 @@ func shoot_at(target_position: Vector2) -> void:
 	_animation_player.play("shoot")
 
 	var bullet = bullet_scene.instance()
-	bullet.speed = bullet_speed
 	add_child(bullet)
 	bullet.global_position = _bullet_spawn_position.global_position
 	bullet.fly_to(target_position)

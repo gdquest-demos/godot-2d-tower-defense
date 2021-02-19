@@ -24,7 +24,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-tower = ExtResource( 5 )
+tower_scene = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="."]
 anchor_top = 1.0

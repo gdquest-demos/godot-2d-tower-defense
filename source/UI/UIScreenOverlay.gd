@@ -13,6 +13,6 @@ func play_lost() -> void:
 	yield(_anim_player, "animation_finished")
 
 
-func play_wave_start_async() -> void:
+func play_wave_start() -> void:
 	_anim_player.play("WaveStarting")
 	yield(_anim_player, "animation_finished")

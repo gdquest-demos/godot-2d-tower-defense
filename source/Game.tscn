@@ -11,6 +11,7 @@
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
+gold = 100
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 

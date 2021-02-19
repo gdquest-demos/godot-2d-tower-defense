@@ -10,11 +10,16 @@ var player: Player
 
 func _ready() -> void:
 	for button in _buttons:
-		button.connect("pressed", self, "_on_TowerPurchaseButton_pressed", [button.tower])
+		button.connect("tower_purchased", self, "_on_TowerPurchaseButton_tower_purchased")
 
 
-func _on_TowerPurchaseButton_pressed(tower_scene: PackedScene) -> void:
+func _on_TowerPurchaseButton_tower_purchased(tower_scene: PackedScene) -> void:
 	var tower: Tower = tower_scene.instance()
+
+	if player.gold - tower.cost < 0:
+		tower.queue_free()
+		return
+
 	tower.connect("sold", self, "_on_Tower_sold")
 	emit_signal("tower_purchased", tower)
 

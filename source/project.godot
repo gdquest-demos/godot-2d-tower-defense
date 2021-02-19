@@ -20,12 +20,12 @@ _global_script_classes=[ {
 "path": "res://Actors/Enemies/Enemy.gd"
 }, {
 "base": "Area2D",
-"class": "HitBox2D",
+"class": "HitBoxArea2D",
 "language": "GDScript",
 "path": "res://Objects/HitBox/HitBoxArea2D.gd"
 }, {
 "base": "Area2D",
-"class": "HurtBox2D",
+"class": "HurtBoxArea2D",
 "language": "GDScript",
 "path": "res://Objects/HurtBox/HurtBoxArea2D.gd"
 }, {
@@ -65,15 +65,15 @@ _global_script_classes=[ {
 "path": "res://Objects/WaveSpawner2D/WaveSpawner2D.gd"
 }, {
 "base": "Node2D",
-"class": "Weapon",
+"class": "Weapon2D",
 "language": "GDScript",
 "path": "res://Objects/Weapon2D/Weapon2D.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
 "Enemy": "",
-"HitBox2D": "",
-"HurtBox2D": "",
+"HitBoxArea2D": "",
+"HurtBoxArea2D": "",
 "Player": "",
 "SelectableArea2D": "",
 "Tower": "",
@@ -81,7 +81,7 @@ _global_script_class_icons={
 "UITowerShop": "",
 "Wave": "",
 "WaveSpawner2D": "",
-"Weapon": ""
+"Weapon2D": ""
 }
 
 [application]

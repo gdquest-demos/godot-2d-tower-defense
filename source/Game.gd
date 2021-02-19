@@ -34,7 +34,7 @@ func _on_StartWaveButton_pressed() -> void:
 	# Enters in the "play mode". In play mode, players become passive to the
 	# game's event. Interface becomes invisible and the Level starts.
 	_toggle_interface()
-	yield(_screen_overlay.play_wave_start_async(), "completed")
+	yield(_screen_overlay.play_wave_start(), "completed")
 	_level.start()
 
 
@@ -42,6 +42,7 @@ func _on_Level_wave_finished() -> void:
 	# Enters in the "plan mode". In plan mode, players can take actions and plan
 	# their Tower Layout for the next wave. Interface becomes visible again.
 	_toggle_interface()
+	_level.show_walkable_path()
 
 
 # Lose condition

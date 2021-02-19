@@ -2,7 +2,7 @@ extends TextureButton
 
 signal tower_purchased
 
-export var tower: PackedScene
+export var tower_scene: PackedScene
 
 onready var _label := $Label
 
@@ -13,12 +13,10 @@ func _ready() -> void:
 
 # Towers are instanced to get their price
 func setup_tower_data() -> void:
-	var instance: Tower = tower.instance()
+	var instance: Tower = tower_scene.instance()
 	_label.text = "Cost: %s" % instance.cost
 	instance.queue_free()
 
 
 func _pressed() -> void:
-	if pressed:
-		release_focus()
-		emit_signal("tower_purchased", tower)
+	emit_signal("tower_purchased", tower_scene)

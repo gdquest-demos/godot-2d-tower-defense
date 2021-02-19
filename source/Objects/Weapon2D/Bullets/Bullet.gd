@@ -4,7 +4,6 @@ extends Node2D
 export var speed := 500.0
 
 onready var _tween := $Tween
-onready var _anim_player := $AnimationPlayer
 
 
 func _init() -> void:

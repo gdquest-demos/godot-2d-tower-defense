@@ -1,104 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/Weapon2D/Bullets/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://sprite-sheet.svg" type="Texture" id=2]
 [ext_resource path="res://Objects/HitBox/HitBoxArea2D.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/Weapon2D/Bullets/Explosions/SmallExplosion.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Animation" id=1]
-resource_name = "SETUP"
-tracks/0/type = "value"
-tracks/0/path = NodePath("HitBoxArea2D/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("ExplodeParticles:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "explode"
-length = 0.1
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "queue_free"
-} ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("HitBoxArea2D/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("ExplodeParticles:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
 height = 8.0
 
@@ -117,19 +23,12 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 129, 228, 27, 16 )
 
-[node name="Tween" type="Tween" parent="."]
-playback_process_mode = 0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "SETUP"
-anims/SETUP = SubResource( 1 )
-anims/explode = SubResource( 2 )
-
-[node name="ExplodeParticles" parent="." instance=ExtResource( 5 )]
-
 [node name="HitBoxArea2D" parent="." instance=ExtResource( 3 )]
 damage = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxArea2D"]
 rotation = 1.57079
-shape = SubResource( 3 )
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+playback_process_mode = 0
