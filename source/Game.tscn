@@ -85,6 +85,7 @@ __meta__ = {
 [node name="UIScreenOverlay" parent="UILayer/UI" instance=ExtResource( 5 )]
 
 [node name="Level" parent="." instance=ExtResource( 2 )]
+
 [connection signal="pressed" from="UILayer/UI/HUD/StartWaveButton" to="." method="_on_StartWaveButton_pressed"]
 [connection signal="pressed" from="UILayer/UI/HUD/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="base_destroyed" from="Level" to="." method="_on_Level_base_destroyed"]

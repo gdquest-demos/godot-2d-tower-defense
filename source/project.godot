@@ -54,10 +54,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/UITowerShop/UITowerShop.gd"
 }, {
-"base": "Path2D",
+"base": "Reference",
 "class": "Wave",
 "language": "GDScript",
-"path": "res://Levels/Wave/Wave.gd"
+"path": "res://Levels/Waves/Wave.gd"
 }, {
 "base": "Position2D",
 "class": "WaveSpawner2D",
