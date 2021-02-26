@@ -2,7 +2,7 @@
 
 [ext_resource path="res://UI/UIUnit/UIUnit.gd" type="Script" id=1]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 resource_name = "appear"
 length = 0.3
 tracks/0/type = "value"
@@ -43,5 +43,5 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/appear = SubResource( 1 )
+anims/appear = SubResource( 3 )
 anims/disappear = SubResource( 2 )

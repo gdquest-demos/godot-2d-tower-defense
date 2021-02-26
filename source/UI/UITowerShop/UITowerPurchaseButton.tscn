@@ -4,7 +4,8 @@
 [ext_resource path="res://UI/UITowerShop/UITowerPurchaseButton.gd" type="Script" id=2]
 [ext_resource path="res://UI/UITowerShop/tower-icon-hover.svg" type="Texture" id=3]
 [ext_resource path="res://UI/UITowerShop/tower-icon-pressed.svg" type="Texture" id=4]
-[ext_resource path="res://Actors/Towers/Tower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Towers/Tower.tscn" type="PackedScene" id=5]
+
 
 [node name="UITowerPurchaseButton" type="TextureButton"]
 margin_right = 256.0

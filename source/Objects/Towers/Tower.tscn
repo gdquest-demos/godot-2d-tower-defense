@@ -1,46 +1,45 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://UI/Theme/main_theme.tres" type="Theme" id=1]
-[ext_resource path="res://Actors/Towers/Tower.gd" type="Script" id=2]
-[ext_resource path="res://UI/UIUnit/UIUnit.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/Weapon2D/Weapon2D.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sprite-sheet.svg" type="Texture" id=8]
-[ext_resource path="res://Objects/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/Weapon2D/Weapon2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Towers/Tower.gd" type="Script" id=3]
+[ext_resource path="res://sprite-sheet.svg" type="Texture" id=4]
+[ext_resource path="res://UI/UIUnit/UIUnit.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
 [node name="Tower" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="BaseSprite" type="Sprite" parent="."]
-position = Vector2( 32, 32 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
+offset = Vector2( 32, 32 )
 region_enabled = true
 region_rect = Rect2( 192, 64, 73, 64 )
 
-[node name="Weapon2D" parent="." instance=ExtResource( 7 )]
+[node name="Weapon2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 32, 36 )
 
 [node name="GlassSprite" type="Sprite" parent="."]
-position = Vector2( 31.3318, 38.459 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
+offset = Vector2( 32, 38 )
 region_enabled = true
 region_rect = Rect2( 272, 89, 26, 27 )
 
-[node name="SelectableArea2D" parent="." instance=ExtResource( 9 )]
-position = Vector2( 32, 64 )
+[node name="SelectableArea2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 32, 32 )
 z_index = -1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableArea2D"]
-position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
-[node name="Interface" parent="." instance=ExtResource( 3 )]
+[node name="Interface" parent="." instance=ExtResource( 5 )]
 margin_left = 32.0
 margin_top = 40.0
 margin_right = 32.0
 margin_bottom = 40.0
+rect_scale = Vector2( 1, 1 )
 
 [node name="SellButton" type="Button" parent="Interface"]
 anchor_left = 0.5
@@ -52,7 +51,6 @@ margin_top = 32.0
 margin_right = 72.0
 margin_bottom = 70.0
 rect_pivot_offset = Vector2( 72, 16 )
-theme = ExtResource( 1 )
 text = "Sell"
 __meta__ = {
 "_edit_use_anchors_": false

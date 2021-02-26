@@ -9,14 +9,19 @@ export var select_action := "select"
 var selected := false setget set_selected
 
 
+func _ready() -> void:
+	set_process_unhandled_input(false)
+
+
 func _input_event(_viewport: Object, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed(select_action):
 		set_selected(not selected)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(select_action) and selected:
+	if event.is_action_pressed(select_action):
 		set_selected(false)
+		set_process_unhandled_input(false)
 
 
 func set_selected(select: bool) -> void:

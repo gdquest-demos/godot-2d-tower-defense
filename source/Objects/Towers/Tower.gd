@@ -32,5 +32,5 @@ func _on_SelectableArea2D_selection_changed(selected) -> void:
 
 
 func _on_SellButton_pressed() -> void:
-	emit_signal("sold", cost * 0.5, position)
+	emit_signal("sold", cost / 2, position)
 	queue_free()

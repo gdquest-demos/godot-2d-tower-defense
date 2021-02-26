@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Tower",
 "language": "GDScript",
-"path": "res://Actors/Towers/Tower.gd"
+"path": "res://Objects/Towers/Tower.gd"
 }, {
 "base": "TileMap",
 "class": "TowerPlacer",
