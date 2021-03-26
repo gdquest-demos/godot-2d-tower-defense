@@ -39,7 +39,6 @@ margin_left = 32.0
 margin_top = 40.0
 margin_right = 32.0
 margin_bottom = 40.0
-rect_scale = Vector2( 1, 1 )
 
 [node name="SellButton" type="Button" parent="Interface"]
 anchor_left = 0.5

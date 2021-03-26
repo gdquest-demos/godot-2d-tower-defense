@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func start() -> void:
 	_path_preview.fade_out()
-	_events_player.play_next_event()
+	_events_player.play_current_event()
 
 
 func finish() -> void:
@@ -56,8 +56,7 @@ func show_walkable_path(walking_path := _astar_grid.get_walkable_path()) -> void
 
 
 func _setup_wave_path(wave: Wave) -> void:
-	var movement_path: PoolVector2Array = _astar_grid.get_walkable_path()
-	wave.set_movement_path(movement_path)
+	wave.set_movement_path(_astar_grid.get_walkable_path())
 
 
 func _on_Wave_finished() -> void:

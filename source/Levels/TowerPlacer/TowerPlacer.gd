@@ -6,8 +6,8 @@ extends TileMap
 signal tower_placed(tower)
 
 # The ID of the tiles where players can place a tower.
-const EMPTY_CELL_ID := 0
-const OCCUPIED_CELL_ID := 1
+const AVAILABLE_CELL_ID := 0
+const INVALID_CELL_ID := 1
 
 onready var _visual_grid := $VisualGrid
 
@@ -36,33 +36,34 @@ func add_new_tower(tower: Tower) -> void:
 	_current_tower = tower
 
 	set_process_unhandled_input(true)
-	_snap_tower_to_grid()
 	_visual_grid.visible = true
+
+	_snap_tower_to_grid()
 
 
 func set_cell_unplaceable(cell: Vector2) -> void:
-	set_cellv(cell, OCCUPIED_CELL_ID)
+	set_cellv(cell, INVALID_CELL_ID)
 
 
 func set_cell_placeable(cell: Vector2) -> void:
-	set_cellv(cell, EMPTY_CELL_ID)
+	set_cellv(cell, AVAILABLE_CELL_ID)
 
 
 func is_cell_placeable(cell: Vector2) -> bool:
-	return get_cellv(cell) == EMPTY_CELL_ID
+	return get_cellv(cell) == AVAILABLE_CELL_ID
 
 
 func _place_tower() -> void:
+	set_process_unhandled_input(false)
+	_visual_grid.visible = false
+
 	if not is_cell_placeable(_current_cell):
 		_current_tower.queue_free()
 		return
-
 	set_cell_unplaceable(_current_cell)
+
 	emit_signal("tower_placed", _current_tower)
 	_current_tower.connect("sold", self, "_on_Tower_sold")
-
-	set_process_unhandled_input(false)
-	_visual_grid.visible = false
 
 
 func _snap_tower_to_grid() -> void:

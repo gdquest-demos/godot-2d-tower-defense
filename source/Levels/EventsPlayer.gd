@@ -10,6 +10,6 @@ func play_event(event_index := current_event) -> void:
 	play(events_list[event_index])
 
 
-func play_next_event() -> void:
-	play_event(current_event)
+func play_current_event() -> void:
+	play_event()
 	current_event += 1

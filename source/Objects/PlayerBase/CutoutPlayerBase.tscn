@@ -1,0 +1,213 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprite-sheet.svg" type="Texture" id=1]
+[ext_resource path="res://Objects/PlayerBase/CutoutSprites.gd" type="Script" id=2]
+[ext_resource path="res://Objects/Weapon2D/Bullets/Explosions/Explosion.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Explode"
+length = 3.0
+tracks/0/type = "animation"
+tracks/0/path = NodePath("Explosion/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "Explode" ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1.01246, 1.01246, 1.01246, 1 ), Color( 1.01176, 1.01176, 1.01176, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite4:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite4/Line2D3:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 2, 0.5 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, 0, 10, 0 ), PoolVector2Array( 0, 0, 4, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite4/Line2D2:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 2 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, 0, 10, 0 ), PoolVector2Array( 0, 0, 2, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite4/Line2D:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, 0, 10, 0 ), PoolVector2Array( 0, 0, 6, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.0255514, 0.6, 1.1, 1.5 ),
+"transitions": PoolRealArray( 0, 0, 0, 0 ),
+"update": 0,
+"values": [ Vector2( -35.6321, 20.9986 ), Vector2( -35.6321, 15.5853 ), Vector2( -35.6321, 9.88761 ), Vector2( -35.6321, 4.09162 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite3:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[node name="CutoutPlayerBase" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+use_parent_material = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 15, 129, 82 )
+
+[node name="Sprite6" type="Sprite" parent="Sprite"]
+show_behind_parent = true
+use_parent_material = true
+position = Vector2( -16, 16 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 63, 160, 29, 58 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 0, -4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 112, 42, 43 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 28, 20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 112, 18, 14 )
+
+[node name="Line2D" type="Line2D" parent="Sprite4"]
+position = Vector2( -6, -4 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 2.0
+default_color = Color( 0.235294, 0.639216, 0.439216, 1 )
+
+[node name="Line2D2" type="Line2D" parent="Sprite4"]
+position = Vector2( -6, 0 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 2.0
+default_color = Color( 0.235294, 0.639216, 0.439216, 1 )
+
+[node name="Line2D3" type="Line2D" parent="Sprite4"]
+position = Vector2( -6, 4 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 2.0
+default_color = Color( 0.235294, 0.639216, 0.439216, 1 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 40, -10 )
+texture = ExtResource( 1 )
+offset = Vector2( 6, 0 )
+region_enabled = true
+region_rect = Rect2( 96, 128, 31, 26 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+modulate = Color( 1.01246, 1.01246, 1.01246, 1 )
+position = Vector2( -35.6321, 4.09162 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 108, 4, 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Explode = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+
+[node name="Explosion" parent="." instance=ExtResource( 3 )]
