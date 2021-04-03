@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://UI/UIGoldPanel/UIGoldPanel.gd" type="Script" id=1]
+[ext_resource path="res://UI/UIGoldPanel.gd" type="Script" id=2]
 
 [node name="UIGoldPanel" type="Panel"]
 margin_right = 224.0
 margin_bottom = 64.0
 mouse_filter = 2
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

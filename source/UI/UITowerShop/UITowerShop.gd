@@ -1,11 +1,11 @@
 class_name UITowerShop
 extends Panel
 
-signal tower_purchased(tower_scene)
+signal tower_purchased(tower)
 
 onready var _buttons: Array = $HBoxContainer.get_children()
 
-var player: Player
+var player: Player setget set_player
 
 
 func _ready() -> void:
@@ -13,12 +13,13 @@ func _ready() -> void:
 		button.connect("tower_purchased", self, "_on_TowerPurchaseButton_tower_purchased")
 
 
+func set_player(new_player: Player) -> void:
+	player = new_player
+	player.connect("gold_changed", self, "_on_Player_gold_changed")
+
+
 func _on_TowerPurchaseButton_tower_purchased(tower_scene: PackedScene) -> void:
 	var tower: Tower = tower_scene.instance()
-
-	if player.gold - tower.cost < 0:
-		tower.queue_free()
-		return
 
 	tower.connect("sold", self, "_on_Tower_sold")
 	emit_signal("tower_purchased", tower)
@@ -30,3 +31,11 @@ func _on_TowerPlacer_tower_placed(tower: Tower) -> void:
 
 func _on_Tower_sold(price: int, _position: Vector2) -> void:
 	player.gold += price
+
+
+func _on_Player_gold_changed(gold_amount: int) -> void:
+	for button in _buttons:
+		if button.tower_cost > player.gold:
+			button.disabled = true
+		else:
+			button.disabled = false

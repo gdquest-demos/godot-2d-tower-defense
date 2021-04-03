@@ -3,7 +3,7 @@
 [ext_resource path="res://UI/UITowerShop/UITowerShop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
-[ext_resource path="res://UI/UIGold.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/UIGoldPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/UIScreenOverlay.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=6]
 
@@ -59,7 +59,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UIPlayerGold" parent="UILayer/UI/HUD" instance=ExtResource( 4 )]
+[node name="UIGoldPanel" parent="UILayer/UI/HUD" instance=ExtResource( 4 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -87,6 +87,6 @@ __meta__ = {
 [connection signal="pressed" from="UILayer/UI/HUD/StartWaveButton" to="." method="_on_StartWaveButton_pressed"]
 [connection signal="pressed" from="UILayer/UI/HUD/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="base_destroyed" from="Level" to="." method="_on_Level_base_destroyed"]
-[connection signal="enemy_died" from="Level" to="." method="_on_Level_enemy_died"]
 [connection signal="finished" from="Level" to="." method="_on_Level_finished"]
+[connection signal="gold_earned" from="Level" to="." method="_on_Level_gold_earned"]
 [connection signal="wave_finished" from="Level" to="." method="_on_Level_wave_finished"]

@@ -4,7 +4,7 @@ extends Node2D
 signal finished
 signal wave_finished
 signal base_destroyed
-signal enemy_died(gold_earned)
+signal gold_earned(gold_amount)
 
 const TOWER_PLACEABLE_CELLS_ID := 3
 const ENEMY_WALK_PATH_CELLS_ID := 2
@@ -15,6 +15,7 @@ onready var _astar_grid := $AStarGrid
 onready var _wave_spawner := $WaveSpawner2D
 onready var _events_player := $EventsPlayer
 onready var _path_preview := $PathPreview
+onready var _player_base := $GoalPoint/PlayerBase
 
 
 func _ready() -> void:
@@ -27,7 +28,8 @@ func start() -> void:
 
 
 func finish() -> void:
-	emit_signal("finished")
+	if _player_base.health > 0:
+		emit_signal("finished")
 
 
 func spawn_wave() -> void:
@@ -71,4 +73,4 @@ func _on_PlayerBase_destroyed():
 
 
 func _on_Enemy_died(gold_earned: int) -> void:
-	emit_signal("enemy_died", gold_earned)
+	emit_signal("gold_earned", gold_earned)

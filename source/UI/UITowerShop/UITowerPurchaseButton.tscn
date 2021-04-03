@@ -1,17 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/UITowerShop/tower-icon-normal.svg" type="Texture" id=1]
 [ext_resource path="res://UI/UITowerShop/UITowerPurchaseButton.gd" type="Script" id=2]
 [ext_resource path="res://UI/UITowerShop/tower-icon-hover.svg" type="Texture" id=3]
 [ext_resource path="res://UI/UITowerShop/tower-icon-pressed.svg" type="Texture" id=4]
 [ext_resource path="res://Objects/Towers/Tower.tscn" type="PackedScene" id=5]
-
+[ext_resource path="res://UI/UITowerShop/tower-icon-disabled.svg" type="Texture" id=6]
+[ext_resource path="res://UI/UITowerShop/tower-icon-focused.svg" type="Texture" id=7]
 
 [node name="UITowerPurchaseButton" type="TextureButton"]
-margin_right = 256.0
-margin_bottom = 256.0
+margin_right = 64.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 action_mode = 0
@@ -19,6 +19,8 @@ enabled_focus_mode = 0
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 6 )
+texture_focused = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 2 )
@@ -31,11 +33,11 @@ tower_scene = ExtResource( 5 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -40.0
 margin_top = 16.0
+margin_right = 40.0
 margin_bottom = 48.0
-hint_tooltip = "$200"
-mouse_filter = 1
-text = "Tower"
+text = "Cost: 100"
 align = 1
 valign = 1
 autowrap = true

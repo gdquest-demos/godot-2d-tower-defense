@@ -112,7 +112,7 @@ script = ExtResource( 11 )
 position = Vector2( 352, 160 )
 
 [node name="EnemySpawn" type="Sprite" parent="StartPoint"]
-rotation = -0.246199
+rotation = 6.28319
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 319, 192, 65, 65 )
@@ -125,9 +125,4 @@ anims/spin = SubResource( 3 )
 position = Vector2( 1632, 800 )
 
 [node name="PlayerBase" parent="GoalPoint" instance=ExtResource( 5 )]
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
 [connection signal="destroyed" from="GoalPoint/PlayerBase" to="." method="_on_PlayerBase_destroyed"]
-[connection signal="timeout" from="Timer" to="EventsPlayer" method="play_current_event"]

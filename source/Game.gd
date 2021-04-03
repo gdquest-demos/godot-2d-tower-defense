@@ -9,7 +9,7 @@ onready var _screen_overlay := $UILayer/UI/UIScreenOverlay
 onready var _mouse_barrier := $UILayer/UI/MouseBarrier
 onready var _retry_button := $UILayer/UI/HUD/RetryButton
 onready var _start_button := $UILayer/UI/HUD/StartWaveButton
-onready var _gold_planel := $UILayer/UI/HUD/UIPlayerGold
+onready var _gold_planel := $UILayer/UI/HUD/UIGoldPanel
 
 
 func _ready() -> void:
@@ -17,7 +17,6 @@ func _ready() -> void:
 	_tower_shop.connect("tower_purchased", _level.tower_placer, "add_new_tower")
 	_tower_shop.player = _player
 	_gold_planel.player = _player
-	_gold_planel.setup()
 
 
 func _toggle_interface() -> void:
@@ -48,9 +47,10 @@ func _on_Level_wave_finished() -> void:
 # Lose condition
 func _on_Level_base_destroyed() -> void:
 	_start_button.hide()
-	yield(_screen_overlay.play_lost(), "completed")
-	_mouse_barrier.hide()
+	_tower_shop.hide()
 	_retry_button.show()
+	yield(_screen_overlay.play_lost(), "completed")
+	_toggle_interface()
 
 
 # Win condition
@@ -62,5 +62,5 @@ func _on_RetryButton_pressed() -> void:
 	get_tree().reload_current_scene()
 
 
-func _on_Level_enemy_died(gold_earned) -> void:
-	_player.gold += gold_earned
+func _on_Level_gold_earned(gold_amount) -> void:
+	_player.gold += gold_amount

@@ -32,6 +32,9 @@ func setup_available_cells(cells_array: PoolVector2Array) -> void:
 
 
 func add_new_tower(tower: Tower) -> void:
+	if _current_tower:
+		_current_tower.queue_free()
+
 	add_child(tower)
 	_current_tower = tower
 
