@@ -67,6 +67,7 @@ func _place_tower() -> void:
 
 	emit_signal("tower_placed", _current_tower)
 	_current_tower.connect("sold", self, "_on_Tower_sold")
+	_current_tower = null
 
 
 func _snap_tower_to_grid() -> void:
