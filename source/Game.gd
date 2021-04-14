@@ -1,6 +1,8 @@
 # Initializes the user interface, forwarding it the data it needs from the game world.
 extends Node
 
+export(String, FILE, "*tscn") var end_screen_path
+
 onready var _player := $Player
 onready var _level := $Level
 onready var _hud := $UILayer/UI/HUD
@@ -13,10 +15,28 @@ onready var _gold_planel := $UILayer/UI/HUD/UIGoldPanel
 
 
 func _ready() -> void:
-	_level.tower_placer.connect("tower_placed", _tower_shop, "_on_TowerPlacer_tower_placed")
-	_tower_shop.connect("tower_purchased", _level.tower_placer, "add_new_tower")
 	_tower_shop.player = _player
 	_gold_planel.player = _player
+	_setup_level()
+	_level.start()
+
+
+func _setup_level() -> void:
+	_level.tower_placer.connect("tower_placed", _tower_shop, "_on_TowerPlacer_tower_placed")
+	_level.connect("base_destroyed", self, "_on_Level_base_destroyed")
+	_level.connect("finished", self, "_on_Level_finished")
+	_level.connect("gold_earned", self, "_on_Level_gold_earned")
+	_level.connect("round_finished", self, "_on_Level_round_finished")
+	_tower_shop.connect("tower_purchased", _level.tower_placer, "add_new_tower")
+
+
+func _load_next_level() -> void:
+	var next_level: Node = load(_level.next_level_path).instance()
+	_level.queue_free()
+	_level = next_level
+	add_child(_level)
+	_setup_level()
+	_level.start()
 
 
 func _toggle_interface() -> void:
@@ -37,7 +57,7 @@ func _on_StartWaveButton_pressed() -> void:
 	_level.start()
 
 
-func _on_Level_wave_finished() -> void:
+func _on_Level_round_finished() -> void:
 	# Enters in the "plan mode". In plan mode, players can take actions and plan
 	# their Tower Layout for the next wave. Interface becomes visible again.
 	_toggle_interface()
@@ -55,7 +75,15 @@ func _on_Level_base_destroyed() -> void:
 
 # Win condition
 func _on_Level_finished() -> void:
-	_screen_overlay.play_win()
+	yield(_screen_overlay.play_win(), "completed")
+	if _level.next_level_path:
+		_load_next_level()
+	else:
+		var end_screen: Node = load(end_screen_path).instance()
+		end_screen.player_score = _player.gold
+		var packed_scene := PackedScene.new()
+		packed_scene.pack(end_screen)
+		get_tree().change_scene_to(packed_scene)
 
 
 func _on_RetryButton_pressed() -> void:

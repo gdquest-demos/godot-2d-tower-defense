@@ -2,12 +2,14 @@
 extends Node2D
 
 signal finished
-signal wave_finished
+signal round_finished
 signal base_destroyed
 signal gold_earned(gold_amount)
 
 const TOWER_PLACEABLE_CELLS_ID := 3
 const ENEMY_WALK_PATH_CELLS_ID := 2
+
+export(String, FILE, "*.tscn") var next_level_path
 
 onready var tower_placer := $TowerPlacer
 onready var _tilemap := $TileMap
@@ -43,6 +45,13 @@ func spawn_wave() -> void:
 	wave.start()
 
 
+func start_round() -> void:
+	if _events_player.current_event >= _events_player.get_animation_list().size():
+		finish()
+		return
+	emit_signal("round_finished")
+
+
 func _setup() -> void:
 	tower_placer.setup_available_cells(_tilemap.get_used_cells_by_id(TOWER_PLACEABLE_CELLS_ID))
 	_astar_grid.walkable_cells = _tilemap.get_used_cells_by_id(ENEMY_WALK_PATH_CELLS_ID)
@@ -62,10 +71,7 @@ func _setup_wave_path(wave: Wave) -> void:
 
 
 func _on_Wave_finished() -> void:
-	if _events_player.current_event >= _events_player.get_animation_list().size():
-		finish()
-		return
-	emit_signal("wave_finished")
+	start_round()
 
 
 func _on_PlayerBase_destroyed():

@@ -1,0 +1,491 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Waves/Wave1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Waves/Wave2.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "01.welcome"
+tracks/0/type = "value"
+tracks/0/path = NodePath("UIDialogue/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UIDialogue/Panel/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Hello! Welcome to Aster-570, an asteroid full of resources that we can use to help Earth develop better technologies." ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UIDialogue/Panel/Label:percent_visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UIDialogue/Panel:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 464, 832 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "02.intro"
+tracks/0/type = "value"
+tracks/0/path = NodePath("UIDialogue/Panel/Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UIDialogue/Panel/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Aster-570 is a bit uncommon, it has a decent atmosphere and even water!" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UIDialogue/Panel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "03.intro"
+tracks/0/type = "value"
+tracks/0/path = NodePath("UIDialogue/Panel/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "That was enough for life to manifest itself here as well in the form of Goo, an alien race that's pretty territorial." ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UIDialogue/Panel/Label:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UIDialogue/Panel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "04.intro"
+tracks/0/type = "value"
+tracks/0/path = NodePath("UIDialogue/Panel/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "You've been hired as our mission strategist! You must defend our main building using towers." ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UIDialogue/Panel/Label:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UIDialogue/Panel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "05.building-highlight"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GoalPoint/PlayerBase:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7, 1, 1.3, 1.5, 1.7, 2, 2.3, 2.5, 2.7, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("EventsPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UIDialogue/Panel/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "This is our main building, that's what you must protect at all costs!" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UIDialogue/Panel/Label:percent_visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("UIDialogue/Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "06.goo-intro"
+tracks/0/type = "value"
+tracks/0/path = NodePath("UIDialogue/Panel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 464, 832 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UIDialogue/Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UIDialogue/Panel/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Goo are coming! Enough talking, it's time for action. Build some towers to protect out building!" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UIDialogue/Panel/Label:percent_visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("GoalPoint/PlayerBase:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "07.start"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_round"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "08.first-wave"
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_wave"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "09.second-wave"
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.840896 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_wave"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "10.last-wave"
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.707107 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_wave"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "11.done"
+tracks/0/type = "value"
+tracks/0/path = NodePath("UIDialogue/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UIDialogue/Panel/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Well, we survived! You look to be a good strategist!" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UIDialogue/Panel/Label:percent_visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "12.finish"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish"
+} ]
+}
+
+[node name="Level" instance=ExtResource( 1 )]
+next_level_path = "res://Levels/Level2.tscn"
+
+[node name="TileMap" parent="." index="2"]
+tile_data = PoolIntArray( 0, 1, 131073, 1, 1, 1, 2, 1, 1, 3, 1, 2, 4, 1, 65538, 5, 1, 65537, 6, 1, 65538, 7, 1, 131073, 8, 1, 2, 9, 1, 131074, 10, 1, 65537, 11, 1, 2, 12, 1, 131073, 13, 1, 65537, 14, 1, 65538, 15, 1, 0, 16, 1, 65536, 17, 1, 131072, 18, 1, 65538, 19, 1, 2, 20, 1, 131073, 21, 1, 65537, 22, 1, 0, 23, 1, 1, 24, 1, 2, 25, 1, 0, 26, 1, 0, 27, 1, 131074, 28, 1, 65538, 29, 1, 65538, 65536, 1, 131072, 65537, 1, 65536, 65538, 1, 131072, 65539, 1, 65538, 65540, 1, 65538, 65541, 1, 65538, 65542, 1, 131072, 65543, 1, 2, 65544, 1, 65536, 65545, 1, 131072, 65546, 1, 0, 65547, 1, 65538, 65548, 1, 131072, 65549, 1, 0, 65550, 1, 2, 65551, 1, 0, 65552, 1, 2, 65553, 1, 65538, 65554, 1, 131072, 65555, 1, 131074, 65556, 1, 2, 65557, 1, 2, 65558, 1, 65536, 65559, 1, 131074, 65560, 1, 131072, 65561, 1, 65538, 65562, 1, 65537, 65563, 1, 65537, 65564, 1, 65537, 65565, 1, 65536, 131072, 1, 2, 131073, 1, 2, 131074, 2, 1, 131075, 1, 65537, 131076, 1, 65537, 131077, 1, 1, 131078, 3, 0, 131079, 3, 0, 131080, 3, 0, 131081, 3, 0, 131082, 1, 1, 131083, 3, 0, 131084, 3, 0, 131085, 3, 0, 131086, 1, 65537, 131087, 3, 0, 131088, 3, 0, 131089, 3, 0, 131090, 3, 0, 131091, 3, 0, 131092, 3, 0, 131093, 3, 0, 131094, 3, 0, 131095, 3, 0, 131096, 3, 0, 131097, 1, 2, 131098, 1, 65538, 131099, 1, 65536, 131100, 1, 131074, 131101, 1, 2, 196608, 1, 65536, 196609, 1, 65538, 196610, 2, 131074, 196611, 1, 65536, 196612, 1, 131074, 196613, 3, 0, 196614, 1, 131073, 196615, 3, 0, 196616, 3, 0, 196617, 3, 0, 196618, 3, 0, 196619, 3, 0, 196620, 3, 0, 196621, 3, 0, 196622, 3, 0, 196623, 3, 0, 196624, 3, 0, 196625, 3, 0, 196626, 1, 2, 196627, 3, 0, 196628, 3, 0, 196629, 1, 65536, 196630, 3, 0, 196631, 3, 0, 196632, 3, 0, 196633, 1, 65537, 196634, 1, 65538, 196635, 1, 1, 196636, 1, 1, 196637, 1, 65538, 262144, 1, 65536, 262145, 1, 65538, 262146, 2, 131074, 262147, 1, 2, 262148, 1, 65538, 262149, 1, 131074, 262150, 3, 0, 262151, 3, 0, 262152, 3, 0, 262153, 1, 131073, 262154, 3, 0, 262155, 3, 0, 262156, 3, 0, 262157, 3, 0, 262158, 3, 0, 262159, 1, 65536, 262160, 3, 0, 262161, 1, 0, 262162, 3, 0, 262163, 3, 0, 262164, 3, 0, 262165, 3, 0, 262166, 3, 0, 262167, 3, 0, 262168, 3, 0, 262169, 1, 65537, 262170, 1, 0, 262171, 1, 65538, 262172, 1, 65538, 262173, 1, 131073, 327680, 1, 65536, 327681, 1, 131072, 327682, 2, 131074, 327683, 1, 65538, 327684, 3, 0, 327685, 3, 0, 327686, 3, 0, 327687, 3, 0, 327688, 3, 0, 327689, 3, 0, 327690, 3, 0, 327691, 3, 0, 327692, 3, 0, 327693, 3, 0, 327694, 3, 0, 327695, 3, 0, 327696, 3, 0, 327697, 3, 0, 327698, 3, 0, 327699, 2, 3, 327700, 2, 131072, 327701, 2, 131072, 327702, 2, 131072, 327703, 2, 4, 327704, 3, 0, 327705, 1, 131072, 327706, 1, 131074, 327707, 1, 0, 327708, 1, 1, 327709, 1, 65537, 393216, 1, 131074, 393217, 1, 131072, 393218, 2, 131074, 393219, 1, 131073, 393220, 1, 0, 393221, 3, 0, 393222, 3, 0, 393223, 3, 0, 393224, 3, 0, 393225, 3, 0, 393226, 3, 0, 393227, 3, 0, 393228, 3, 0, 393229, 3, 0, 393230, 3, 0, 393231, 3, 0, 393232, 2, 3, 393233, 2, 131072, 393234, 2, 131072, 393235, 2, 65540, 393236, 3, 0, 393237, 3, 0, 393238, 3, 0, 393239, 2, 131074, 393240, 3, 0, 393241, 1, 2, 393242, 1, 65538, 393243, 1, 131073, 393244, 1, 65536, 393245, 1, 65537, 458752, 1, 1, 458753, 1, 2, 458754, 2, 65539, 458755, 2, 131072, 458756, 2, 4, 458757, 3, 0, 458758, 3, 0, 458759, 3, 0, 458760, 3, 0, 458761, 3, 0, 458762, 2, 3, 458763, 2, 131072, 458764, 2, 131072, 458765, 2, 131072, 458766, 2, 131072, 458767, 2, 131072, 458768, 2, 65540, 458769, 1, 0, 458770, 1, 65537, 458771, 3, 0, 458772, 3, 0, 458773, 3, 0, 458774, 3, 0, 458775, 2, 131074, 458776, 3, 0, 458777, 1, 131072, 458778, 1, 131073, 458779, 1, 0, 458780, 1, 0, 458781, 1, 0, 524288, 1, 131074, 524289, 1, 1, 524290, 1, 65537, 524291, 1, 0, 524292, 2, 65539, 524293, 2, 131072, 524294, 2, 131072, 524295, 2, 131072, 524296, 2, 131072, 524297, 2, 131072, 524298, 2, 65540, 524299, 1, 2, 524300, 1, 131073, 524301, 1, 131074, 524302, 1, 2, 524303, 1, 131072, 524304, 1, 2, 524305, 1, 2, 524306, 3, 0, 524307, 3, 0, 524308, 3, 0, 524309, 3, 0, 524310, 3, 0, 524311, 2, 131074, 524312, 3, 0, 524313, 1, 65536, 524314, 1, 1, 524315, 1, 131073, 524316, 1, 65536, 524317, 1, 131072, 589824, 1, 0, 589825, 1, 131072, 589826, 3, 0, 589827, 3, 0, 589828, 3, 0, 589829, 3, 0, 589830, 3, 0, 589831, 3, 0, 589832, 3, 0, 589833, 3, 0, 589834, 3, 0, 589835, 3, 0, 589836, 3, 0, 589837, 3, 0, 589838, 3, 0, 589839, 1, 131072, 589840, 3, 0, 589841, 3, 0, 589842, 3, 0, 589843, 3, 0, 589844, 3, 0, 589845, 1, 0, 589846, 3, 0, 589847, 2, 131074, 589848, 3, 0, 589849, 1, 1, 589850, 1, 2, 589851, 1, 131072, 589852, 1, 2, 589853, 1, 131072, 655360, 1, 65536, 655361, 1, 131073, 655362, 3, 0, 655363, 3, 0, 655364, 3, 0, 655365, 3, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 1, 655369, 1, 0, 655370, 1, 2, 655371, 3, 0, 655372, 3, 0, 655373, 3, 0, 655374, 3, 0, 655375, 3, 0, 655376, 3, 0, 655377, 3, 0, 655378, 3, 0, 655379, 1, 65537, 655380, 3, 0, 655381, 3, 0, 655382, 3, 0, 655383, 2, 131074, 655384, 3, 0, 655385, 1, 131074, 655386, 1, 131074, 655387, 1, 65536, 655388, 1, 65537, 655389, 1, 65537, 720896, 1, 131073, 720897, 1, 131073, 720898, 3, 0, 720899, 1, 0, 720900, 1, 2, 720901, 1, 131072, 720902, 1, 65536, 720903, 3, 0, 720904, 3, 0, 720905, 3, 0, 720906, 3, 0, 720907, 3, 0, 720908, 3, 0, 720909, 3, 0, 720910, 3, 0, 720911, 3, 0, 720912, 3, 0, 720913, 3, 0, 720914, 3, 0, 720915, 3, 0, 720916, 3, 0, 720917, 1, 131072, 720918, 3, 0, 720919, 2, 131073, 720920, 3, 0, 720921, 1, 1, 720922, 1, 2, 720923, 1, 0, 720924, 1, 65537, 720925, 1, 0, 786432, 1, 1, 786433, 1, 65538, 786434, 3, 0, 786435, 3, 0, 786436, 3, 0, 786437, 1, 131074, 786438, 3, 0, 786439, 3, 0, 786440, 1, 65538, 786441, 3, 0, 786442, 3, 0, 786443, 3, 0, 786444, 3, 0, 786445, 1, 65537, 786446, 3, 0, 786447, 3, 0, 786448, 3, 0, 786449, 3, 0, 786450, 3, 0, 786451, 3, 0, 786452, 3, 0, 786453, 3, 0, 786454, 1, 2, 786455, 3, 0, 786456, 3, 0, 786457, 1, 1, 786458, 1, 1, 786459, 1, 65538, 786460, 1, 131072, 786461, 1, 65536, 851968, 1, 131073, 851969, 1, 131073, 851970, 1, 2, 851971, 3, 0, 851972, 1, 1, 851973, 3, 0, 851974, 3, 0, 851975, 3, 0, 851976, 3, 0, 851977, 3, 0, 851978, 3, 0, 851979, 1, 65538, 851980, 3, 0, 851981, 3, 0, 851982, 3, 0, 851983, 3, 0, 851984, 3, 0, 851985, 3, 0, 851986, 3, 0, 851987, 3, 0, 851988, 1, 1, 851989, 1, 65536, 851990, 1, 2, 851991, 3, 0, 851992, 3, 0, 851993, 1, 65538, 851994, 1, 0, 851995, 1, 1, 851996, 1, 2, 851997, 1, 0, 917504, 1, 65537, 917505, 1, 131073, 917506, 1, 2, 917507, 1, 65537, 917508, 1, 65537, 917509, 1, 65537, 917510, 1, 131072, 917511, 1, 0, 917512, 1, 2, 917513, 1, 131072, 917514, 1, 131074, 917515, 1, 0, 917516, 1, 131072, 917517, 1, 131072, 917518, 1, 65537, 917519, 1, 1, 917520, 1, 0, 917521, 1, 0, 917522, 1, 131072, 917523, 3, 0, 917524, 3, 0, 917525, 3, 0, 917526, 3, 0, 917527, 3, 0, 917528, 3, 0, 917529, 1, 2, 917530, 1, 2, 917531, 1, 65537, 917532, 1, 2, 917533, 1, 131073, 983040, 1, 131072, 983041, 1, 131073, 983042, 1, 65537, 983043, 1, 65536, 983044, 1, 65536, 983045, 1, 131074, 983046, 1, 65538, 983047, 1, 65538, 983048, 1, 0, 983049, 1, 131074, 983050, 1, 65537, 983051, 1, 65538, 983052, 1, 131073, 983053, 1, 0, 983054, 1, 131072, 983055, 1, 131073, 983056, 1, 131074, 983057, 1, 131072, 983058, 1, 0, 983059, 1, 131072, 983060, 1, 2, 983061, 1, 1, 983062, 1, 131072, 983063, 1, 131074, 983064, 1, 65538, 983065, 1, 1, 983066, 1, 2, 983067, 1, 131074, 983068, 1, 0, 983069, 1, 65537, 1048576, 1, 0, 1048577, 1, 65538, 1048578, 1, 1, 1048579, 1, 65538, 1048580, 1, 2, 1048581, 1, 2, 1048582, 1, 2, 1048583, 1, 2, 1048584, 1, 1, 1048585, 1, 131074, 1048586, 1, 2, 1048587, 1, 0, 1048588, 1, 65536, 1048589, 1, 131072, 1048590, 1, 131074, 1048591, 1, 131073, 1048592, 1, 1, 1048593, 1, 65537, 1048594, 1, 1, 1048595, 1, 1, 1048596, 1, 65536, 1048597, 1, 65537, 1048598, 1, 65537, 1048599, 1, 65536, 1048600, 1, 131074, 1048601, 1, 0, 1048602, 1, 131073, 1048603, 1, 131072, 1048604, 1, 65538, 1048605, 1, 65538 )
+
+[node name="WaveSpawner2D" parent="." index="4"]
+spawn_scene = ExtResource( 3 )
+
+[node name="EventsPlayer" parent="." index="5"]
+anims/01.welcome = SubResource( 1 )
+anims/02.intro = SubResource( 2 )
+anims/03.intro = SubResource( 3 )
+anims/04.intro = SubResource( 4 )
+anims/05.building-highlight = SubResource( 5 )
+anims/06.goo-intro = SubResource( 6 )
+anims/07.start = SubResource( 7 )
+anims/08.first-wave = SubResource( 8 )
+anims/09.second-wave = SubResource( 9 )
+anims/10.last-wave = SubResource( 10 )
+anims/11.done = SubResource( 11 )
+anims/12.finish = SubResource( 12 )
+
+[node name="GoalPoint" parent="." index="7"]
+position = Vector2( 1504, 752 )
+
+[node name="Panel" parent="UIDialogue" index="0"]
+visible = false
+
+[node name="Label" parent="UIDialogue/Panel" index="0"]
+text = "Hello! Welcome to Aster-570, an asteroid full of resources that we can use to help Earth develop better technologies."

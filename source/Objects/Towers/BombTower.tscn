@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Towers/Tower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Weapon2D/Bullets/BombBullet.tscn" type="PackedScene" id=2]
+
+
+[sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
+radius = 128.0
+
+[node name="Tower" instance=ExtResource( 1 )]
+cost = 500
+
+[node name="Weapon2D" parent="." index="1"]
+bullet_scene = ExtResource( 2 )
+fire_range = 128.0
+fire_cooldown = 3.0
+
+[node name="Sprite" parent="Weapon2D" index="0"]
+offset = Vector2( 28, 0 )
+region_rect = Rect2( 190, 217, 50, 28 )
+
+[node name="BulletSpawnPosition2D" parent="Weapon2D" index="1"]
+position = Vector2( 52, 0 )
+
+[node name="CollisionShape2D" parent="Weapon2D/RangeArea2D" index="0"]
+shape = SubResource( 1 )
+
+[editable path="Weapon2D"]

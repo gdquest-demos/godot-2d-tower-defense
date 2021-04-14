@@ -1,6 +1,8 @@
 class_name Weapon2D
 extends Node2D
 
+signal fired()
+
 export var bullet_scene: PackedScene
 # Range of the weapon in pixels.
 export var fire_range := 128.0 setget set_fire_range
@@ -49,6 +51,7 @@ func shoot_at(target_position: Vector2) -> void:
 	bullet.fly_to(target_position)
 
 	_cooldown_timer.start(fire_cooldown)
+	emit_signal("fired")
 
 func show_range() -> void:
 	_range_preview.radius = fire_range

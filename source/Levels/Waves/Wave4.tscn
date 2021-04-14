@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/Waves/Wave.gd" type="Script" id=1]
+[ext_resource path="res://Actors/Enemies/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actors/Enemies/ToughEnemy.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 512, 0 )
+}
+
+[node name="Wave" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="ToughEnemy" parent="." instance=ExtResource( 3 )]
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+
+[node name="ToughEnemy2" parent="." instance=ExtResource( 3 )]
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+
+[node name="ToughEnemy3" parent="." instance=ExtResource( 3 )]

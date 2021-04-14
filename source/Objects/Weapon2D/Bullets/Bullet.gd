@@ -4,6 +4,7 @@ extends Node2D
 export var speed := 500.0
 
 onready var _tween := $Tween
+onready var _anim_player := $AnimationPlayer
 
 
 func _init() -> void:
@@ -20,4 +21,4 @@ func fly_to(target_global_position: Vector2) -> void:
 	_tween.start()
 	look_at(target_global_position)
 	yield(_tween, "tween_all_completed")
-	queue_free()
+	_anim_player.play("Explode")

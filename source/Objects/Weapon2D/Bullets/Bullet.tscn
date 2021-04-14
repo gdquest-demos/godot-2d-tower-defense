@@ -1,12 +1,43 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/Weapon2D/Bullets/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://sprite-sheet.svg" type="Texture" id=2]
 [ext_resource path="res://Objects/HitBox/HitBoxArea2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Weapon2D/Bullets/Explosions/SmallExplosion.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
 height = 8.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Explode"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("SmallExplosion:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource( 1 )
@@ -32,3 +63,8 @@ shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
 playback_process_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Explode = SubResource( 2 )
+
+[node name="SmallExplosion" parent="." instance=ExtResource( 4 )]

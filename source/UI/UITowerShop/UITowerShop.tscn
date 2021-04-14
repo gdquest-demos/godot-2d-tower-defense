@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://Objects/Towers/BombTower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/UITowerShop/UITowerShop.gd" type="Script" id=3]
 [ext_resource path="res://UI/UITowerShop/UITowerPurchaseButton.tscn" type="PackedScene" id=6]
 
@@ -51,9 +52,19 @@ __meta__ = {
 }
 
 [node name="UITowerPurchaseButton" parent="HBoxContainer" instance=ExtResource( 6 )]
-margin_right = 256.0
+margin_right = 120.0
 margin_bottom = 72.0
 hint_tooltip = "Standard tower. Shoots bullets at a target direction.
 "
 focus_mode = 0
 mouse_filter = 1
+
+[node name="UITowerPurchaseButton2" parent="HBoxContainer" instance=ExtResource( 6 )]
+margin_left = 136.0
+margin_right = 256.0
+margin_bottom = 72.0
+hint_tooltip = "Bomb tower. Shoots a bomb at a target position that hits every enemy inside its explosion area.
+"
+focus_mode = 0
+mouse_filter = 1
+tower_scene = ExtResource( 1 )

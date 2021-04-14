@@ -26,9 +26,9 @@ tracks/0/keys = {
 }
 
 [node name="Weapon2D" type="Node2D"]
-position = Vector2( 896, 512 )
 script = ExtResource( 1 )
 bullet_scene = ExtResource( 4 )
+fire_range = 256.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
