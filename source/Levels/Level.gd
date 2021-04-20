@@ -80,3 +80,7 @@ func _on_PlayerBase_destroyed():
 
 func _on_Enemy_died(gold_earned: int) -> void:
 	emit_signal("gold_earned", gold_earned)
+
+
+func _on_round_finished() -> void:
+	start()

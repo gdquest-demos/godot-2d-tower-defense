@@ -7,6 +7,7 @@ export var cost := 100
 
 onready var _weapon := $Weapon2D
 onready var _interface := $Interface
+onready var _cooldown_bar := $UICooldownBar
 onready var _selection := $SelectableArea2D
 
 
@@ -37,4 +38,4 @@ func _on_SellButton_pressed() -> void:
 
 
 func _on_Weapon2D_fired() -> void:
-	$UICooldownBar.start(_weapon.fire_cooldown)
+	_cooldown_bar.start(_weapon.fire_cooldown)

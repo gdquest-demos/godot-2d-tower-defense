@@ -1,7 +1,7 @@
 # Initializes the user interface, forwarding it the data it needs from the game world.
 extends Node
 
-export(String, FILE, "*tscn") var end_screen_path
+export(String, FILE, "*tscn") var end_screen_path = "res//Screens/EndScreen.tscn"
 
 onready var _player := $Player
 onready var _level := $Level
@@ -22,11 +22,12 @@ func _ready() -> void:
 
 
 func _setup_level() -> void:
-	_level.tower_placer.connect("tower_placed", _tower_shop, "_on_TowerPlacer_tower_placed")
 	_level.connect("base_destroyed", self, "_on_Level_base_destroyed")
 	_level.connect("finished", self, "_on_Level_finished")
 	_level.connect("gold_earned", self, "_on_Level_gold_earned")
 	_level.connect("round_finished", self, "_on_Level_round_finished")
+
+	_level.tower_placer.connect("tower_placed", _tower_shop, "_on_TowerPlacer_tower_placed")
 	_tower_shop.connect("tower_purchased", _level.tower_placer, "add_new_tower")
 
 
