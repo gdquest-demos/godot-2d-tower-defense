@@ -403,7 +403,6 @@ anims/09.start-round = SubResource( 9 )
 anims/10.fourth-wave = SubResource( 10 )
 anims/11.end = SubResource( 11 )
 anims/12.finish = SubResource( 12 )
-current_event = 10
 
 [node name="GoalPoint" parent="." index="7"]
 position = Vector2( 1376, 864 )

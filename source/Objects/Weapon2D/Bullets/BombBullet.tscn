@@ -76,7 +76,6 @@ can_hit_multiple = true
 
 [node name="CollisionShape2D" parent="HitBoxArea2D" index="0"]
 shape = SubResource( 1 )
-disabled = true
 
 [node name="AnimationPlayer" parent="." index="3"]
 autoplay = "SETUP"
