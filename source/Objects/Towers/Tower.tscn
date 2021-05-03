@@ -63,6 +63,9 @@ margin_left = -40.0
 margin_top = -40.0
 margin_right = 104.0
 margin_bottom = -16.0
+
+[node name="Upgrades" type="Node" parent="."]
+
 [connection signal="fired" from="Weapon2D" to="." method="_on_Weapon2D_fired"]
 [connection signal="selection_changed" from="SelectableArea2D" to="." method="_on_SelectableArea2D_selection_changed"]
 [connection signal="pressed" from="Interface/SellButton" to="." method="_on_SellButton_pressed"]

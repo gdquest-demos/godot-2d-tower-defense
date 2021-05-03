@@ -53,6 +53,7 @@ func shoot_at(target_position: Vector2) -> void:
 	_cooldown_timer.start(fire_cooldown)
 	emit_signal("fired")
 
+
 func show_range() -> void:
 	_range_preview.radius = fire_range
 	_range_preview.appear()

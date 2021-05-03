@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/UIUpgradePanel/UIUpgradeShop.gd" type="Script" id=1]
+[ext_resource path="res://UI/UIUpgradePanel/UIUpgradeButton.tscn" type="PackedScene" id=2]
+
+[sub_resource type="StyleBoxLine" id=1]
+color = Color( 1, 1, 1, 1 )
+thickness = 2
+
+[sub_resource type="Animation" id=2]
+resource_name = "Appear"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 0.5, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.05, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Disappear"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.05, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[node name="UIUpgradeShop" type="Control"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 32, 32 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 32.0 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 32.0 ]
+}
+_upgrade_button_scene = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = -96.0
+margin_top = -352.0
+margin_right = 160.0
+margin_bottom = -32.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 128, 384 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 64.0
+text = "Upgrades"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -96.0
+margin_top = 64.0
+margin_right = 96.0
+margin_bottom = 72.0
+custom_styles/separator = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -240.0
+margin_right = -16.0
+margin_bottom = -16.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Appear = SubResource( 2 )
+anims/Disappear = SubResource( 3 )
