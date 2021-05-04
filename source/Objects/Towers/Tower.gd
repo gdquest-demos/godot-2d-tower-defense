@@ -30,8 +30,8 @@ func hide_interface() -> void:
 	_interface.disappear()
 
 
-func get_upgrades() -> Node:
-	return _upgrades
+func get_upgrades() -> Array:
+	return _upgrades.get_children()
 
 
 func _on_SelectableArea2D_selection_changed(selected) -> void:

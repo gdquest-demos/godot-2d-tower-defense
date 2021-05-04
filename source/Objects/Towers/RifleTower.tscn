@@ -8,6 +8,5 @@
 
 [node name="FireRangeUpgrade" parent="Upgrades" index="0" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
-text = "Fire Range"
-description = "Increases weapon's fire range."
-cost_curve = 1.2
+display_name = "Fire range"
+tooltip = "Increases the tower's reach."
