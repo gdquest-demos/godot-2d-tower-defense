@@ -54,6 +54,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/UITowerShop/UITowerShop.gd"
 }, {
+"base": "Button",
+"class": "UIUpgradeButton",
+"language": "GDScript",
+"path": "res://UI/UIUpgradePanel/UIUpgradeButton.gd"
+}, {
+"base": "Node",
+"class": "Upgrade",
+"language": "GDScript",
+"path": "res://Objects/Towers/Upgrades/Upgrade.gd"
+}, {
+"base": "Control",
+"class": "UpgradeShop",
+"language": "GDScript",
+"path": "res://UI/UIUpgradePanel/UIUpgradeShop.gd"
+}, {
 "base": "Path2D",
 "class": "Wave",
 "language": "GDScript",
@@ -79,6 +94,9 @@ _global_script_class_icons={
 "Tower": "",
 "TowerPlacer": "",
 "UITowerShop": "",
+"UIUpgradeButton": "",
+"Upgrade": "",
+"UpgradeShop": "",
 "Wave": "",
 "WaveSpawner2D": "",
 "Weapon2D": ""
@@ -130,6 +148,7 @@ tower_placement={
 
 [rendering]
 
-quality/2d/use_pixel_snap=true
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_clear_color=Color( 0.196078, 0.160784, 0.278431, 1 )
 environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true

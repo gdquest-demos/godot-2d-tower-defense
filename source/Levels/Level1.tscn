@@ -471,6 +471,7 @@ anims/12.finish = SubResource( 12 )
 position = Vector2( 1504, 752 )
 
 [node name="UIDialoguePanel" parent="UIDialogueLayer" index="0"]
+visible = false
 margin_left = -480.001
 margin_top = -232.0
 margin_right = 511.999

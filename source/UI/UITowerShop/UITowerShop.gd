@@ -35,7 +35,4 @@ func _on_Tower_sold(price: int, _position: Vector2) -> void:
 
 func _on_Player_gold_changed(gold_amount: int) -> void:
 	for button in _buttons:
-		if button.tower_cost > player.gold:
-			button.disabled = true
-		else:
-			button.disabled = false
+		button.disabled = button.tower_cost > gold_amount
