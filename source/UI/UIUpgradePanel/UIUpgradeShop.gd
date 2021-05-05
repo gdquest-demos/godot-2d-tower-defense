@@ -22,7 +22,7 @@ func appear() -> void:
 	# Rotate to always display the panel on screen. Fix cases where
 	# players place towers near/at screen's edges 
 	if not get_viewport_rect().encloses(_panel.get_global_rect()):
-		_fit_panel()
+		_fit_panel_in_view()
 	_anim_player.play("Appear")
 
 
@@ -48,10 +48,10 @@ func _update(tower: Tower) -> void:
 		add_upgrade_option(upgrade)
 
 
-func _fit_panel() -> void:
+## Uses rotation to ensure the interface is always in the view.
+func _fit_panel_in_view() -> void:
 	var center := get_viewport_rect().size * 0.5
 	var angle := center.angle_to_point(rect_global_position - rect_pivot_offset)
-
 	# Snap angle to 45 degrees increment
 	angle = round(angle / (PI / 4)) * (PI / 4)
 
