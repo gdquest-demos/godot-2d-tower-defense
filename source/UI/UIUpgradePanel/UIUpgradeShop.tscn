@@ -55,12 +55,12 @@ __meta__ = {
 _upgrade_button_scene = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = -96.0
-margin_top = -352.0
-margin_right = 160.0
-margin_bottom = -32.0
+margin_left = 160.0
+margin_top = -128.0
+margin_right = 416.0
+margin_bottom = 192.0
 rect_scale = Vector2( 1e-05, 1e-05 )
-rect_pivot_offset = Vector2( 128, 384 )
+rect_pivot_offset = Vector2( 128, 160 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
