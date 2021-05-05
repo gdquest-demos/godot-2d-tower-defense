@@ -62,6 +62,7 @@ func _place_tower() -> void:
 
 	if not is_cell_placeable(_current_cell):
 		_current_tower.queue_free()
+		_current_tower = null
 		return
 	set_cell_unplaceable(_current_cell)
 

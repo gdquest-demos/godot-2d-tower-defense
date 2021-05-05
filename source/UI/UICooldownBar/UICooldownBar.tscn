@@ -21,10 +21,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -42,6 +42,7 @@ tracks/0/keys = {
 }
 
 [node name="UICooldownBar" type="Control"]
+visible = false
 margin_right = 144.0
 margin_bottom = 24.0
 script = ExtResource( 6 )
@@ -82,7 +83,7 @@ anchor_bottom = 0.5
 margin_left = -2.0
 margin_top = -8.0
 margin_right = 2.0
-rect_rotation = 360.0
+rect_rotation = 252.0
 rect_pivot_offset = Vector2( 2, 8 )
 texture = ExtResource( 4 )
 expand = true
@@ -96,3 +97,5 @@ anims/Finish = SubResource( 2 )
 anims/Spin = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
