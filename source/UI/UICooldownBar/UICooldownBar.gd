@@ -16,9 +16,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_progress.value = _timer.wait_time - _timer.time_left
 	_progress.tint_progress = gradient.interpolate(_progress.ratio)
-	if _progress.value >= _progress.max_value:
-		_animator.play("Finish")
-		set_process(false)
 
 
 func start(time: float) -> void:
@@ -29,3 +26,8 @@ func start(time: float) -> void:
 	_animator.play("Spin")
 	set_process(true)
 	show()
+
+
+func _on_Timer_timeout():
+	_animator.play("Finish")
+	set_process(false)
