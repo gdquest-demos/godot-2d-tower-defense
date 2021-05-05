@@ -57,6 +57,7 @@ func _on_StartWaveButton_pressed() -> void:
 	# Enters in the "play mode". In play mode, players become passive to the
 	# game's event. Interface becomes invisible and the Level starts.
 	_toggle_interface()
+	get_tree().call_group("selected", "set_selected", false)
 	yield(_screen_overlay.play_wave_start(), "completed")
 	_level.start()
 

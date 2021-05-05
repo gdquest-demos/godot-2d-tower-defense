@@ -26,6 +26,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func set_selected(select: bool) -> void:
 	selected = select
+	if selected:
+		add_to_group("selected")
+	else:
+		remove_from_group("selected")
 	emit_signal("selection_changed", selected)
 
 
