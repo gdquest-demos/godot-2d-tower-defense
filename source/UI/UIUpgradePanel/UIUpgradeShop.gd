@@ -48,7 +48,7 @@ func _update(tower: Tower) -> void:
 		add_upgrade_option(upgrade)
 
 
-## Uses rotation to ensure the interface is always in the view.
+# Uses rotation to ensure the interface is always in the view.
 func _fit_panel_in_view() -> void:
 	var center := get_viewport_rect().size * 0.5
 	var angle := center.angle_to_point(rect_global_position - rect_pivot_offset)

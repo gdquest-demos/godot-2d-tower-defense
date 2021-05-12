@@ -4,7 +4,7 @@ extends Node
 signal applied(cost)
 
 export var display_name := "Upgrade name"
-export(String, MULTILINE) var tooltip := "Upgrade description"
+export(String, MULTILINE) var description := "Upgrade description"
 export var cost := 100
 export var cost_multiplier := 1.2
 export var value := 100.0
