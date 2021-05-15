@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://UI/UIUpgradePanel/UIUpgradeShop.gd" type="Script" id=1]
-[ext_resource path="res://UI/UIUpgradePanel/UIUpgradeButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/UIUpgradeShop/UIUpgradeShop.gd" type="Script" id=1]
+[ext_resource path="res://UI/UIUpgradeShop/UIUpgradeButton.tscn" type="PackedScene" id=2]
 
-[sub_resource type="StyleBoxLine" id=1]
-color = Color( 1, 1, 1, 1 )
-thickness = 2
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Appear"
 length = 0.3
 step = 0.05
@@ -24,7 +20,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.05, 1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Disappear"
 length = 0.3
 step = 0.05
@@ -36,7 +32,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
-"transitions": PoolRealArray( 1, 0.5, 0.5 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.05, 1 ), Vector2( 1e-05, 1e-05 ) ]
 }
@@ -48,9 +44,7 @@ rect_pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 32.0 ],
-"_edit_use_anchors_": false,
-"_edit_vertical_guides_": [ 32.0 ]
+"_edit_use_anchors_": false
 }
 _upgrade_button_scene = ExtResource( 2 )
 
@@ -85,7 +79,6 @@ margin_left = -96.0
 margin_top = 64.0
 margin_right = 96.0
 margin_bottom = 72.0
-custom_styles/separator = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -105,5 +98,5 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Appear = SubResource( 2 )
-anims/Disappear = SubResource( 3 )
+anims/Appear = SubResource( 1 )
+anims/Disappear = SubResource( 2 )

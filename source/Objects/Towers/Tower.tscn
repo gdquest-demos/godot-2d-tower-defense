@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Objects/Weapon2D/Weapon2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/SelectableArea2D/SelectableArea2D.tscn" type="PackedScene" id=2]
@@ -7,7 +7,11 @@
 [ext_resource path="res://UI/UIUnit/UIUnit.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/UICooldownBar/UICooldownBar.tscn" type="PackedScene" id=6]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
+radius = 128.0
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
 
 [node name="Tower" type="Node2D"]
@@ -23,6 +27,9 @@ region_rect = Rect2( 192, 64, 73, 64 )
 position = Vector2( 32, 36 )
 fire_range = 192.0
 
+[node name="CollisionShape2D" parent="Weapon2D/RangeArea2D" index="0"]
+shape = SubResource( 1 )
+
 [node name="GlassSprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 offset = Vector2( 32, 38 )
@@ -34,7 +41,7 @@ position = Vector2( 32, 32 )
 z_index = -1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableArea2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Interface" parent="." instance=ExtResource( 5 )]
 margin_left = 32.0
@@ -68,3 +75,5 @@ margin_bottom = -16.0
 [connection signal="fired" from="Weapon2D" to="." method="_on_Weapon2D_fired"]
 [connection signal="selection_changed" from="SelectableArea2D" to="." method="_on_SelectableArea2D_selection_changed"]
 [connection signal="pressed" from="Interface/SellButton" to="." method="_on_SellButton_pressed"]
+
+[editable path="Weapon2D"]

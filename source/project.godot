@@ -57,7 +57,7 @@ _global_script_classes=[ {
 "base": "Button",
 "class": "UIUpgradeButton",
 "language": "GDScript",
-"path": "res://UI/UIUpgradePanel/UIUpgradeButton.gd"
+"path": "res://UI/UIUpgradeShop/UIUpgradeButton.gd"
 }, {
 "base": "Node",
 "class": "Upgrade",
@@ -67,7 +67,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "UpgradeShop",
 "language": "GDScript",
-"path": "res://UI/UIUpgradePanel/UIUpgradeShop.gd"
+"path": "res://UI/UIUpgradeShop/UIUpgradeShop.gd"
 }, {
 "base": "Path2D",
 "class": "Wave",

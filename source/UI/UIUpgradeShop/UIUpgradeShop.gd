@@ -7,11 +7,7 @@ onready var _container := $Panel/VBoxContainer
 onready var _anim_player := $AnimationPlayer
 onready var _panel := $Panel
 
-var player: Player setget set_player
-
-
-func set_player(new_player: Player) -> void:
-	player = new_player
+var player: Player
 
 
 func appear() -> void:
@@ -30,12 +26,12 @@ func disappear() -> void:
 	_anim_player.play("Disappear")
 
 
-func add_upgrade_option(upgrade: Upgrade) -> void:
+func add_upgrade_button(upgrade: Upgrade) -> void:
 	var button: UIUpgradeButton = _upgrade_button_scene.instance()
-	_container.add_child(button)
-
 	button.connect("pressed", self, "_on_UIUpgradeButton_pressed", [button, upgrade])
 	button.update_display(upgrade, player.gold)
+
+	_container.add_child(button)
 
 
 func _update(tower: Tower) -> void:
@@ -45,7 +41,7 @@ func _update(tower: Tower) -> void:
 		child.queue_free()
 	
 	for upgrade in tower.get_upgrades():
-		add_upgrade_option(upgrade)
+		add_upgrade_button(upgrade)
 
 
 # Uses rotation to ensure the interface is always in the view.
@@ -74,11 +70,12 @@ func _on_Tower_selected(selected: bool, tower: Tower) -> void:
 
 
 func _on_Tower_sold(_price: int, place: Vector2) -> void:
-	_anim_player.play("Disappear")
+	disappear()
 
 
 func _on_UIUpgradeButton_pressed(button: UIUpgradeButton, upgrade: Upgrade) -> void:
-	if player.gold - upgrade.cost >= 0:
-		upgrade.apply()
-		player.gold -= upgrade.cost
-		button.update_display(upgrade, player.gold)
+	if player.gold < upgrade.cost:
+		return
+	player.gold -= upgrade.cost
+	upgrade.apply()
+	button.update_display(upgrade, player.gold)
