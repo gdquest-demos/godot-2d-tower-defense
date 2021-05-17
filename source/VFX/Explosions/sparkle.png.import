@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sparkle.png-ccd0fd5ab5b6fee411c49179fda7ec75.stex"
+path="res://.import/sparkle.png-9b6c5a08d7289a4e0580cfb7b180137f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/Weapon2D/Bullets/Explosions/sparkle.png"
-dest_files=[ "res://.import/sparkle.png-ccd0fd5ab5b6fee411c49179fda7ec75.stex" ]
+source_file="res://VFX/Explosions/sparkle.png"
+dest_files=[ "res://.import/sparkle.png-9b6c5a08d7289a4e0580cfb7b180137f.stex" ]
 
 [params]
 

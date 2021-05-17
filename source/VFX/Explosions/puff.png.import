@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/puff_smooth.png-046a0e38cbbe8a9f7aaf7e65ba4c1779.stex"
+path="res://.import/puff.png-a97a2dbe05e458d4ca98d34a9d7f4da4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/Weapon2D/Bullets/Explosions/puff_smooth.png"
-dest_files=[ "res://.import/puff_smooth.png-046a0e38cbbe8a9f7aaf7e65ba4c1779.stex" ]
+source_file="res://VFX/Explosions/puff.png"
+dest_files=[ "res://.import/puff.png-a97a2dbe05e458d4ca98d34a9d7f4da4.stex" ]
 
 [params]
 

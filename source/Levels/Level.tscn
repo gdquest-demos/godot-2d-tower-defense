@@ -8,7 +8,7 @@
 [ext_resource path="res://Levels/TowerPlacer/TowerPlacer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Waves/Wave1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/AStarGrid/AStarGrid.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Levels/PathPreview.tscn" type="PackedScene" id=10]
+[ext_resource path="res://VFX/PathPreview.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/EventsPlayer.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]

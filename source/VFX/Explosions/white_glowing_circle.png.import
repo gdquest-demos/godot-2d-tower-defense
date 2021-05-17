@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/white_glowing_circle.png-4d8fec153ad412e3d3d307b140f1cbf4.stex"
+path="res://.import/white_glowing_circle.png-18c903a04f43dc51f1b475c2128e7106.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/Weapon2D/Bullets/Explosions/white_glowing_circle.png"
-dest_files=[ "res://.import/white_glowing_circle.png-4d8fec153ad412e3d3d307b140f1cbf4.stex" ]
+source_file="res://VFX/Explosions/white_glowing_circle.png"
+dest_files=[ "res://.import/white_glowing_circle.png-18c903a04f43dc51f1b475c2128e7106.stex" ]
 
 [params]
 

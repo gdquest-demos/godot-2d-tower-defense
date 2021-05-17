@@ -1,10 +1,10 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://Objects/Weapon2D/Bullets/Explosions/sparkle.png" type="Texture" id=1]
-[ext_resource path="res://Objects/Weapon2D/Bullets/Explosions/puff_smooth.png" type="Texture" id=2]
-[ext_resource path="res://Objects/Weapon2D/Bullets/Explosions/puff.png" type="Texture" id=3]
-[ext_resource path="res://Objects/Weapon2D/Bullets/Explosions/explosion_gradient.tres" type="Texture" id=4]
-[ext_resource path="res://Objects/Weapon2D/Bullets/Explosions/scraps_gradient.tres" type="Texture" id=5]
+[ext_resource path="res://VFX/Explosions/sparkle.png" type="Texture" id=1]
+[ext_resource path="res://VFX/Explosions/puff_smooth.png" type="Texture" id=2]
+[ext_resource path="res://VFX/Explosions/puff.png" type="Texture" id=3]
+[ext_resource path="res://VFX/Explosions/explosion_gradient.tres" type="Texture" id=4]
+[ext_resource path="res://VFX/Explosions/scraps_gradient.tres" type="Texture" id=5]
 
 
 
