@@ -27,7 +27,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="UIHealthBar" type="ProgressBar"]
+[node name="HealthBar" type="ProgressBar"]
 margin_right = 192.0
 margin_bottom = 18.0
 custom_styles/fg = SubResource( 1 )
@@ -53,5 +53,6 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+
 [connection signal="value_changed" from="." to="." method="_on_value_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/range-preview.svg-b8ed67755a1f455f58da0593492711c3.stex"
+path="res://.import/range-preview.svg-3ddcdc213d26cf3b747e41044dcee9ea.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/RangePreview/range-preview.svg"
-dest_files=[ "res://.import/range-preview.svg-b8ed67755a1f455f58da0593492711c3.stex" ]
+source_file="res://Objects/Weapon2D/RangePreview/range-preview.svg"
+dest_files=[ "res://.import/range-preview.svg-3ddcdc213d26cf3b747e41044dcee9ea.stex" ]
 
 [params]
 

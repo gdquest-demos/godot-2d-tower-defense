@@ -54,5 +54,6 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+
 [connection signal="value_changed" from="." to="." method="_on_value_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
