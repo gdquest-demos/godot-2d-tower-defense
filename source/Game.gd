@@ -1,7 +1,7 @@
 # Initializes the user interface, forwarding it the data it needs from the game world.
 extends Node
 
-export(String, FILE, "*tscn") var end_screen_path = "res//Screens/EndScreen.tscn"
+export(String, FILE, "*tscn") var end_screen_path = "res://Screens/EndScreen.tscn"
 
 onready var _player := $Player
 onready var _level := $Level

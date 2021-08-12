@@ -10,7 +10,6 @@
 
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
-end_screen_path = "res://Screens/EndScreen.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 
